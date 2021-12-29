@@ -2,6 +2,7 @@ package g0803.bindingofshiba.gui;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -46,6 +47,9 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawText(int x, int y, String text, TextColor foregroundColor, TextColor backgroundColor) {
-
+        TextGraphics textGraphics = this.screen.newTextGraphics();
+        textGraphics.setForegroundColor(foregroundColor);
+        textGraphics.setBackgroundColor(backgroundColor);
+        textGraphics.putString(x, y, text);
     }
 }
