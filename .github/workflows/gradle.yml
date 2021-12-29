@@ -35,7 +35,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: build/**
-        key: ${{ runner.os }}-{{ hashFiles('src/**', 'gradle/**', 'build.gradle', 'gradlew', 'gradlew.bat', 'settings.gradle') }}
+        key: ${{ runner.os }}-${{ hashFiles('src/**', 'gradle/**', 'build.gradle', 'gradlew', 'gradlew.bat', 'settings.gradle') }}
       
     - name: Compile
       if: steps.cache.outputs.cache-hit != 'true'
@@ -63,7 +63,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: build/**
-        key: ${{ runner.os }}-{{ hashFiles('src/**', 'gradle/**', 'build.gradle', 'gradlew', 'gradlew.bat', 'settings.gradle') }}
+        key: ${{ runner.os }}-${{ hashFiles('src/**', 'gradle/**', 'build.gradle', 'gradlew', 'gradlew.bat', 'settings.gradle') }}
         
     - name: Run unit tests
       run: ./gradlew test
@@ -90,7 +90,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: build/**
-        key: ${{ runner.os }}-{{ hashFiles('src/**', 'gradle/**', 'build.gradle', 'gradlew', 'gradlew.bat', 'settings.gradle') }}
+        key: ${{ runner.os }}-${{ hashFiles('src/**', 'gradle/**', 'build.gradle', 'gradlew', 'gradlew.bat', 'settings.gradle') }}
         
     - name: Run unit tests
       run: ./gradlew test
