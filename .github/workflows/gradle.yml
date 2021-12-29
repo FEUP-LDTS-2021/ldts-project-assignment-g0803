@@ -34,12 +34,17 @@ jobs:
       id: cache-build-output
       uses: actions/cache@v2
       with:
-        path: build/**
+        path: |
+          build/**
+          .gradle/**
         key: ${{ runner.os }}-${{ hashFiles('src/**', 'gradle/**', 'build.gradle', 'gradlew', 'gradlew.bat', 'settings.gradle') }}
       
     - name: Compile
       if: steps.cache.outputs.cache-hit != 'true'
       run: ./gradlew assemble
+      
+    - name: Stop Gradle Daemons
+      run: ./gradlew --stop
       
   test:
     name: Unit Testing
@@ -62,11 +67,16 @@ jobs:
       id: cache-build-output
       uses: actions/cache@v2
       with:
-        path: build/**
+        path: |
+          build/**
+          .gradle/**
         key: ${{ runner.os }}-${{ hashFiles('src/**', 'gradle/**', 'build.gradle', 'gradlew', 'gradlew.bat', 'settings.gradle') }}
         
     - name: Run unit tests
       run: ./gradlew test
+      
+    - name: Stop Gradle Daemons
+      run: ./gradlew --stop
       
   check:
     name: Style Checks
@@ -89,8 +99,13 @@ jobs:
       id: cache-build-output
       uses: actions/cache@v2
       with:
-        path: build/**
+        path: |
+          build/**
+          .gradle/**
         key: ${{ runner.os }}-${{ hashFiles('src/**', 'gradle/**', 'build.gradle', 'gradlew', 'gradlew.bat', 'settings.gradle') }}
         
     - name: Run unit tests
       run: ./gradlew test
+      
+    - name: Stop Gradle Daemons
+      run: ./gradlew --stop
