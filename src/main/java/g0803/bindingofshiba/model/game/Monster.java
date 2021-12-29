@@ -6,7 +6,11 @@ public class Monster {
     private float hp;
     private float damage;
 
-    public Monster(int x, int y, float hp, float dmg) {
+    public Monster(int x, int y, float hp, float damage) {
+        this.x = x;
+        this.y = y;
+        this.hp = hp;
+        this.damage = damage;
     }
 
     public int getX() {
@@ -34,10 +38,16 @@ public class Monster {
     }
 
     public boolean isAlive() {
-        return false;
+        return !(this.hp <= 0);
     }
 
     public void decreaseHpByAmount(float amount) throws IllegalArgumentException {
-
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be negative");
+        } else if (amount > this.hp) {
+            this.hp = 0;
+        } else {
+            this.hp = hp - amount;
+        }
     }
 }
