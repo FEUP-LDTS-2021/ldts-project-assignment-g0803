@@ -1,8 +1,13 @@
 package g0803.bindingofshiba.gui;
 
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
+import g0803.bindingofshiba.model.game.Monster;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -36,5 +41,23 @@ public class LanternaGUITest {
         gui.clear();
 
         Mockito.verify(screen).clear();
+    }
+
+    @Test
+    public void draw_text() {
+        Screen screen = Mockito.mock(Screen.class);
+
+        GUI gui = new LanternaGUI(screen);
+        TextColor foregroundColor = TextColor.Factory.fromString("#FFFF00");
+        TextColor backgroundColor = TextColor.Factory.fromString("#123456");
+
+        TextGraphics textGraphics = Mockito.mock(TextGraphics.class);
+        Mockito.when(screen.newTextGraphics()).thenReturn(textGraphics);
+
+        gui.drawText(5, 10, "We miss LPOO", foregroundColor, backgroundColor);
+
+        Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(foregroundColor);
+        Mockito.verify(textGraphics, Mockito.times(1)).setBackgroundColor(backgroundColor);
+        Mockito.verify(textGraphics, Mockito.times(1)).putString(5, 10, "We miss LPOO");
     }
 }
