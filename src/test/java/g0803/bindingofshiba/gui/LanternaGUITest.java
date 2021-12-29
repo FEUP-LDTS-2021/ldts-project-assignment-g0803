@@ -23,7 +23,7 @@ public class LanternaGUITest {
         Screen screen = Mockito.mock(Screen.class);
 
         GUI gui = new LanternaGUI(screen);
-        //gui.refresh();
+        gui.refresh();
 
         Mockito.verify(screen).refresh();
     }
