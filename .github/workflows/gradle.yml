@@ -32,7 +32,7 @@ jobs:
       with:
         arguments: build --no-daemon --scan
 
-    - name: "Comment build scan url"
+    - name: "Comment build scan URL"
       uses: actions/github-script@v3
       if: failure() && steps.gradle.outputs.build-scan-url
       with:
