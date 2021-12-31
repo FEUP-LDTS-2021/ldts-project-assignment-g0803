@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 public class MonsterViewTest {
 
     @Test
-    public void draw_monster() {
+    public void drawMonster() {
         Monster monster = new Monster(5,5, 10, 50);
         MonsterView view = new MonsterView(monster);
 

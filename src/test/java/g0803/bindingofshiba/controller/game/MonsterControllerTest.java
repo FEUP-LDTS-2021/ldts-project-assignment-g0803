@@ -11,7 +11,7 @@ public class MonsterControllerTest {
     }
 
     @Test
-    public void move_monster_to_target_ahead() {
+    public void moveMonsterToTargetAhead() {
         Monster monster = getMonster();
         MonsterController monsterController = new MonsterController(monster);
 
@@ -29,7 +29,7 @@ public class MonsterControllerTest {
     }
 
     @Test
-    public void move_monster_to_target_behind() {
+    public void moveMonsterToTargetBehind() {
         Monster monster = getMonster();
         MonsterController monsterController = new MonsterController(monster);
 
@@ -47,7 +47,7 @@ public class MonsterControllerTest {
     }
 
     @Test
-    public void move_monster_to_target_above() {
+    public void moveMonsterToTargetAbove() {
         Monster monster = getMonster();
         MonsterController monsterController = new MonsterController(monster);
 
@@ -65,7 +65,7 @@ public class MonsterControllerTest {
     }
 
     @Test
-    public void move_monster_to_target_below() {
+    public void moveMonsterToTargetBelow() {
         Monster monster = getMonster();
         MonsterController monsterController = new MonsterController(monster);
 
@@ -83,7 +83,7 @@ public class MonsterControllerTest {
     }
 
     @Test
-    public void move_monster_same_position() {
+    public void moveMonsterSamePosition() {
         Monster monster = getMonster();
         MonsterController monsterController = new MonsterController(monster);
 
@@ -93,7 +93,7 @@ public class MonsterControllerTest {
     }
 
     @Test
-    public void move_monster_invalid_position() {
+    public void moveMonsterInvalidPosition() {
         Monster monster = getMonster();
         MonsterController monsterController = new MonsterController(monster);
 
@@ -107,7 +107,7 @@ public class MonsterControllerTest {
 
     /*
     @Test
-    public void get_hit() {
+    public void getHit() {
         Monster monster = getMonster();
 
         monsterController.takeDamage(monster, 10);
