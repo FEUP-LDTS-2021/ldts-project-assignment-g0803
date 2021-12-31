@@ -29,7 +29,7 @@ public class MonsterTest {
     }
 
     @Test
-    public void decrease_hp_by_negative_negative_number() {
+    public void decreaseHpByNegativeNumber() {
         Monster monster = getMonster();
         Assertions.assertThrows(IllegalArgumentException.class, new Executable() {
             @Override
