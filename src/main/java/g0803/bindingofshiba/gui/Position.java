@@ -1,7 +1,9 @@
 package g0803.bindingofshiba.gui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Position {
     private final int x;
@@ -21,22 +23,49 @@ public class Position {
     }
 
     public Position getLeft() {
-        return new Position(0, 0);
+        return new Position(x - 1, y);
     }
 
     public Position getRight() {
-        return new Position(0, 0);
+        return new Position(x + 1, y);
     }
 
     public Position getUp() {
-        return new Position(0, 0);
+        return new Position(x, y - 1);
     }
 
     public Position getDown() {
-        return new Position(0, 0);
+        return new Position(x, y + 1);
     }
 
     public List<Position> getNeighbours() {
-        return new ArrayList<>();
+        return new ArrayList<Position>(
+                Arrays.asList(
+                        this.getUp(),
+                        this.getDown(),
+                        this.getLeft(),
+                        this.getRight(),
+
+                        new Position(x - 1, y - 1),
+                        new Position(x + 1, y - 1),
+                        new Position(x - 1, y + 1),
+                        new Position(x + 1, y + 1)
+                )
+        );
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof Position)) return false;
+
+        Position position = (Position) o;
+        return this.getX() == position.getX() && this.getY() == position.getY();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
