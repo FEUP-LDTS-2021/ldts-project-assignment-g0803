@@ -47,7 +47,7 @@ public class MonsterTest {
     }
 
     @Test
-    public void damage_monster_small_amount() {
+    public void damageMonsterSmallAmount() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(1);
         Assertions.assertEquals(49, monster.getHp());
