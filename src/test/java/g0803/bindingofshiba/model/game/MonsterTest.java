@@ -22,7 +22,7 @@ public class MonsterTest {
     }
 
     @Test
-    public void decrease_hp_by_amount_larger_than_health() {
+    public void decreaseHpByAmountLargerThanHealth() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(100);
         Assertions.assertEquals(0, monster.getHp());
