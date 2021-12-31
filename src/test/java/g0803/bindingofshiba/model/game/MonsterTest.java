@@ -11,7 +11,7 @@ public class MonsterTest {
     }
 
     @Test
-    public void decrease_hp() {
+    public void decreaseHp() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(20);
         Assertions.assertEquals(30,  monster.getHp());
@@ -22,14 +22,14 @@ public class MonsterTest {
     }
 
     @Test
-    public void decrease_hp_by_amount_larger_than_health() {
+    public void decreaseHpByAmountLargerThanHealth() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(100);
         Assertions.assertEquals(0, monster.getHp());
     }
 
     @Test
-    public void decrease_hp_by_negative_negative_number() {
+    public void decreaseHpByNegativeNumber() {
         Monster monster = getMonster();
         Assertions.assertThrows(IllegalArgumentException.class, new Executable() {
             @Override
@@ -40,28 +40,28 @@ public class MonsterTest {
     }
 
     @Test
-    public void kill_monster() {
+    public void killMonster() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(50);
         Assertions.assertFalse(monster.isAlive());
     }
 
     @Test
-    public void damage_monster_small_amount() {
+    public void damageMonsterSmallAmount() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(1);
         Assertions.assertEquals(49, monster.getHp());
     }
 
     @Test
-    public void damage_monster_large_amount() {
+    public void damageMonsterLargeAmount() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(49);
         Assertions.assertEquals(1, monster.getHp());
     }
 
     @Test
-    public void damaging_monster_keep_alive() {
+    public void damagingMonsterKeepAlive() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(49);
         Assertions.assertTrue(monster.isAlive());

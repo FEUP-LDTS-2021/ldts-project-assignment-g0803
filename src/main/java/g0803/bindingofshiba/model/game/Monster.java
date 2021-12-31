@@ -38,7 +38,7 @@ public class Monster {
     }
 
     public boolean isAlive() {
-        return !(this.hp <= 0);
+        return this.hp > 0;
     }
 
     public void decreaseHpByAmount(float amount) throws IllegalArgumentException {
