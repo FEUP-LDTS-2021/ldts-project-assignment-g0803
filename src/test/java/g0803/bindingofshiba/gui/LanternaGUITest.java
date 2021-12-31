@@ -3,18 +3,15 @@ package g0803.bindingofshiba.gui;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
-import g0803.bindingofshiba.model.game.Monster;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
 public class LanternaGUITest {
 
     @Test
-    public void closes_screen() throws IOException {
+    public void closesScreen() throws IOException {
         Screen screen = Mockito.mock(Screen.class);
 
         GUI gui = new LanternaGUI(screen);
@@ -24,7 +21,7 @@ public class LanternaGUITest {
     }
 
     @Test
-    public void refreshes_screen() throws IOException {
+    public void refreshesScreen() throws IOException {
         Screen screen = Mockito.mock(Screen.class);
 
         GUI gui = new LanternaGUI(screen);
@@ -34,7 +31,7 @@ public class LanternaGUITest {
     }
 
     @Test
-    public void clears_screen() throws IOException {
+    public void clearsScreen() throws IOException {
         Screen screen = Mockito.mock(Screen.class);
 
         GUI gui = new LanternaGUI(screen);
@@ -44,7 +41,7 @@ public class LanternaGUITest {
     }
 
     @Test
-    public void draw_text() {
+    public void drawText() {
         Screen screen = Mockito.mock(Screen.class);
 
         GUI gui = new LanternaGUI(screen);
