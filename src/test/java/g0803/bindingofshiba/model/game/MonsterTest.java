@@ -40,7 +40,7 @@ public class MonsterTest {
     }
 
     @Test
-    public void kill_monster() {
+    public void killMonster() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(50);
         Assertions.assertFalse(monster.isAlive());
