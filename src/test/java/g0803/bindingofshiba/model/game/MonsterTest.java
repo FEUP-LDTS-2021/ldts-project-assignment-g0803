@@ -61,7 +61,7 @@ public class MonsterTest {
     }
 
     @Test
-    public void damaging_monster_keep_alive() {
+    public void damagingMonsterKeepAlive() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(49);
         Assertions.assertTrue(monster.isAlive());
