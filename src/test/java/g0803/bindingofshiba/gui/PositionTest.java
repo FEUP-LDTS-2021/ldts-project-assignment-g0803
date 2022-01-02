@@ -70,9 +70,7 @@ public class PositionTest {
 
         for (Position pos : expected) {
             if (!neighbours.contains(pos))
-                equal = false;
+                Assertions.fail();
         }
-
-        Assertions.assertTrue(equal);
     };
 }
