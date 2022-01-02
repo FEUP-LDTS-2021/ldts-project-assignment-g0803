@@ -39,18 +39,16 @@ public class Position {
     }
 
     public List<Position> getNeighbours() {
-        return new ArrayList<Position>(
-                Arrays.asList(
-                        this.getUp(),
-                        this.getDown(),
-                        this.getLeft(),
-                        this.getRight(),
+        return Arrays.asList(
+                this.getUp(),
+                this.getDown(),
+                this.getLeft(),
+                this.getRight(),
 
-                        new Position(x - 1, y - 1),
-                        new Position(x + 1, y - 1),
-                        new Position(x - 1, y + 1),
-                        new Position(x + 1, y + 1)
-                )
+                new Position(x - 1, y - 1),
+                new Position(x + 1, y - 1),
+                new Position(x - 1, y + 1),
+                new Position(x + 1, y + 1)
         );
     }
 
