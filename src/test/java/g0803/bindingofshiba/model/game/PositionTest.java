@@ -1,11 +1,9 @@
-package g0803.bindingofshiba.gui;
+package g0803.bindingofshiba.model.game;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 public class PositionTest {
@@ -63,10 +61,6 @@ public class PositionTest {
                 new Position(4, 6),
                 new Position(5, 6)
         );
-
-
-        boolean equal = true;
-
 
         for (Position pos : expected) {
             if (!neighbours.contains(pos))

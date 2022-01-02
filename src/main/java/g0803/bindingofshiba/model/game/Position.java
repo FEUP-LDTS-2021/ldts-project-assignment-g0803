@@ -1,6 +1,5 @@
-package g0803.bindingofshiba.gui;
+package g0803.bindingofshiba.model.game;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -51,7 +50,6 @@ public class Position {
                 new Position(x + 1, y + 1)
         );
     }
-
 
     @Override
     public boolean equals(Object o) {
