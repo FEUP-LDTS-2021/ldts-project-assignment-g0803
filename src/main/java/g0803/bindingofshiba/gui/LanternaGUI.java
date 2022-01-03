@@ -46,7 +46,6 @@ public class LanternaGUI implements GUI {
     @Override
     public void refresh() throws IOException {
         this.screen.refresh();
-        this.screen.clear();
     }
 
     @Override
