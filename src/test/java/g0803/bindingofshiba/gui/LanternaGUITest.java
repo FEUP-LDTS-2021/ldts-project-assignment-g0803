@@ -15,7 +15,7 @@ public class LanternaGUITest {
         GUI gui = new LanternaGUI(screen);
         gui.close();
 
-        Mockito.verify(screen).close();
+        Mockito.verify(screen, Mockito.only()).close();
     }
 
     @Test
@@ -25,7 +25,7 @@ public class LanternaGUITest {
         GUI gui = new LanternaGUI(screen);
         gui.refresh();
 
-        Mockito.verify(screen).refresh();
+        Mockito.verify(screen, Mockito.only()).refresh();
     }
 
     @Test
@@ -35,6 +35,6 @@ public class LanternaGUITest {
         GUI gui = new LanternaGUI(screen);
         gui.clear();
 
-        Mockito.verify(screen).clear();
+        Mockito.verify(screen, Mockito.only()).clear();
     }
 }
