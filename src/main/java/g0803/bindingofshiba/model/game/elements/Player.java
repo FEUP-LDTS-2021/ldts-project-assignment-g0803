@@ -1,32 +1,24 @@
-package g0803.bindingofshiba.gui;
+package g0803.bindingofshiba.model.game.elements;
+
+import g0803.bindingofshiba.model.game.Position;
 
 public class Player {
-    private int x;
-    private int y;
+    private Position position;
     private float hp;
     private float damage;
 
-    public Player(int x, int y, float hp, float damage) {
-        this.x = x;
-        this.y = y;
+    public Player(Position position, float hp, float damage) {
+        this.position = position;
         this.hp = hp;
         this.damage = damage;
     }
 
     public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
+        return position.getX();
     }
 
     public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+        return position.getY();
     }
 
     public float getHp() {

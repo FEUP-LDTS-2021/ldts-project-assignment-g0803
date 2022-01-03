@@ -1,5 +1,6 @@
-package g0803.bindingofshiba.gui;
+package g0803.bindingofshiba.model.game.elements;
 
+import g0803.bindingofshiba.model.game.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -7,7 +8,7 @@ import org.junit.jupiter.api.function.Executable;
 public class PlayerTest {
 
     public Player getPlayer() {
-        return new Player(5, 5, 50, 20);
+        return new Player(new Position(5, 5), 50, 20);
     }
 
     @Test
