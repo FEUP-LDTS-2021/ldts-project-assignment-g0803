@@ -6,6 +6,7 @@ import com.googlecode.lanterna.screen.Screen;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.gui.LanternaGUI;
 import g0803.bindingofshiba.model.game.Monster;
+import g0803.bindingofshiba.model.game.Position;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -13,7 +14,7 @@ public class MonsterViewTest {
 
     @Test
     public void drawMonster() {
-        Monster monster = new Monster(5,5, 10, 50);
+        Monster monster = new Monster(new Position(5,5), 10, 50);
         MonsterView view = new MonsterView(monster);
 
         GUI gui = Mockito.mock(GUI.class);

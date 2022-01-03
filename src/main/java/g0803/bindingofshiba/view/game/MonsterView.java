@@ -13,6 +13,6 @@ public class MonsterView {
         TextColor foregroundColor = TextColor.Factory.fromString("#FF00FF");
         TextColor backgroundColor = TextColor.Factory.fromString("#444444");
 
-        gui.drawText(monster.getX(), monster.getY(), "M", foregroundColor, backgroundColor);
+        gui.drawText(monster.getPosition().getX(), monster.getPosition().getY(), "M", foregroundColor, backgroundColor);
     }
 }
