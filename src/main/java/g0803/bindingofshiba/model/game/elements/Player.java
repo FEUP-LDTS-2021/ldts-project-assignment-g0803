@@ -4,10 +4,10 @@ import g0803.bindingofshiba.model.game.Position;
 
 public class Player {
     private Position position;
-    private float hp;
-    private float damage;
+    private int hp;
+    private int damage;
 
-    public Player(Position position, float hp, float damage) {
+    public Player(Position position, int hp, int damage) {
         this.position = position;
         this.hp = hp;
         this.damage = damage;
@@ -21,11 +21,11 @@ public class Player {
         return position.getY();
     }
 
-    public float getHp() {
+    public int getHp() {
         return hp;
     }
 
-    public void setHp(float hp) {
+    public void setHp(int hp) {
         this.hp = hp;
     }
 
@@ -33,7 +33,7 @@ public class Player {
         return damage;
     }
 
-    public void setDamage(float damage) {
+    public void setDamage(int damage) {
         this.damage = damage;
     }
 
@@ -41,11 +41,11 @@ public class Player {
         return this.hp > 0;
     }
 
-    public void decreaseHpByAmount(float amount) throws IllegalArgumentException {
+    public void decreaseHpByAmount(int amount) throws IllegalArgumentException {
         if (amount < 0)
             throw new IllegalArgumentException("Amount cannot be negative");
 
-        float newHp = this.hp - amount;
+        int newHp = this.hp - amount;
         this.hp = newHp >= 0 ? newHp : 0;
     }
 }
