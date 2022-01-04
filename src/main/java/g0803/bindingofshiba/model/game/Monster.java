@@ -34,7 +34,9 @@ public class Monster {
     public void decreaseHpByAmount(float amount) throws IllegalArgumentException {
         if (amount < 0) {
             throw new IllegalArgumentException("Amount cannot be negative");
-        } else if (amount > this.hp) {
+        }
+
+        if (amount > this.hp) {
             this.hp = 0;
         } else {
             this.hp = hp - amount;

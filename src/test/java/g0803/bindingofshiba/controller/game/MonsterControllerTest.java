@@ -8,7 +8,7 @@ import org.junit.jupiter.api.function.Executable;
 
 public class MonsterControllerTest {
     public Monster getMonster() {
-        return new Monster(new Position(5, 6),50, 20);
+        return new Monster(new Position(5, 6), 50, 20);
     }
 
     @Test
@@ -75,8 +75,8 @@ public class MonsterControllerTest {
         Monster monster = getMonster();
         MonsterController monsterController = new MonsterController(monster);
 
-        monsterController.tick(new Position(5, 5));
-        Assertions.assertEquals(new Position(5, 5), monster.getPosition());
+        monsterController.tick(new Position(5, 6));
+        Assertions.assertEquals(new Position(5, 6), monster.getPosition());
     }
 
     @Test
@@ -91,18 +91,5 @@ public class MonsterControllerTest {
             }
         });
     }
-
-    /*
-    @Test
-    public void getHit() {
-        Monster monster = getMonster();
-
-        monsterController.takeDamage(monster, 10);
-        Assertions.assertEquals(40, monster.getHp());
-
-        monsterController.takeDamage(monster, 20);
-        Assertions.assertEquals(20, monster.getHp());
-    }
-    */
 
 }

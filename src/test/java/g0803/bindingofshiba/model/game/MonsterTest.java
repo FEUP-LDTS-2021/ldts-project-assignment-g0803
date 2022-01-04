@@ -7,7 +7,7 @@ import org.junit.jupiter.api.function.Executable;
 public class MonsterTest {
 
     public Monster getMonster() {
-        return new Monster(new Position(5, 5),50, 20);
+        return new Monster(new Position(5, 5), 50, 20);
     }
 
     @Test

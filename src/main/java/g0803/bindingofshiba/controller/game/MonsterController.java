@@ -15,20 +15,20 @@ public class MonsterController {
             throw new IllegalArgumentException("Invalid position");
         }
 
-        int new_x = monster.getPosition().getX(), new_y = monster.getPosition().getY();
+        int newX = monster.getPosition().getX(), newY = monster.getPosition().getY();
         if (target.getX() > monster.getPosition().getX()) {
-            new_x++;
+            newX++;
         } else if (target.getX() < monster.getPosition().getX()) {
-            new_x--;
+            newX--;
         }
 
         if (target.getY() > monster.getPosition().getY()) {
-            new_y++;
+            newY++;
         } else if (target.getY() < monster.getPosition().getY()) {
-            new_y--;
+            newY--;
         }
 
-        monster.setPosition(new Position(new_x, new_y));
+        monster.setPosition(new Position(newX, newY));
 
     }
 
