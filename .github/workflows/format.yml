@@ -2,7 +2,7 @@ name: Format with Spotless
 
 on:
   push:
-    branches: [ main, feature/automatic-formatting ]
+    branches: [ main ]
 
 jobs:
   format:
