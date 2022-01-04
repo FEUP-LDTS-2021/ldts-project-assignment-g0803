@@ -43,12 +43,10 @@ public class Position {
                 this.getDown(),
                 this.getLeft(),
                 this.getRight(),
-
                 new Position(x - 1, y - 1),
                 new Position(x + 1, y - 1),
                 new Position(x - 1, y + 1),
-                new Position(x + 1, y + 1)
-        );
+                new Position(x + 1, y + 1));
     }
 
     @Override

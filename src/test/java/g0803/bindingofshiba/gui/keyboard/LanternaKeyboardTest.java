@@ -3,11 +3,10 @@ package g0803.bindingofshiba.gui.keyboard;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
+import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.io.IOException;
 
 class LanternaKeyboardTest {
 
@@ -33,8 +32,7 @@ class LanternaKeyboardTest {
         Assertions.assertTrue(keyboard.isKeyPressed(key));
 
         for (Keyboard.Key value : Keyboard.Key.values()) {
-            if (value != key)
-                Assertions.assertFalse(keyboard.isKeyPressed(value));
+            if (value != key) Assertions.assertFalse(keyboard.isKeyPressed(value));
         }
     }
 
@@ -56,10 +54,8 @@ class LanternaKeyboardTest {
     public void storesKeyPress() throws IOException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(
-                newKeyStroke(Keyboard.Key.A),
-                (KeyStroke) null
-        );
+        Mockito.when(inputProvider.pollInput())
+                .thenReturn(newKeyStroke(Keyboard.Key.A), (KeyStroke) null);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
@@ -73,13 +69,13 @@ class LanternaKeyboardTest {
     public void storesLastKeyPress() throws IOException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(
-                newKeyStroke(Keyboard.Key.A),
-                newKeyStroke(Keyboard.Key.D),
-                newKeyStroke(Keyboard.Key.A),
-                newKeyStroke(Keyboard.Key.S),
-                null
-        );
+        Mockito.when(inputProvider.pollInput())
+                .thenReturn(
+                        newKeyStroke(Keyboard.Key.A),
+                        newKeyStroke(Keyboard.Key.D),
+                        newKeyStroke(Keyboard.Key.A),
+                        newKeyStroke(Keyboard.Key.S),
+                        null);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
@@ -93,14 +89,14 @@ class LanternaKeyboardTest {
     public void readsUntilNull() throws IOException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(
-                newKeyStroke(Keyboard.Key.A),
-                null,
-                null,
-                newKeyStroke(Keyboard.Key.D),
-                newKeyStroke(Keyboard.Key.S),
-                null
-        );
+        Mockito.when(inputProvider.pollInput())
+                .thenReturn(
+                        newKeyStroke(Keyboard.Key.A),
+                        null,
+                        null,
+                        newKeyStroke(Keyboard.Key.D),
+                        newKeyStroke(Keyboard.Key.S),
+                        null);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
@@ -120,10 +116,8 @@ class LanternaKeyboardTest {
     public void ignoresUnrecognizedKeyStrokes() throws IOException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(
-                new KeyStroke('F', false, false),
-                (KeyStroke) null
-        );
+        Mockito.when(inputProvider.pollInput())
+                .thenReturn(new KeyStroke('F', false, false), (KeyStroke) null);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
@@ -155,10 +149,7 @@ class LanternaKeyboardTest {
     public void closesAtEOF() throws IOException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(
-                EOF,
-                (KeyStroke) null
-        );
+        Mockito.when(inputProvider.pollInput()).thenReturn(EOF, (KeyStroke) null);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
@@ -174,10 +165,8 @@ class LanternaKeyboardTest {
     public void doesNotCloseIfNotEOF() throws IOException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(
-                newKeyStroke(Keyboard.Key.A),
-                (KeyStroke) null
-        );
+        Mockito.when(inputProvider.pollInput())
+                .thenReturn(newKeyStroke(Keyboard.Key.A), (KeyStroke) null);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
@@ -191,10 +180,7 @@ class LanternaKeyboardTest {
     public void doesNotReadIfClosed() throws IOException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(
-                EOF,
-                (KeyStroke) null
-        );
+        Mockito.when(inputProvider.pollInput()).thenReturn(EOF, (KeyStroke) null);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
@@ -212,12 +198,8 @@ class LanternaKeyboardTest {
     public void getKeyPressDuration() throws IOException, InterruptedException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(
-                newKeyStroke(Keyboard.Key.A),
-                null,
-                newKeyStroke(Keyboard.Key.A),
-                null
-        );
+        Mockito.when(inputProvider.pollInput())
+                .thenReturn(newKeyStroke(Keyboard.Key.A), null, newKeyStroke(Keyboard.Key.A), null);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
