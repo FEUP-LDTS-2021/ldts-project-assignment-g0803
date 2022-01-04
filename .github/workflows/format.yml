@@ -19,12 +19,10 @@ jobs:
 
       - name: Format code with Gradle
         uses: gradle/gradle-build-action@v2
-        if: failure()
         with:
           arguments: spotlessApply --no-daemon
 
       - name: Commit changes
-        if: failure()
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
