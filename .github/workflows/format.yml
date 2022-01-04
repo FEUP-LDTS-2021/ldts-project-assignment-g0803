@@ -12,7 +12,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - run: |
-          git checkout ${{ github.ref_name }}
           git status
 
 #      - name: Set up JDK 17
