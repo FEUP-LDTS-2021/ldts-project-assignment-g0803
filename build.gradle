@@ -32,3 +32,20 @@ if (hasProperty('buildScan')) {
         termsOfServiceAgree = 'yes'
     }
 }
+
+spotless {
+    format 'misc', {
+        // define the files to apply `misc` to
+        target '*.gradle', '*.md', '.gitignore'
+
+       // define the steps to apply to those files
+       trimTrailingWhitespace()
+        indentWithSpaces(4)
+        endWithNewline()
+    }
+
+    java {
+        importOrder 'java', 'g0803.bindingofshiba', ''
+        googleJavaFormat().aosp();
+    }
+}
