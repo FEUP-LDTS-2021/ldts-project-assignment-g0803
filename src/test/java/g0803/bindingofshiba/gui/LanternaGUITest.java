@@ -1,10 +1,9 @@
 package g0803.bindingofshiba.gui;
 
 import com.googlecode.lanterna.screen.Screen;
+import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.io.IOException;
 
 public class LanternaGUITest {
 
