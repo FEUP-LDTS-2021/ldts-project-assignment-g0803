@@ -1,6 +1,7 @@
 package g0803.bindingofshiba.gui;
 
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
+
 import java.io.IOException;
 
 public interface GUI {
