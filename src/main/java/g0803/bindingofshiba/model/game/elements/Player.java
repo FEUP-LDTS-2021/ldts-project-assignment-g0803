@@ -4,11 +4,13 @@ import g0803.bindingofshiba.model.game.Position;
 
 public class Player {
     private Position position;
+    private int numberOfKeys;
     private int hp;
     private int damage;
 
-    public Player(Position position, int hp, int damage) {
+    public Player(Position position, int numberOfKeys, int hp, int damage) {
         this.position = position;
+        this.numberOfKeys = numberOfKeys;
         this.hp = hp;
         this.damage = damage;
     }
@@ -25,6 +27,14 @@ public class Player {
         return hp;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
+    public int getNumberOfKeys() {
+        return numberOfKeys;
+    }
+
     public void setHp(int hp) {
         this.hp = hp;
     }
@@ -35,6 +45,14 @@ public class Player {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public void pickKey() {
+        this.numberOfKeys++;
     }
 
     public boolean isAlive() {

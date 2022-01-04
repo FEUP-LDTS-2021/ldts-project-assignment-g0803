@@ -8,7 +8,7 @@ import org.junit.jupiter.api.function.Executable;
 public class PlayerTest {
 
     public Player getPlayer() {
-        return new Player(new Position(5, 5), 50, 20);
+        return new Player(new Position(5, 5), 0, 50, 20);
     }
 
     @Test
@@ -51,5 +51,14 @@ public class PlayerTest {
         Player player = getPlayer();
         player.decreaseHpByAmount(50);
         Assertions.assertFalse(player.isAlive());
+    }
+
+    @Test
+    public void pickKeys() {
+        Player player = getPlayer();
+        player.pickKey();
+        player.pickKey();
+        player.pickKey();
+        Assertions.assertEquals(3, player.getNumberOfKeys());
     }
 }
