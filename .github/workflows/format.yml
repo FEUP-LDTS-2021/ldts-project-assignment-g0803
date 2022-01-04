@@ -10,10 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.after }}
 
       - run: |
+          git checkout ${{ github.ref_name }}
           git status
 
 #      - name: Set up JDK 17
