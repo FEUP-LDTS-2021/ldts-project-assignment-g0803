@@ -15,14 +15,6 @@ public class Player {
         this.damage = damage;
     }
 
-    public int getX() {
-        return position.getX();
-    }
-
-    public int getY() {
-        return position.getY();
-    }
-
     public int getHp() {
         return hp;
     }
