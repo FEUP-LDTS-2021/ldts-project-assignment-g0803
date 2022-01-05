@@ -14,7 +14,7 @@ public class MonsterTest {
     public void decreaseHp() {
         Monster monster = getMonster();
         monster.decreaseHpByAmount(20);
-        Assertions.assertEquals(30,  monster.getHp());
+        Assertions.assertEquals(30, monster.getHp());
         monster.decreaseHpByAmount(10);
         Assertions.assertEquals(20, monster.getHp());
         monster.decreaseHpByAmount(20);
@@ -31,12 +31,14 @@ public class MonsterTest {
     @Test
     public void decreaseHpByNegativeNumber() {
         Monster monster = getMonster();
-        Assertions.assertThrows(IllegalArgumentException.class, new Executable() {
-            @Override
-            public void execute() {
-                monster.decreaseHpByAmount(-2);
-            }
-        });
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                new Executable() {
+                    @Override
+                    public void execute() {
+                        monster.decreaseHpByAmount(-2);
+                    }
+                });
     }
 
     @Test

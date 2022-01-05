@@ -13,5 +13,6 @@ public interface GUI {
     void clear();
 
     void refresh() throws IOException;
+
     void drawText(int x, int y, String text, TextColor foregroundColor, TextColor backgroundColor);
 }

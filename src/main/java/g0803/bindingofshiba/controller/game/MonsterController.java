@@ -29,7 +29,6 @@ public class MonsterController {
         }
 
         monster.setPosition(new Position(newX, newY));
-
     }
 
     private void takeDamage(int damage) {
@@ -39,5 +38,4 @@ public class MonsterController {
     public void tick(Position position) {
         moveToTarget(position);
     }
-
 }

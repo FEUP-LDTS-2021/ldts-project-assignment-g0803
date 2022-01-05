@@ -19,7 +19,7 @@ public class MonsterControllerTest {
         monsterController.tick(new Position(10, 10));
         Assertions.assertEquals(new Position(6, 7), monster.getPosition());
         monsterController.tick(new Position(10, 1));
-        Assertions.assertEquals(new Position(7,6), monster.getPosition());
+        Assertions.assertEquals(new Position(7, 6), monster.getPosition());
 
         monsterController.tick(new Position(10, 6));
         Assertions.assertEquals(new Position(8, 6), monster.getPosition());
@@ -34,7 +34,7 @@ public class MonsterControllerTest {
         Assertions.assertEquals(new Position(4, 5), monster.getPosition());
 
         monsterController.tick(new Position(1, 10));
-        Assertions.assertEquals(new Position(3,6), monster.getPosition());
+        Assertions.assertEquals(new Position(3, 6), monster.getPosition());
 
         monsterController.tick(new Position(1, 6));
         Assertions.assertEquals(new Position(2, 6), monster.getPosition());
@@ -52,7 +52,7 @@ public class MonsterControllerTest {
         Assertions.assertEquals(new Position(5, 4), monster.getPosition());
 
         monsterController.tick(new Position(5, 1));
-        Assertions.assertEquals(new Position(5,3), monster.getPosition());
+        Assertions.assertEquals(new Position(5, 3), monster.getPosition());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class MonsterControllerTest {
         MonsterController monsterController = new MonsterController(monster);
 
         monsterController.tick(new Position(10, 10));
-        Assertions.assertEquals(new Position(6,7), monster.getPosition());
+        Assertions.assertEquals(new Position(6, 7), monster.getPosition());
 
         monsterController.tick(new Position(1, 10));
         Assertions.assertEquals(new Position(5, 8), monster.getPosition());
@@ -84,12 +84,13 @@ public class MonsterControllerTest {
         Monster monster = getMonster();
         MonsterController monsterController = new MonsterController(monster);
 
-        Assertions.assertThrows(IllegalArgumentException.class, new Executable() {
-            @Override
-            public void execute() throws Throwable {
-                monsterController.tick(new Position(-1, 0));
-            }
-        });
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                new Executable() {
+                    @Override
+                    public void execute() throws Throwable {
+                        monsterController.tick(new Position(-1, 0));
+                    }
+                });
     }
-
 }

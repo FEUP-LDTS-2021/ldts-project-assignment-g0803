@@ -49,13 +49,14 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawText(int x, int y, String text, TextColor foregroundColor, TextColor backgroundColor) {
+    public void drawText(
+            int x, int y, String text, TextColor foregroundColor, TextColor backgroundColor) {
         TextGraphics textGraphics = this.screen.newTextGraphics();
         textGraphics.setForegroundColor(foregroundColor);
         textGraphics.setBackgroundColor(backgroundColor);
         textGraphics.putString(x, y, text);
     }
-  
+
     @Override
     public Keyboard getKeyboard() {
         return keyboard;
