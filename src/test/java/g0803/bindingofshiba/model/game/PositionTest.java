@@ -1,10 +1,9 @@
 package g0803.bindingofshiba.model.game;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class PositionTest {
     public Position getPosition() {
@@ -51,20 +50,20 @@ public class PositionTest {
     public void getNeighbours() {
         Position position = getPosition();
         List<Position> neighbours = position.getNeighbours();
-        List<Position> expected = Arrays.asList(
-                new Position(3, 4),
-                new Position(4, 4),
-                new Position(5, 4),
-                new Position(3, 5),
-                new Position(5, 5),
-                new Position(3, 6),
-                new Position(4, 6),
-                new Position(5, 6)
-        );
+        List<Position> expected =
+                Arrays.asList(
+                        new Position(3, 4),
+                        new Position(4, 4),
+                        new Position(5, 4),
+                        new Position(3, 5),
+                        new Position(5, 5),
+                        new Position(3, 6),
+                        new Position(4, 6),
+                        new Position(5, 6));
 
         for (Position pos : expected) {
-            if (!neighbours.contains(pos))
-                Assertions.fail();
+            if (!neighbours.contains(pos)) Assertions.fail();
         }
-    };
+    }
+    ;
 }

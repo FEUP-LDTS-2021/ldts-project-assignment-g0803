@@ -3,7 +3,6 @@ package g0803.bindingofshiba.gui.keyboard;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-
 import java.io.IOException;
 
 public class LanternaKeyboard implements Keyboard {
@@ -35,8 +34,7 @@ public class LanternaKeyboard implements Keyboard {
 
     @Override
     public void update() throws IOException {
-        if (this.isClosed)
-            return;
+        if (this.isClosed) return;
 
         KeyStroke keyStroke = this.getLastKeyStroke();
 
@@ -63,8 +61,7 @@ public class LanternaKeyboard implements Keyboard {
         KeyStroke lastKeyStroke = null;
         while (true) {
             KeyStroke keyStroke = this.inputProvider.pollInput();
-            if (keyStroke == null)
-                break;
+            if (keyStroke == null) break;
 
             lastKeyStroke = keyStroke;
         }

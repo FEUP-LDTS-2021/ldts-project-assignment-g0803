@@ -9,7 +9,6 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.gui.keyboard.LanternaKeyboard;
-
 import java.io.IOException;
 
 public class LanternaGUI implements GUI {
@@ -19,9 +18,8 @@ public class LanternaGUI implements GUI {
 
     public LanternaGUI(int width, int height) throws IOException {
         TerminalSize screenSize = new TerminalSize(width, height);
-        Terminal terminal = new DefaultTerminalFactory()
-                .setInitialTerminalSize(screenSize)
-                .createTerminal();
+        Terminal terminal =
+                new DefaultTerminalFactory().setInitialTerminalSize(screenSize).createTerminal();
 
         this.screen = new TerminalScreen(terminal);
         this.screen.startScreen();
@@ -48,7 +46,15 @@ public class LanternaGUI implements GUI {
     @Override
     public void refresh() throws IOException {
         this.screen.refresh();
-        this.screen.clear();
+    }
+
+    @Override
+    public void drawText(
+            int x, int y, String text, TextColor foregroundColor, TextColor backgroundColor) {
+        TextGraphics textGraphics = this.screen.newTextGraphics();
+        textGraphics.setForegroundColor(foregroundColor);
+        textGraphics.setBackgroundColor(backgroundColor);
+        textGraphics.putString(x, y, text);
     }
 
     @Override
