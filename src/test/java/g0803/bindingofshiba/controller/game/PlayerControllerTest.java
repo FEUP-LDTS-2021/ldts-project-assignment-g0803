@@ -1,17 +1,12 @@
 package g0803.bindingofshiba.controller.game;
 
-import com.googlecode.lanterna.input.InputProvider;
-import com.googlecode.lanterna.input.KeyStroke;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
-import g0803.bindingofshiba.gui.keyboard.LanternaKeyboard;
 import g0803.bindingofshiba.model.game.Position;
 import g0803.bindingofshiba.model.game.elements.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerControllerTest {
 

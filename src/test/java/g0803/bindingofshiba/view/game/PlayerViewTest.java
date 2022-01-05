@@ -5,7 +5,6 @@ import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.model.game.Position;
 import g0803.bindingofshiba.model.game.elements.Player;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 public class PlayerViewTest {
