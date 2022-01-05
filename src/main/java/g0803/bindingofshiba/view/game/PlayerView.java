@@ -12,6 +12,9 @@ public class PlayerView {
     }
 
     public void draw(GUI gui) {
+        TextColor foregroundColor = TextColor.Factory.fromString("#FF00FF");
+        TextColor backgroundColor = TextColor.Factory.fromString("#444444");
 
+        gui.drawText(player.getPosition().getX(), player.getPosition().getY(), "X", foregroundColor, backgroundColor);
     }
 }
