@@ -13,7 +13,7 @@ public class PlayerViewTest {
     }
 
     @Test
-    public void drawMonster() {
+    public void drawPlayer() {
         Player player = getPlayer();
         PlayerView view = new PlayerView(player);
 
