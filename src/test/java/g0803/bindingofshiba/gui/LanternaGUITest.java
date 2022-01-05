@@ -56,22 +56,4 @@ public class LanternaGUITest {
         Mockito.verify(textGraphics, Mockito.times(1)).setBackgroundColor(backgroundColor);
         Mockito.verify(textGraphics, Mockito.times(1)).putString(5, 10, "We miss LPOO");
     }
-
-    @Test
-    public void draw_text() {
-        Screen screen = Mockito.mock(Screen.class);
-
-        GUI gui = new LanternaGUI(screen);
-        TextColor foregroundColor = TextColor.Factory.fromString("#FFFF00");
-        TextColor backgroundColor = TextColor.Factory.fromString("#123456");
-
-        TextGraphics textGraphics = Mockito.mock(TextGraphics.class);
-        Mockito.when(screen.newTextGraphics()).thenReturn(textGraphics);
-
-        gui.drawText(5, 10, "We miss LPOO", foregroundColor, backgroundColor);
-
-        Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(foregroundColor);
-        Mockito.verify(textGraphics, Mockito.times(1)).setBackgroundColor(backgroundColor);
-        Mockito.verify(textGraphics, Mockito.times(1)).putString(5, 10, "We miss LPOO");
-    }
 }
