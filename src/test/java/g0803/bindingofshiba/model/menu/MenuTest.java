@@ -32,4 +32,64 @@ public class MenuTest {
         List<String> list = Arrays.asList("Play", "Save", "Exit", "Another Option");
         Assertions.assertEquals(list, menu.getOptions());
     }
+
+    @Test
+    public void isSelectedLast() {
+        List<String> options = Arrays.asList("Resume", "Restart", "Exit");
+        Menu menu = new Menu("Menu 1", options);
+
+        menu.getNextOption();
+        menu.getNextOption();
+
+        Assertions.assertEquals(2, menu.getChoice());
+    }
+
+    @Test
+    public void isSelectedFirstNoChanges() {
+        List<String> options = Arrays.asList("Resume", "Restart", "Exit");
+        Menu menu = new Menu("Menu 2", options);
+
+        Assertions.assertEquals(0, menu.getChoice());
+    }
+
+    @Test
+    public void isSelectedFirstWithInput() {
+        List<String> options = Arrays.asList("Option 1", "option 2", "Option 3", "Option 4");
+        Menu menu = new Menu("Menu", options);
+
+        menu.getNextOption();
+        menu.getPreviousOption();
+        menu.getNextOption();
+        menu.getNextOption();
+        menu.getPreviousOption();
+        menu.getNextOption();
+        menu.getPreviousOption();
+        menu.getPreviousOption();
+
+        Assertions.assertEquals(0, menu.getChoice());
+    }
+
+    @Test
+    public void tryToSelectBefore() {
+        List<String> options = Arrays.asList("Resume", "Restart", "Exit");
+        Menu menu = new Menu("Title", options);
+
+        menu.getPreviousOption();
+
+        Assertions.assertEquals(0, menu.getChoice());
+    }
+
+    @Test
+    public void tryToSelectBeyond() {
+        List<String> options = Arrays.asList("Resume", "Restart", "Exit");
+        Menu menu = new Menu("Menu", options);
+
+        menu.getNextOption();
+        menu.getNextOption();
+        menu.getNextOption();
+        menu.getNextOption();
+
+        Assertions.assertEquals(2, menu.getChoice());
+    }
+
 }
