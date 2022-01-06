@@ -48,8 +48,7 @@ public class Player {
     }
 
     public void dropKey() {
-        if (this.numberOfKeys <= 0)
-            throw new IllegalStateException("There are no keys to remove");
+        if (this.numberOfKeys <= 0) throw new IllegalStateException("There are no keys to remove");
         this.numberOfKeys--;
     }
 
@@ -58,8 +57,7 @@ public class Player {
     }
 
     public void decreaseHpByAmount(int amount) throws IllegalArgumentException {
-        if (amount < 0)
-            throw new IllegalArgumentException("Amount cannot be negative");
+        if (amount < 0) throw new IllegalArgumentException("Amount cannot be negative");
 
         this.hp = Math.max(this.hp - amount, 0);
     }

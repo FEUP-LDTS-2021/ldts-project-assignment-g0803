@@ -15,7 +15,7 @@ public class PlayerTest {
     public void decreaseHp() {
         Player player = getPlayer();
         player.decreaseHpByAmount(20);
-        Assertions.assertEquals(30,  player.getHp());
+        Assertions.assertEquals(30, player.getHp());
         player.decreaseHpByAmount(10);
         Assertions.assertEquals(20, player.getHp());
 
@@ -38,12 +38,14 @@ public class PlayerTest {
     @Test
     public void decreaseHpByNegativeNumber() {
         Player player = getPlayer();
-        Assertions.assertThrows(IllegalArgumentException.class, new Executable() {
-            @Override
-            public void execute() {
-                player.decreaseHpByAmount(-2);
-            }
-        });
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                new Executable() {
+                    @Override
+                    public void execute() {
+                        player.decreaseHpByAmount(-2);
+                    }
+                });
     }
 
     @Test
@@ -74,6 +76,5 @@ public class PlayerTest {
         String actualMessage = exception.getMessage();
 
         Assertions.assertTrue(actualMessage.contains(expectedMessage));
-
     }
 }
