@@ -13,7 +13,11 @@ public class MenuController {
     }
 
     public void changeOption() {
-
+        if (keyboard.isKeyPressed(Keyboard.Key.ARROW_UP)) {
+            menu.getPreviousOption();
+        } else if (keyboard.isKeyPressed(Keyboard.Key.ARROW_DOWN)) {
+            menu.getNextOption();
+        }
     }
 
 }
