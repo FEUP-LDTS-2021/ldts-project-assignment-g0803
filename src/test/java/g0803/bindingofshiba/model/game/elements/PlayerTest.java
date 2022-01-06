@@ -8,7 +8,7 @@ import org.junit.jupiter.api.function.Executable;
 public class PlayerTest {
 
     public Player getPlayer() {
-        return new Player(new Position(5, 5), 0, 50, 20);
+        return new Player(new Position(5, 5), 1, 50, 20);
     }
 
     @Test
@@ -54,11 +54,26 @@ public class PlayerTest {
     }
 
     @Test
-    public void pickKeys() {
+    public void pickKey() {
         Player player = getPlayer();
         player.pickKey();
         player.pickKey();
         player.pickKey();
-        Assertions.assertEquals(3, player.getNumberOfKeys());
+        Assertions.assertEquals(4, player.getNumberOfKeys());
+    }
+
+    @Test
+    void dropKey() {
+        Player player = getPlayer();
+        player.dropKey();
+        Assertions.assertEquals(0, player.getNumberOfKeys());
+
+        Exception exception = Assertions.assertThrows(ArithmeticException.class, player::dropKey);
+
+        String expectedMessage = "There are no keys to remove";
+        String actualMessage = exception.getMessage();
+
+        Assertions.assertTrue(actualMessage.contains(expectedMessage));
+
     }
 }

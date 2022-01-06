@@ -47,6 +47,12 @@ public class Player {
         this.numberOfKeys++;
     }
 
+    public void dropKey() {
+        if (this.numberOfKeys <= 0)
+            throw new ArithmeticException("There are no keys to remove");
+        this.numberOfKeys--;
+    }
+
     public boolean isAlive() {
         return this.hp > 0;
     }
