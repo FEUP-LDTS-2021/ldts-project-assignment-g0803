@@ -68,7 +68,7 @@ public class PlayerTest {
         player.dropKey();
         Assertions.assertEquals(0, player.getNumberOfKeys());
 
-        Exception exception = Assertions.assertThrows(ArithmeticException.class, player::dropKey);
+        Exception exception = Assertions.assertThrows(IllegalStateException.class, player::dropKey);
 
         String expectedMessage = "There are no keys to remove";
         String actualMessage = exception.getMessage();
