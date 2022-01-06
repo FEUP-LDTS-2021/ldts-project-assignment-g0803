@@ -22,16 +22,22 @@ public class Menu {
         return this.options;
     }
 
+    public int getChoice() {
+        return this.choice;
+    }
+
     public void addOption(String option) {
         this.options.add(option);
     }
 
-    public void incrementChoice() {
-        this.choice++;
+    public void getNextOption() {
+        if (this.choice != this.options.size() - 1)
+            this.choice++;
     }
 
-    public void decrementChoice() {
-        this.choice--;
+    public void getPreviousOption() {
+        if (this.choice != 0)
+            this.choice--;
     }
 
 }
