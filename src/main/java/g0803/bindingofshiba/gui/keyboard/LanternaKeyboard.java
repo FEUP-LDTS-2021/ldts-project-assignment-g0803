@@ -10,7 +10,7 @@ public class LanternaKeyboard implements Keyboard {
     private final InputProvider inputProvider;
     private boolean isClosed = false;
 
-    private Key lastKeyPressed = null;
+    private Key lastKeyPressed = Key.NONE;
     private long lastKeyPressStart = System.currentTimeMillis();
 
     public LanternaKeyboard(InputProvider inputProvider) {
@@ -37,39 +37,30 @@ public class LanternaKeyboard implements Keyboard {
         if (this.isClosed) return;
 
         KeyStroke keyStroke = this.getLastKeyStroke();
+        if (keyStroke != null && keyStroke.getKeyType() == KeyType.EOF) this.isClosed = true;
 
-        if (keyStroke != null && keyStroke.getKeyType() == KeyType.EOF) {
-            this.onEOF();
-            return;
-        }
-
-        Key currentKey = keyStroke == null ? null : getCurrentKeyFromKeyStroke(keyStroke);
+        Key currentKey = getCurrentKeyFromKeyStroke(keyStroke);
         if (this.lastKeyPressed != currentKey) {
             this.lastKeyPressStart = System.currentTimeMillis();
             this.lastKeyPressed = currentKey;
         }
     }
 
-    private void onEOF() {
-        this.lastKeyPressed = null;
-        this.lastKeyPressStart = System.currentTimeMillis();
-
-        this.isClosed = true;
-    }
-
     private KeyStroke getLastKeyStroke() throws IOException {
         KeyStroke lastKeyStroke = null;
-        while (true) {
-            KeyStroke keyStroke = this.inputProvider.pollInput();
-            if (keyStroke == null) break;
 
-            lastKeyStroke = keyStroke;
+        KeyStroke currentKeyStroke;
+        while ((currentKeyStroke = this.inputProvider.pollInput()) != null) {
+            lastKeyStroke = currentKeyStroke;
+            if (lastKeyStroke.getKeyType() == KeyType.EOF) break;
         }
 
         return lastKeyStroke;
     }
 
     private Key getCurrentKeyFromKeyStroke(KeyStroke keyStroke) {
+        if (keyStroke == null) return Key.NONE;
+
         KeyType keyType = keyStroke.getKeyType();
 
         return switch (keyType) {
@@ -80,7 +71,7 @@ public class LanternaKeyboard implements Keyboard {
             case Enter -> Key.ENTER;
             case Escape -> Key.ESCAPE;
             case Character -> this.getCurrentKeyFromCharacter(keyStroke.getCharacter());
-            default -> null;
+            default -> Key.NONE;
         };
     }
 
@@ -91,7 +82,7 @@ public class LanternaKeyboard implements Keyboard {
             case 'S' -> Key.S;
             case 'D' -> Key.D;
             case ' ' -> Key.SPACE;
-            default -> null;
+            default -> Key.NONE;
         };
     }
 }
