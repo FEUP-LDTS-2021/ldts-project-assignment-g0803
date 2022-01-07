@@ -15,13 +15,17 @@ public class StateTest {
     @Test
     @SuppressWarnings("rawtypes")
     public void step() throws IOException {
-        View<?> view = Mockito.mock(View.class);
-        Controller<?> controller = Mockito.mock(Controller.class);
+        View<String> view = Mockito.mock(View.class);
+        Controller<String> controller = Mockito.mock(Controller.class);
+
+        String model = "Hello";
+        Mockito.when(controller.getModel()).thenReturn(model);
+        Mockito.when(view.getModel()).thenReturn(model);
 
         App app = Mockito.mock(App.class);
         GUI gui = Mockito.mock(GUI.class);
 
-        State<?> state = new State("Hello", controller, view);
+        State<String> state = new State(model, controller, view);
         state.step(app, gui);
 
         Mockito.verify(gui, Mockito.times(1)).clear();
