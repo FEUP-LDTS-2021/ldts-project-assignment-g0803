@@ -5,6 +5,8 @@ import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.view.View;
 
+import java.io.IOException;
+
 public class State<T> {
 
     private final T model;
@@ -25,7 +27,11 @@ public class State<T> {
         return model;
     }
 
-    public void step(App app, GUI gui) {
+    public void step(App app, GUI gui) throws IOException {
+        this.controller.tick(app);
 
+        gui.clear();
+        this.view.draw(gui);
+        gui.refresh();
     }
 }
