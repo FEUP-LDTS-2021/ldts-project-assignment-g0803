@@ -40,8 +40,7 @@ public class Main implements App {
     }
 
     public void start() throws IOException {
-        int FPS = 20;
-        int frameTime = 1000 / FPS;
+        int frameTime = 1000 / Constants.FPS;
 
         Keyboard keyboard = this.gui.getKeyboard();
 
