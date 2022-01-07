@@ -8,6 +8,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
+import g0803.bindingofshiba.Constants;
 import g0803.bindingofshiba.gui.fonts.Fonts;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.gui.keyboard.LanternaKeyboard;
@@ -20,7 +21,7 @@ public class LanternaGUI implements GUI {
     private final Keyboard keyboard;
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException {
-        SwingTerminalFontConfiguration squareFontConfig = Fonts.loadFontConfiguration("/fonts/square.ttf", 10);
+        SwingTerminalFontConfiguration squareFontConfig = Fonts.loadFontConfiguration(Constants.SQUARE_FONT_LOCATION, Constants.SQUARE_FONT_SIZE);
         Terminal terminal = createTerminal(squareFontConfig, width, height);
 
         this.screen = new TerminalScreen(terminal);
