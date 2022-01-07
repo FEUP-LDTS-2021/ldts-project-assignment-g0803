@@ -11,7 +11,7 @@ public class Fonts {
     public static SwingTerminalFontConfiguration loadFontConfiguration(String resourceLocation, int size)
             throws IOException, FontFormatException {
         URL resource = Fonts.class.getResource(resourceLocation);
-        if (resource == null) throw new IOException("Could not " + resourceLocation);
+        if (resource == null) throw new IOException("Could not find resource at " + resourceLocation);
 
         InputStream fileStream = resource.openStream();
         Font font = Font.createFont(Font.TRUETYPE_FONT, fileStream);
