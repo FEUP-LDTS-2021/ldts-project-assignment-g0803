@@ -15,7 +15,8 @@ public interface Keyboard {
         ARROW_RIGHT,
         SPACE,
         ENTER,
-        ESCAPE;
+        ESCAPE,
+        NONE;
     }
 
     boolean isKeyPressed(Key key);
