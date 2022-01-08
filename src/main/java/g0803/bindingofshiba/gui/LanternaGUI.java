@@ -7,8 +7,12 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
+import g0803.bindingofshiba.Constants;
+import g0803.bindingofshiba.gui.fonts.Fonts;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.gui.keyboard.LanternaKeyboard;
+import java.awt.*;
 import java.io.IOException;
 
 public class LanternaGUI implements GUI {
@@ -16,10 +20,9 @@ public class LanternaGUI implements GUI {
     private final Screen screen;
     private final Keyboard keyboard;
 
-    public LanternaGUI(int width, int height) throws IOException {
-        TerminalSize screenSize = new TerminalSize(width, height);
-        Terminal terminal =
-                new DefaultTerminalFactory().setInitialTerminalSize(screenSize).createTerminal();
+    public LanternaGUI(int width, int height) throws IOException, FontFormatException {
+        SwingTerminalFontConfiguration squareFontConfig = Fonts.loadFontConfiguration(Constants.SQUARE_FONT_LOCATION, Constants.SQUARE_FONT_SIZE);
+        Terminal terminal = createTerminal(squareFontConfig, width, height);
 
         this.screen = new TerminalScreen(terminal);
         this.screen.startScreen();
@@ -31,6 +34,16 @@ public class LanternaGUI implements GUI {
     public LanternaGUI(Screen screen) {
         this.screen = screen;
         this.keyboard = new LanternaKeyboard(screen);
+    }
+
+    private Terminal createTerminal(SwingTerminalFontConfiguration fontConfig, int width, int height) throws IOException {
+        TerminalSize screenSize = new TerminalSize(width, height);
+        return
+                new DefaultTerminalFactory()
+                        .setInitialTerminalSize(screenSize)
+                        .setPreferTerminalEmulator(true)
+                        .setTerminalEmulatorFontConfiguration(fontConfig)
+                        .createTerminal();
     }
 
     @Override

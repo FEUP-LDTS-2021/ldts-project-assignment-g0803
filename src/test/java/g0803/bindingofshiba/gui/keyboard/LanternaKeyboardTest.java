@@ -25,6 +25,7 @@ class LanternaKeyboardTest {
             case SPACE -> new KeyStroke(' ', false, false);
             case ENTER -> new KeyStroke(KeyType.Enter, false, false);
             case ESCAPE -> new KeyStroke(KeyType.Escape, false, false);
+            case NONE -> new KeyStroke(KeyType.F9, false, false);
         };
     }
 
@@ -106,7 +107,7 @@ class LanternaKeyboardTest {
         assertKeyPressed(keyboard, Keyboard.Key.A);
 
         keyboard.update();
-        assertKeyPressed(keyboard, null);
+        assertKeyPressed(keyboard, Keyboard.Key.NONE);
 
         keyboard.update();
         assertKeyPressed(keyboard, Keyboard.Key.S);
@@ -124,7 +125,7 @@ class LanternaKeyboardTest {
         LanternaKeyboard keyboard = new LanternaKeyboard(inputProvider);
 
         keyboard.update();
-        assertKeyPressed(keyboard, null);
+        assertKeyPressed(keyboard, Keyboard.Key.NONE);
     }
 
     @Test
@@ -149,7 +150,7 @@ class LanternaKeyboardTest {
     public void closesAtEOF() throws IOException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(EOF, (KeyStroke) null);
+        Mockito.when(inputProvider.pollInput()).thenReturn(EOF);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
@@ -157,7 +158,7 @@ class LanternaKeyboardTest {
 
         keyboard.update();
 
-        assertKeyPressed(keyboard, null);
+        assertKeyPressed(keyboard, Keyboard.Key.NONE);
         Assertions.assertTrue(keyboard.isClosed());
     }
 
@@ -180,7 +181,7 @@ class LanternaKeyboardTest {
     public void doesNotReadIfClosed() throws IOException {
         InputProvider inputProvider = Mockito.mock(InputProvider.class);
 
-        Mockito.when(inputProvider.pollInput()).thenReturn(EOF, (KeyStroke) null);
+        Mockito.when(inputProvider.pollInput()).thenReturn(EOF);
 
         Mockito.verify(inputProvider, Mockito.never()).readInput();
 
