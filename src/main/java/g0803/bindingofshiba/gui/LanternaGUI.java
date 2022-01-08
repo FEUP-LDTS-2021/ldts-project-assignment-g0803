@@ -21,7 +21,9 @@ public class LanternaGUI implements GUI {
     private final Keyboard keyboard;
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException {
-        SwingTerminalFontConfiguration squareFontConfig = Fonts.loadFontConfiguration(Constants.SQUARE_FONT_LOCATION, Constants.SQUARE_FONT_SIZE);
+        SwingTerminalFontConfiguration squareFontConfig =
+                Fonts.loadFontConfiguration(
+                        Constants.SQUARE_FONT_LOCATION, Constants.SQUARE_FONT_SIZE);
         Terminal terminal = createTerminal(squareFontConfig, width, height);
 
         this.screen = new TerminalScreen(terminal);
@@ -36,14 +38,14 @@ public class LanternaGUI implements GUI {
         this.keyboard = new LanternaKeyboard(screen);
     }
 
-    private Terminal createTerminal(SwingTerminalFontConfiguration fontConfig, int width, int height) throws IOException {
+    private Terminal createTerminal(
+            SwingTerminalFontConfiguration fontConfig, int width, int height) throws IOException {
         TerminalSize screenSize = new TerminalSize(width, height);
-        return
-                new DefaultTerminalFactory()
-                        .setInitialTerminalSize(screenSize)
-                        .setPreferTerminalEmulator(true)
-                        .setTerminalEmulatorFontConfiguration(fontConfig)
-                        .createTerminal();
+        return new DefaultTerminalFactory()
+                .setInitialTerminalSize(screenSize)
+                .setPreferTerminalEmulator(true)
+                .setTerminalEmulatorFontConfiguration(fontConfig)
+                .createTerminal();
     }
 
     @Override

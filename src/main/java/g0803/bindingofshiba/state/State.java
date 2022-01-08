@@ -4,7 +4,6 @@ import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.view.View;
-
 import java.io.IOException;
 
 public class State<T> {

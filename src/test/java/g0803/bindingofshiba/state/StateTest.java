@@ -3,12 +3,10 @@ package g0803.bindingofshiba.state;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.gui.GUI;
-import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.view.View;
+import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.io.IOException;
 
 public class StateTest {
 
