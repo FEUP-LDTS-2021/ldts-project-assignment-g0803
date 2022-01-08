@@ -16,7 +16,7 @@ public class Main implements App {
     private final GUI gui;
 
     public Main() throws IOException, FontFormatException {
-        this(new GameState(new Game()), new LanternaGUI(150, 75));
+        this(new GameState(new Game()), new LanternaGUI(Constants.WIDTH, Constants.HEIGHT));
     }
 
     public Main(State<?> initialState, GUI gui) {
