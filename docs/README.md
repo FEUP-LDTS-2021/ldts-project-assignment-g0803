@@ -128,6 +128,7 @@ This project was developed by *André Lima* (up202008169@edu.fe.up.pt), *Guilher
   
 - **Consequences**. This pattern will allow us to make the monster AI more complex more easily, if we choose to do so. Since every strategy is interchangeable, code changes will be minimal with this design pattern, when adding new strategies. Furthermore, the code is simplified since every behaviour gets split into its own class.
 
+<br />
 
 #### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
