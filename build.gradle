@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.7.0'
     id 'net.ltgt.errorprone' version '2.0.2'
     id 'com.diffplug.spotless' version '6.1.0'
 }
@@ -59,4 +60,8 @@ jar {
 
 application {
     mainClassName = 'g0803.bindingofshiba.Main'
+}
+
+pitest {
+    junit5PluginVersion = '0.15'
 }
