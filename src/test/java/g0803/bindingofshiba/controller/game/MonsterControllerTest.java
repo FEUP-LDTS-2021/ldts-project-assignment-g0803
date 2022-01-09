@@ -1,7 +1,7 @@
 package g0803.bindingofshiba.controller.game;
 
-import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.Position;
+import g0803.bindingofshiba.model.game.elements.Monster;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;

@@ -2,9 +2,8 @@ package g0803.bindingofshiba.controller.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
-import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.Position;
-
+import g0803.bindingofshiba.model.game.elements.Monster;
 import java.io.IOException;
 
 public class MonsterController extends Controller<Monster> {

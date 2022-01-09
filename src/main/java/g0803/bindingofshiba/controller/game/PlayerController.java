@@ -5,7 +5,6 @@ import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.model.game.Position;
 import g0803.bindingofshiba.model.game.elements.Player;
-
 import java.io.IOException;
 
 public class PlayerController extends Controller<Player> {
