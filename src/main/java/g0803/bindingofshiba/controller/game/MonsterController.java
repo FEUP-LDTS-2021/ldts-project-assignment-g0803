@@ -14,13 +14,12 @@ public class MonsterController extends Controller<Monster> {
     }
 
     private void moveToTarget(Position target) {
-        if (target.getX() < 0 || target.getY() < 0) {
+        if (target.getX() < 0 || target.getY() < 0)
             throw new IllegalArgumentException("Invalid position");
-        }
 
         Position monsterPos = this.getModel().getPosition();
-
         int newX = monsterPos.getX(), newY = monsterPos.getY();
+
         if (target.getX() > this.getModel().getPosition().getX()) {
             newX++;
         } else if (target.getX() < monsterPos.getX()) {

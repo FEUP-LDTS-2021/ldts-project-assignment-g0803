@@ -25,14 +25,8 @@ public class Monster extends Element {
     }
 
     public void decreaseHpByAmount(float amount) throws IllegalArgumentException {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount cannot be negative");
-        }
+        if (amount < 0) throw new IllegalArgumentException("Amount cannot be negative");
 
-        if (amount > this.hp) {
-            this.hp = 0;
-        } else {
-            this.hp = hp - amount;
-        }
+        this.hp = Math.max(this.hp - amount, 0);
     }
 }
