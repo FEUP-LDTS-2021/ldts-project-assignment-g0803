@@ -26,6 +26,14 @@ public class State<T> {
         return model;
     }
 
+    public Controller<T> getController() {
+        return controller;
+    }
+
+    public View<T> getView() {
+        return view;
+    }
+
     public void step(App app, GUI gui) throws IOException {
         this.controller.tick(app);
 

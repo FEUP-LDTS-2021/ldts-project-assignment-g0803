@@ -1,41 +1,48 @@
 package g0803.bindingofshiba.controller.game;
 
-import g0803.bindingofshiba.model.game.Monster;
+import g0803.bindingofshiba.App;
+import g0803.bindingofshiba.controller.Controller;
+import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.Position;
 
-public class MonsterController {
-    private Monster monster;
+import java.io.IOException;
 
-    public MonsterController(Monster monster) {
-        this.monster = monster;
+public class MonsterController extends Controller<Monster> {
+
+    public MonsterController(Monster model) {
+        super(model);
     }
 
     private void moveToTarget(Position target) {
-        if (target.getX() < 0 || target.getY() < 0) {
+        if (target.getX() < 0 || target.getY() < 0)
             throw new IllegalArgumentException("Invalid position");
-        }
 
-        int newX = monster.getPosition().getX(), newY = monster.getPosition().getY();
-        if (target.getX() > monster.getPosition().getX()) {
+        Position monsterPos = this.getModel().getPosition();
+        int newX = monsterPos.getX(), newY = monsterPos.getY();
+
+        if (target.getX() > this.getModel().getPosition().getX()) {
             newX++;
-        } else if (target.getX() < monster.getPosition().getX()) {
+        } else if (target.getX() < monsterPos.getX()) {
             newX--;
         }
 
-        if (target.getY() > monster.getPosition().getY()) {
+        if (target.getY() > monsterPos.getY()) {
             newY++;
-        } else if (target.getY() < monster.getPosition().getY()) {
+        } else if (target.getY() < monsterPos.getY()) {
             newY--;
         }
 
-        monster.setPosition(new Position(newX, newY));
+        this.getModel().setPosition(new Position(newX, newY));
     }
 
     private void takeDamage(int damage) {
-        this.monster.decreaseHpByAmount(damage);
+        this.getModel().decreaseHpByAmount(damage);
     }
 
     public void tick(Position position) {
         moveToTarget(position);
     }
+
+    @Override
+    public void tick(App app) throws IOException {}
 }

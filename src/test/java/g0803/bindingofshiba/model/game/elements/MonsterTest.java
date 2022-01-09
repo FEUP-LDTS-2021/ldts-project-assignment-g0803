@@ -1,5 +1,6 @@
-package g0803.bindingofshiba.model.game;
+package g0803.bindingofshiba.model.game.elements;
 
+import g0803.bindingofshiba.model.game.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
