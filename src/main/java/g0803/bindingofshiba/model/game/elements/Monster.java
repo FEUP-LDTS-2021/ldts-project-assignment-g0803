@@ -1,4 +1,6 @@
-package g0803.bindingofshiba.model.game;
+package g0803.bindingofshiba.model.game.elements;
+
+import g0803.bindingofshiba.model.game.Position;
 
 public class Monster {
     private Position position;
