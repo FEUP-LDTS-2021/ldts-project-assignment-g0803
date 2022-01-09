@@ -51,6 +51,12 @@ This project was developed by *André Lima* (up202008169@edu.fe.up.pt), *Guilher
 </p>
 <br>
 
+- **The player can use a menu to play or exit the game**. If they select play, the game will start. If they select exit, the game will exit. At any time, the player can press ESC to bring up the pause menu.
+
+<p align="center" justify="center">
+    <img src="images/planned/menu.png" />
+</p>
+<br>
 
 
 ### DESIGN
@@ -141,7 +147,7 @@ A way to improve the code would be to remove said method.
 
 
 - Link to mutation testing report.
-  - [Click here!](pitest/index.html)
+  - [Click here!](https://limwa.github.io/ldts-intermediate-delivery/index.html)
 
 
 
