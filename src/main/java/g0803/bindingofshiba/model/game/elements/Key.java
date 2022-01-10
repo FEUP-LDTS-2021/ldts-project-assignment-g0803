@@ -14,10 +14,10 @@ public class Key extends Element {
     }
 
     public Boolean getPickedUp() {
-        return true;
+        return this.isPickedUp;
     }
 
     public void pickUp() {
-
+        this.isPickedUp = true;
     }
 }

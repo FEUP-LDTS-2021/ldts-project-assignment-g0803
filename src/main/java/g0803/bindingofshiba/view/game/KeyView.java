@@ -11,6 +11,14 @@ public class KeyView extends View<Key> {
 
     @Override
     public void draw(GUI gui) {
+        TextColor foregroundColor = TextColor.Factory.fromString("#23EFC6");
+        TextColor backgroundColor = TextColor.Factory.fromString("#333333");
 
+        gui.drawText(
+                this.getModel().getPosition().getX(),
+                this.getModel().getPosition().getY(),
+                "F",
+                foregroundColor,
+                backgroundColor);
     }
 }

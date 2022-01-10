@@ -16,7 +16,8 @@ public class KeyController extends Controller<Key> {
     }
 
     public void pickUp() {
-
+        if (player.getPosition().getY() == getModel().getPosition().getY() && player.getPosition().getX() == getModel().getPosition().getX())
+            getModel().pickUp();
     }
 
     @Override
