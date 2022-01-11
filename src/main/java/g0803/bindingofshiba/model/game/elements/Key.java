@@ -13,7 +13,7 @@ public class Key extends Element {
         super(x, y);
     }
 
-    public Boolean getPickedUp() {
+    public boolean isPickedUp() {
         return this.isPickedUp;
     }
 
