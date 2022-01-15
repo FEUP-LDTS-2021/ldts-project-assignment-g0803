@@ -11,19 +11,4 @@ public class PlayerViewTest {
     public Player getPlayer() {
         return new Player(new Position(5, 5), 0, 50, 20);
     }
-
-    @Test
-    public void drawPlayer() {
-        Player player = getPlayer();
-        PlayerView view = new PlayerView(player);
-
-        GUI gui = Mockito.mock(GUI.class);
-
-        view.draw(gui);
-
-        TextColor foregroundColor = TextColor.Factory.fromString("#FF00FF");
-        TextColor backgroundColor = TextColor.Factory.fromString("#444444");
-
-        Mockito.verify(gui, Mockito.times(1)).drawText(5, 5, "X", foregroundColor, backgroundColor);
-    }
 }

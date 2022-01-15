@@ -12,6 +12,7 @@ import g0803.bindingofshiba.Constants;
 import g0803.bindingofshiba.gui.fonts.Fonts;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.gui.keyboard.LanternaKeyboard;
+import g0803.bindingofshiba.textures.ITexture;
 import java.awt.*;
 import java.io.IOException;
 
@@ -64,12 +65,13 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawText(
-            int x, int y, String text, TextColor foregroundColor, TextColor backgroundColor) {
-        TextGraphics textGraphics = this.screen.newTextGraphics();
-        textGraphics.setForegroundColor(foregroundColor);
-        textGraphics.setBackgroundColor(backgroundColor);
-        textGraphics.putString(x, y, text);
+    public void blit(int x, int y, ITexture texture) {
+        throw new RuntimeException("Not implemented");
+    }
+
+    @Override
+    public void fill(Color color) {
+        throw new RuntimeException("Not implemented");
     }
 
     @Override
