@@ -1,12 +1,13 @@
 package g0803.bindingofshiba.model.game.elements;
 
-import g0803.bindingofshiba.model.game.Position;
+import g0803.bindingofshiba.math.Vec2D;
 
-public class Monster extends Element {
+public class Monster extends MoveableElement {
+
     private float hp;
     private float damage;
 
-    public Monster(Position position, float hp, float damage) {
+    public Monster(Vec2D position, float hp, float damage) {
         super(position);
         this.hp = hp;
         this.damage = damage;

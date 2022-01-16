@@ -1,13 +1,15 @@
 package g0803.bindingofshiba.model.game.elements;
 
+import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Position;
 
-public class Player extends Element {
+public class Player extends MoveableElement {
+
     private int numberOfKeys;
     private int hp;
     private int damage;
 
-    public Player(Position position, int numberOfKeys, int hp, int damage) {
+    public Player(Vec2D position, int numberOfKeys, int hp, int damage) {
         super(position);
         this.numberOfKeys = numberOfKeys;
         this.hp = hp;
