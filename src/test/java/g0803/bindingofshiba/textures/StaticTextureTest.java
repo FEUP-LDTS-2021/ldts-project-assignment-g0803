@@ -10,14 +10,14 @@ public class StaticTextureTest {
 
     public Color[] getColors() {
         return new Color[] {
-                new Color(4, 5, 6),
-                new Color(33, 33, 33),
-                new Color(255, 0, 0),
-                new Color(255, 255, 255),
-                new Color(0, 255, 0),
-                new Color(0, 0, 255),
-                new Color(6, 6, 40),
-                new Color(0, 0, 0)
+            new Color(4, 5, 6),
+            new Color(33, 33, 33),
+            new Color(255, 0, 0),
+            new Color(255, 255, 255),
+            new Color(0, 255, 0),
+            new Color(0, 0, 255),
+            new Color(6, 6, 40),
+            new Color(0, 0, 0)
         };
     }
 

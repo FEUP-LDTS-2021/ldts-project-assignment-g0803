@@ -1,12 +1,11 @@
 package g0803.bindingofshiba.textures;
 
 import g0803.bindingofshiba.math.Vec2D;
-
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import javax.imageio.ImageIO;
 
 public class ImageTextureBuilder implements ITextureBuilder {
 

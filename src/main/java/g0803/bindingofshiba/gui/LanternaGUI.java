@@ -8,7 +8,6 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
-import g0803.bindingofshiba.Constants;
 import g0803.bindingofshiba.bundles.Bundle;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.gui.keyboard.LanternaKeyboard;
@@ -37,10 +36,10 @@ public class LanternaGUI implements GUI {
         this.keyboard = new LanternaKeyboard(screen);
     }
 
-    private Terminal createTerminal(
-            Font font, int width, int height) throws IOException {
+    private Terminal createTerminal(Font font, int width, int height) throws IOException {
         TerminalSize screenSize = new TerminalSize(width, height);
-        SwingTerminalFontConfiguration fontConfig = SwingTerminalFontConfiguration.newInstance(font);
+        SwingTerminalFontConfiguration fontConfig =
+                SwingTerminalFontConfiguration.newInstance(font);
         return new DefaultTerminalFactory()
                 .setInitialTerminalSize(screenSize)
                 .setPreferTerminalEmulator(true)
@@ -89,8 +88,7 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void fill(Color color) {
-        if (color == null || color.getAlpha() < 128)
-            return;
+        if (color == null || color.getAlpha() < 128) return;
 
         TextGraphics textGraphics = this.screen.newTextGraphics();
 

@@ -1,13 +1,12 @@
 package g0803.bindingofshiba.textures;
 
 import g0803.bindingofshiba.math.Vec2D;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class TextTextureBuilderTest {
 
@@ -15,9 +14,12 @@ public class TextTextureBuilderTest {
 
     @BeforeAll
     public static void setup() throws IOException, FontFormatException {
-        Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(
-                TextTextureBuilderTest.class.getResourceAsStream("/fonts/cg-pixel-4x5.ttf")
-        ));
+        Font font =
+                Font.createFont(
+                        Font.TRUETYPE_FONT,
+                        Objects.requireNonNull(
+                                TextTextureBuilderTest.class.getResourceAsStream(
+                                        "/fonts/cg-pixel-4x5.ttf")));
 
         TextTextureBuilderTest.pixelFont = font.deriveFont(Font.PLAIN, 5);
     }
@@ -82,7 +84,8 @@ public class TextTextureBuilderTest {
 
     @Test
     public void setColor() {
-        TextTextureBuilder builder = new TextTextureBuilder(pixelFont).setText("A").setColor(Color.blue);
+        TextTextureBuilder builder =
+                new TextTextureBuilder(pixelFont).setText("A").setColor(Color.blue);
         StaticTexture texture = builder.build();
 
         Assertions.assertEquals(Color.blue, texture.getColorAt(1, 0));
@@ -117,12 +120,14 @@ public class TextTextureBuilderTest {
         Assertions.assertEquals(0, texture1.getAnchorPoint().getX());
         Assertions.assertTrue(texture1.getAnchorPoint().getY() > 0);
 
-        TextTextureBuilder builder2 = new TextTextureBuilder(pixelFont).setText("A").setAnchorPoint(0, 1);
+        TextTextureBuilder builder2 =
+                new TextTextureBuilder(pixelFont).setText("A").setAnchorPoint(0, 1);
         StaticTexture texture2 = builder2.build();
 
         Assertions.assertTrue(new Vec2D(0, 1).isSimilar(texture2.getAnchorPoint()));
 
-        TextTextureBuilder builder3 = new TextTextureBuilder(pixelFont).setText("A").setAnchorPoint(new Vec2D(10, 3));
+        TextTextureBuilder builder3 =
+                new TextTextureBuilder(pixelFont).setText("A").setAnchorPoint(new Vec2D(10, 3));
         StaticTexture texture3 = builder3.build();
 
         Assertions.assertTrue(new Vec2D(10, 3).isSimilar(texture3.getAnchorPoint()));

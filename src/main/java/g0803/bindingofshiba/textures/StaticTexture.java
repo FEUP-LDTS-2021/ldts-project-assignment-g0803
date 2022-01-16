@@ -15,7 +15,8 @@ public class StaticTexture implements ITexture {
 
     public StaticTexture(int width, int height, Vec2D anchorPoint, Color[] pixels) {
         if (pixels.length != width * height)
-            throw new IllegalArgumentException("Pixel array dimensions don't match expected dimensions");
+            throw new IllegalArgumentException(
+                    "Pixel array dimensions don't match expected dimensions");
 
         this.width = width;
         this.height = height;
@@ -72,9 +73,7 @@ public class StaticTexture implements ITexture {
 
         double angle = Math.PI / 2;
         Vec2D widthVector = new Vec2D(0, this.width - 1);
-        Vec2D newAnchorPoint = this.anchorPoint
-                .rotate(angle)
-                .add(widthVector);
+        Vec2D newAnchorPoint = this.anchorPoint.rotate(angle).add(widthVector);
 
         return new StaticTexture(this.height, this.width, newAnchorPoint, newPixels);
     }
@@ -84,9 +83,7 @@ public class StaticTexture implements ITexture {
 
         double angle = -Math.PI / 2;
         Vec2D heightVector = new Vec2D(this.height - 1, 0);
-        Vec2D newAnchorPoint = this.anchorPoint
-                .rotate(angle)
-                .add(heightVector);
+        Vec2D newAnchorPoint = this.anchorPoint.rotate(angle).add(heightVector);
 
         return new StaticTexture(this.height, this.width, newAnchorPoint, newPixels);
     }

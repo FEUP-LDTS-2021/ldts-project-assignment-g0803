@@ -10,7 +10,6 @@ import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.state.State;
 import g0803.bindingofshiba.state.game.GameState;
 import g0803.bindingofshiba.textures.ITexture;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;

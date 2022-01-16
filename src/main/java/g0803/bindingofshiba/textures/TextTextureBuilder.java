@@ -1,7 +1,6 @@
 package g0803.bindingofshiba.textures;
 
 import g0803.bindingofshiba.math.Vec2D;
-
 import java.awt.*;
 import java.awt.font.FontRenderContext;
 import java.awt.font.LineMetrics;
@@ -53,11 +52,9 @@ public class TextTextureBuilder implements ITextureBuilder {
         graphics.setFont(font);
         graphics.drawString(text, 0, ascent);
 
-        ImageTextureBuilder builder = new ImageTextureBuilder(image)
-                .setAnchorPoint(0, height - 1);
+        ImageTextureBuilder builder = new ImageTextureBuilder(image).setAnchorPoint(0, height - 1);
 
-        if (this.anchorPoint != null)
-            builder.setAnchorPoint(this.anchorPoint);
+        if (this.anchorPoint != null) builder.setAnchorPoint(this.anchorPoint);
 
         return builder.build();
     }

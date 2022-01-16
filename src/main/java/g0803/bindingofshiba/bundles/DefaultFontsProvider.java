@@ -28,8 +28,7 @@ public class DefaultFontsProvider implements BundleProvider<Font> {
 
     private Font loadFont(String location, int size) throws IOException, FontFormatException {
         URL resource = DefaultFontsProvider.class.getResource(location);
-        if (resource == null)
-            throw new IOException("Could not find resource at " + location);
+        if (resource == null) throw new IOException("Could not find resource at " + location);
 
         InputStream fileStream = resource.openStream();
         Font font = Font.createFont(Font.TRUETYPE_FONT, fileStream);

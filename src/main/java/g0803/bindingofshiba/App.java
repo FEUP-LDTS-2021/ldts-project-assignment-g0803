@@ -4,7 +4,6 @@ import g0803.bindingofshiba.bundles.Bundle;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.state.State;
 import g0803.bindingofshiba.textures.ITexture;
-
 import java.awt.*;
 
 public interface App {

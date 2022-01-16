@@ -1,12 +1,11 @@
 package g0803.bindingofshiba.textures;
 
 import g0803.bindingofshiba.math.Vec2D;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class ImageTextureBuilderTest {
 
@@ -81,9 +80,7 @@ public class ImageTextureBuilderTest {
         BufferedImage image = getImage();
 
         ImageTextureBuilder builder = new ImageTextureBuilder(image);
-        StaticTexture texture = builder
-                .setPixelAt(0, 0, Color.blue)
-                .build();
+        StaticTexture texture = builder.setPixelAt(0, 0, Color.blue).build();
 
         Assertions.assertEquals(image.getWidth(), texture.getWidth());
         Assertions.assertEquals(image.getHeight(), texture.getHeight());
@@ -92,8 +89,7 @@ public class ImageTextureBuilderTest {
             for (int y = 0; y < image.getHeight(); y++) {
                 if (x == 0 && y == 0)
                     Assertions.assertEquals(Color.blue.getRGB(), texture.getColorAt(x, y).getRGB());
-                else
-                    Assertions.assertEquals(image.getRGB(x, y), texture.getColorAt(x, y).getRGB());
+                else Assertions.assertEquals(image.getRGB(x, y), texture.getColorAt(x, y).getRGB());
             }
         }
     }
@@ -102,17 +98,20 @@ public class ImageTextureBuilderTest {
     public void pixelModificationMustBeDoneInsideTheImageArea() {
         ImageTextureBuilder builder = new ImageTextureBuilder(2, 3);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> builder.setPixelAt(5, 2, Color.red));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> builder.setPixelAt(-1, 0, Color.blue));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> builder.setPixelAt(1, -1, Color.gray));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> builder.setPixelAt(0, 5, Color.red));
+        Assertions.assertThrows(
+                IllegalArgumentException.class, () -> builder.setPixelAt(5, 2, Color.red));
+        Assertions.assertThrows(
+                IllegalArgumentException.class, () -> builder.setPixelAt(-1, 0, Color.blue));
+        Assertions.assertThrows(
+                IllegalArgumentException.class, () -> builder.setPixelAt(1, -1, Color.gray));
+        Assertions.assertThrows(
+                IllegalArgumentException.class, () -> builder.setPixelAt(0, 5, Color.red));
     }
 
     @Test
     public void loadResourceData() throws IOException {
-        StaticTexture texture = new ImageTextureBuilder(2, 3)
-                .loadResourceData("/texture.png")
-                .build();
+        StaticTexture texture =
+                new ImageTextureBuilder(2, 3).loadResourceData("/texture.png").build();
 
         Assertions.assertEquals(new Color(168, 247, 27), texture.getColorAt(0, 0));
         Assertions.assertEquals(new Color(14, 132, 120), texture.getColorAt(0, 1));

@@ -13,7 +13,8 @@ public class BoundingBox {
 
     public BoundingBox(double x, double y, double width, double height) {
         if (width <= 0 || height <= 0)
-            throw new IllegalArgumentException("Neither width nor height may not be negative nor zero");
+            throw new IllegalArgumentException(
+                    "Neither width nor height may not be negative nor zero");
 
         this.x = x;
         this.y = y;

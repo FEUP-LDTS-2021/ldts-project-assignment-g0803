@@ -1,12 +1,9 @@
 package g0803.bindingofshiba.bundles;
 
-import g0803.bindingofshiba.bundles.HashMapBundle;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.mockito.internal.util.collections.Sets;
-
 import java.awt.*;
 import java.util.Set;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class HashMapBundleTest {
 

@@ -3,12 +3,10 @@ package g0803.bindingofshiba.gui;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
-
-import java.awt.*;
-import java.io.IOException;
-
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.textures.ITexture;
+import java.awt.*;
+import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
@@ -47,7 +45,15 @@ public class LanternaGUITest {
 
     @Test
     public void blit() {
-        Color[] colors = new Color[] { new Color(56 , 87, 0, 0), new Color(34, 56, 255, 89), null, new Color(255, 255, 255, 255), new Color(66, 66, 66, 155), new Color(45, 122, 253, 128)};
+        Color[] colors =
+                new Color[] {
+                    new Color(56, 87, 0, 0),
+                    new Color(34, 56, 255, 89),
+                    null,
+                    new Color(255, 255, 255, 255),
+                    new Color(66, 66, 66, 155),
+                    new Color(45, 122, 253, 128)
+                };
         ITexture texture = Mockito.mock(ITexture.class);
         Mockito.when(texture.getWidth()).thenReturn(2);
         Mockito.when(texture.getHeight()).thenReturn(3);
@@ -93,7 +99,7 @@ public class LanternaGUITest {
         Mockito.when(screen.newTextGraphics()).thenReturn(textGraphics);
         GUI gui = new LanternaGUI(screen);
 
-        Color color = new Color(44, 254,90);
+        Color color = new Color(44, 254, 90);
         TextColor textColor = new TextColor.RGB(44, 254, 90);
 
         gui.fill(color);

@@ -1,7 +1,6 @@
 package g0803.bindingofshiba.model.game.elements;
 
 import g0803.bindingofshiba.math.Vec2D;
-import g0803.bindingofshiba.model.game.Position;
 
 public class Element {
 

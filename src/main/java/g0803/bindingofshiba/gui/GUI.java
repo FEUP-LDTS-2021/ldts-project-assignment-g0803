@@ -2,7 +2,6 @@ package g0803.bindingofshiba.gui;
 
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.textures.ITexture;
-
 import java.awt.*;
 import java.io.IOException;
 
