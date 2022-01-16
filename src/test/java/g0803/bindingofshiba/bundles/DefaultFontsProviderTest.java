@@ -1,6 +1,7 @@
 package g0803.bindingofshiba.bundles;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.internal.util.collections.Sets;
 
@@ -10,9 +11,16 @@ import java.util.Set;
 
 public class DefaultFontsProviderTest {
 
+    private static DefaultFontsProvider provider;
+
+    @BeforeAll
+    public static void setUp() throws IOException, FontFormatException {
+        provider = new DefaultFontsProvider();
+    }
+
     @Test
-    public void hasRequiredKeys() throws IOException, FontFormatException {
-        Bundle<Font> bundle = new DefaultFontsProvider().getBundle();
+    public void hasRequiredKeys() {
+        Bundle<Font> bundle = provider.getBundle();
 
         Set<String> expected = Sets.newSet("square", "text");
         Set<String> actual = bundle.keys();
@@ -21,8 +29,8 @@ public class DefaultFontsProviderTest {
     }
 
     @Test
-    public void hasDefaultFonts() throws IOException, FontFormatException {
-        Bundle<Font> bundle = new DefaultFontsProvider().getBundle();
+    public void hasDefaultFonts() {
+        Bundle<Font> bundle = provider.getBundle();
 
         Font squareFont = bundle.get("square");
         Assertions.assertEquals("Square", squareFont.getFontName());
