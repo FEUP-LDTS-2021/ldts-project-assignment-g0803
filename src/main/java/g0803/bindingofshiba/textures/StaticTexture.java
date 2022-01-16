@@ -100,6 +100,7 @@ public class StaticTexture implements ITexture {
         throw new RuntimeException("Not implemented");
     }
 
+    @Override
     public Vec2D getAnchorPoint() {
         throw new RuntimeException("Not implemented");
     }

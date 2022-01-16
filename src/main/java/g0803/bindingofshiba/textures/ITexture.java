@@ -14,6 +14,8 @@ public interface ITexture {
 
     Vec2D getAnchorOffset(int x, int y);
 
+    Vec2D getAnchorPoint();
+
     BoundingBox getTextureBoundingBox();
 
     Color getColorAt(int x, int y);
