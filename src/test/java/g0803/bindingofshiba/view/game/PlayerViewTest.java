@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class PlayerViewTest {
-    public Player getPlayer() {
-        return new Player(new Position(5, 5), 0, 50, 20);
-    }
+//    public Player getPlayer() {
+//        return new Player(new Position(5, 5), 0, 50, 20);
+//    }
 }
