@@ -16,7 +16,7 @@ public class TextTextureBuilderTest {
     @BeforeAll
     public static void setup() throws IOException, FontFormatException {
         Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(
-                TextTextureBuilderTest.class.getResourceAsStream("/cg-pixel-4x5.ttf")
+                TextTextureBuilderTest.class.getResourceAsStream("/fonts/cg-pixel-4x5.ttf")
         ));
 
         TextTextureBuilderTest.pixelFont = font.deriveFont(Font.PLAIN, 5);
