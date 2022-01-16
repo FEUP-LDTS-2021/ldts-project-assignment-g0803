@@ -103,7 +103,7 @@ public class Vec2D {
     }
 
     public Vec2D round() {
-        throw new RuntimeException("Not implemented");
+        return new Vec2D(Math.round(this.x), Math.round(this.y));
     }
 
     @Override
