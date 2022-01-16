@@ -1,23 +1,25 @@
 package g0803.bindingofshiba.model.game.elements;
 
+import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Position;
 
 public class Element {
-    private Position position;
 
-    public Element(Position position) {
+    private Vec2D position;
+
+    public Element(Vec2D position) {
         this.position = position;
     }
 
     public Element(int x, int y) {
-        this.position = new Position(x, y);
+        this.position = new Vec2D(x, y);
     }
 
-    public Position getPosition() {
+    public Vec2D getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(Vec2D position) {
         this.position = position;
     }
 }
