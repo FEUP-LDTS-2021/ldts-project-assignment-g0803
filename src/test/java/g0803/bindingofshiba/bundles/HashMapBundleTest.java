@@ -1,4 +1,4 @@
-package g0803.bindingofshiba.collections;
+package g0803.bindingofshiba.bundles;
 
 import g0803.bindingofshiba.bundles.HashMapBundle;
 import org.junit.jupiter.api.Assertions;
