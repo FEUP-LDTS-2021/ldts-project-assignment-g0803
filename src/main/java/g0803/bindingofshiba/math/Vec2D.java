@@ -102,6 +102,10 @@ public class Vec2D {
         return this.scale(1 / this.getLength());
     }
 
+    public Vec2D round() {
+        throw new RuntimeException("Not implemented");
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
