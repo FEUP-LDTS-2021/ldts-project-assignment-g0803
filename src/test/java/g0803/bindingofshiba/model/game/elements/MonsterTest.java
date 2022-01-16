@@ -1,5 +1,6 @@
 package g0803.bindingofshiba.model.game.elements;
 
+import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,7 @@ import org.junit.jupiter.api.function.Executable;
 public class MonsterTest {
 
     public Monster getMonster() {
-        return new Monster(new Position(5, 5), 50, 20);
+        return new Monster(new Vec2D(5, 5), 50, 20);
     }
 
     @Test
