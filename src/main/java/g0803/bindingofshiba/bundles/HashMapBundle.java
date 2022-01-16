@@ -1,4 +1,4 @@
-package g0803.bindingofshiba.collections;
+package g0803.bindingofshiba.bundles;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -16,5 +16,10 @@ public class HashMapBundle<T> implements Bundle<T> {
             throw new IllegalArgumentException("Key not found in bundle");
 
         return bundle.get(name);
+    }
+
+    @Override
+    public Set<String> keys() {
+        return null;
     }
 }
