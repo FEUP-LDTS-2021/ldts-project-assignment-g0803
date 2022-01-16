@@ -22,7 +22,7 @@ public class DefaultFontsProviderTest {
     public void hasRequiredKeys() {
         Bundle<Font> bundle = provider.getBundle();
 
-        Set<String> expected = Sets.newSet("square", "text");
+        Set<String> expected = Set.of("square", "text");
         Set<String> actual = bundle.keys();
 
         Assertions.assertEquals(expected, actual);

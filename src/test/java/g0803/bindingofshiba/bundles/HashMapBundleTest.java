@@ -44,7 +44,7 @@ public class HashMapBundleTest {
         strings.register("second", "LDTS");
         strings.register("third", "Oh no");
 
-        Set<String> expected = Sets.newSet("first", "second", "third");
+        Set<String> expected = Set.of("first", "second", "third");
         Set<String> actual = strings.keys();
 
         Assertions.assertEquals(expected, actual);
