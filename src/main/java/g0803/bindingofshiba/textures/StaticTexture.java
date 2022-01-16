@@ -11,34 +11,6 @@ import java.util.List;
 
 public class StaticTexture implements ITexture {
 
-    public static class TextBuilder implements ITextureBuilder {
-
-        public TextBuilder(Font font) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public TextBuilder setText(String text) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public TextBuilder setColor(Color color) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public TextBuilder setAnchorPoint(double x, double y) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public TextBuilder setAnchorPoint(Vec2D anchorPoint) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        @Override
-        public StaticTexture build() {
-            throw new RuntimeException("Not implemented");
-        }
-    }
-
     private final int width, height;
     private final Vec2D anchorPoint;
     private final Color[] pixels;

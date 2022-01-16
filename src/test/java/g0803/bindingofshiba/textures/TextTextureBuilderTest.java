@@ -9,22 +9,22 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
-public class TextBuilderTest {
+public class TextTextureBuilderTest {
 
     private static Font pixelFont;
 
     @BeforeAll
     public static void setup() throws IOException, FontFormatException {
         Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(
-                TextBuilderTest.class.getResourceAsStream("/cg-pixel-4x5.ttf")
+                TextTextureBuilderTest.class.getResourceAsStream("/cg-pixel-4x5.ttf")
         ));
 
-        TextBuilderTest.pixelFont = font.deriveFont(Font.PLAIN, 5);
+        TextTextureBuilderTest.pixelFont = font.deriveFont(Font.PLAIN, 5);
     }
 
     @Test
     public void setText() {
-        StaticTexture.TextBuilder builder = new StaticTexture.TextBuilder(pixelFont).setText("A");
+        TextTextureBuilder builder = new TextTextureBuilder(pixelFont).setText("A");
         StaticTexture texture = builder.build();
 
         Assertions.assertEquals(Color.white, texture.getColorAt(1, 0));
@@ -53,7 +53,7 @@ public class TextBuilderTest {
 
     @Test
     public void worksWithOtherCharacters() {
-        StaticTexture.TextBuilder builder = new StaticTexture.TextBuilder(pixelFont).setText("B");
+        TextTextureBuilder builder = new TextTextureBuilder(pixelFont).setText("B");
         StaticTexture texture = builder.build();
 
         Assertions.assertEquals(Color.white, texture.getColorAt(0, 0));
@@ -82,7 +82,7 @@ public class TextBuilderTest {
 
     @Test
     public void setColor() {
-        StaticTexture.TextBuilder builder = new StaticTexture.TextBuilder(pixelFont).setText("A").setColor(Color.blue);
+        TextTextureBuilder builder = new TextTextureBuilder(pixelFont).setText("A").setColor(Color.blue);
         StaticTexture texture = builder.build();
 
         Assertions.assertEquals(Color.blue, texture.getColorAt(1, 0));
@@ -111,18 +111,18 @@ public class TextBuilderTest {
 
     @Test
     public void setAnchorPoint() {
-        StaticTexture.TextBuilder builder1 = new StaticTexture.TextBuilder(pixelFont).setText("A");
+        TextTextureBuilder builder1 = new TextTextureBuilder(pixelFont).setText("A");
         StaticTexture texture1 = builder1.build();
 
         Assertions.assertEquals(0, texture1.getAnchorPoint().getX());
         Assertions.assertTrue(texture1.getAnchorPoint().getY() > 0);
 
-        StaticTexture.TextBuilder builder2 = new StaticTexture.TextBuilder(pixelFont).setText("A").setAnchorPoint(0, 1);
+        TextTextureBuilder builder2 = new TextTextureBuilder(pixelFont).setText("A").setAnchorPoint(0, 1);
         StaticTexture texture2 = builder2.build();
 
         Assertions.assertTrue(new Vec2D(0, 1).isSimilar(texture2.getAnchorPoint()));
 
-        StaticTexture.TextBuilder builder3 = new StaticTexture.TextBuilder(pixelFont).setText("A").setAnchorPoint(new Vec2D(10, 3));
+        TextTextureBuilder builder3 = new TextTextureBuilder(pixelFont).setText("A").setAnchorPoint(new Vec2D(10, 3));
         StaticTexture texture3 = builder3.build();
 
         Assertions.assertTrue(new Vec2D(10, 3).isSimilar(texture3.getAnchorPoint()));
