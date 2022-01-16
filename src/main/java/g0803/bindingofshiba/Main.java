@@ -1,11 +1,16 @@
 package g0803.bindingofshiba;
 
+import g0803.bindingofshiba.bundles.Bundle;
+import g0803.bindingofshiba.bundles.DefaultFontsProvider;
+import g0803.bindingofshiba.bundles.DefaultTexturesProvider;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.gui.LanternaGUI;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.state.State;
 import g0803.bindingofshiba.state.game.GameState;
+import g0803.bindingofshiba.textures.ITexture;
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -15,11 +20,21 @@ public class Main implements App {
     private State<?> state;
     private final GUI gui;
 
+    private final Bundle<Font> fonts;
+    private final Bundle<ITexture> textures;
+
     public Main() throws IOException, FontFormatException {
-        this(new GameState(new Game()), new LanternaGUI(Constants.WIDTH, Constants.HEIGHT));
+        this.fonts = new DefaultFontsProvider().getBundle();
+        this.textures = new DefaultTexturesProvider().getBundle();
+
+        this.state = new GameState(new Game());
+        this.gui = new LanternaGUI(fonts, Constants.WIDTH, Constants.HEIGHT);
     }
 
-    public Main(State<?> initialState, GUI gui) {
+    public Main(State<?> initialState, GUI gui, Bundle<Font> fonts, Bundle<ITexture> textures) {
+        this.fonts = fonts;
+        this.textures = textures;
+
         this.state = initialState;
         this.gui = gui;
     }

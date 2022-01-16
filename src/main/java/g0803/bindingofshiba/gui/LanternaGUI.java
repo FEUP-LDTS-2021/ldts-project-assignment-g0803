@@ -9,7 +9,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 import g0803.bindingofshiba.Constants;
-import g0803.bindingofshiba.gui.fonts.Fonts;
+import g0803.bindingofshiba.bundles.Bundle;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.gui.keyboard.LanternaKeyboard;
 import g0803.bindingofshiba.math.Vec2D;
@@ -22,11 +22,8 @@ public class LanternaGUI implements GUI {
     private final Screen screen;
     private final Keyboard keyboard;
 
-    public LanternaGUI(int width, int height) throws IOException, FontFormatException {
-        SwingTerminalFontConfiguration squareFontConfig =
-                Fonts.loadFontConfiguration(
-                        Constants.SQUARE_FONT_LOCATION, Constants.SQUARE_FONT_SIZE);
-        Terminal terminal = createTerminal(squareFontConfig, width, height);
+    public LanternaGUI(Bundle<Font> fonts, int width, int height) throws IOException {
+        Terminal terminal = createTerminal(fonts.get("square"), width, height);
 
         this.screen = new TerminalScreen(terminal);
         this.screen.startScreen();
@@ -41,8 +38,9 @@ public class LanternaGUI implements GUI {
     }
 
     private Terminal createTerminal(
-            SwingTerminalFontConfiguration fontConfig, int width, int height) throws IOException {
+            Font font, int width, int height) throws IOException {
         TerminalSize screenSize = new TerminalSize(width, height);
+        SwingTerminalFontConfiguration fontConfig = SwingTerminalFontConfiguration.newInstance(font);
         return new DefaultTerminalFactory()
                 .setInitialTerminalSize(screenSize)
                 .setPreferTerminalEmulator(true)
