@@ -7,10 +7,12 @@ public class HashMapBundle<T> implements Bundle<T> {
 
     private final HashMap<String, T> bundle = new HashMap<>();
 
+    @Override
     public void register(String name, T data) {
         bundle.put(name, data);
     }
 
+    @Override
     public T get(String name) {
         if (!bundle.containsKey(name))
             throw new IllegalArgumentException("Key not found in bundle");
