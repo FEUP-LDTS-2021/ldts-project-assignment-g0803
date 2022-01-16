@@ -3,6 +3,7 @@ package g0803.bindingofshiba.state;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.gui.GUI;
+import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.view.View;
 import java.io.IOException;
 
@@ -38,7 +39,7 @@ public class State<T> {
         this.controller.tick(app);
 
         gui.clear();
-        this.view.draw(gui);
+        this.view.draw(app, gui, Vec2D.zero());
         gui.refresh();
     }
 }

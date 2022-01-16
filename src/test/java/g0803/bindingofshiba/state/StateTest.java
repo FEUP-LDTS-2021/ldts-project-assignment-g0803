@@ -3,6 +3,7 @@ package g0803.bindingofshiba.state;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.gui.GUI;
+import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.view.View;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,7 @@ public class StateTest {
 
         Mockito.verify(gui, Mockito.times(1)).clear();
         Mockito.verify(gui, Mockito.times(1)).refresh();
-        Mockito.verify(view, Mockito.times(1)).draw(gui);
+        Mockito.verify(view, Mockito.times(1)).draw(app, gui, Vec2D.zero());
         Mockito.verify(controller, Mockito.times(1)).tick(app);
     }
 }

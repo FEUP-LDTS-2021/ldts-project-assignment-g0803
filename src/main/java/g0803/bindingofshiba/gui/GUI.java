@@ -1,7 +1,9 @@
 package g0803.bindingofshiba.gui;
 
-import com.googlecode.lanterna.TextColor;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
+import g0803.bindingofshiba.textures.ITexture;
+
+import java.awt.*;
 import java.io.IOException;
 
 public interface GUI {
@@ -14,5 +16,7 @@ public interface GUI {
 
     void refresh() throws IOException;
 
-    void drawText(int x, int y, String text, TextColor foregroundColor, TextColor backgroundColor);
+    void blit(int x, int y, ITexture texture);
+
+    void fill(Color color);
 }

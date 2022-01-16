@@ -7,10 +7,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.io.IOException;
+
 public class MainTest {
 
     @Test
-    public void returnsCorrectKeyboard() {
+    public void returnsCorrectKeyboard() throws IOException {
         Keyboard keyboard = Mockito.mock(Keyboard.class);
         GUI gui = Mockito.mock(GUI.class);
 
@@ -18,7 +20,7 @@ public class MainTest {
 
         State<?> mockState = Mockito.mock(State.class);
 
-        App main = new Main(mockState, gui);
+        App main = new Main(mockState, gui, null, null);
         Assertions.assertEquals(keyboard, main.getKeyboard());
     }
 }
