@@ -39,42 +39,6 @@ public class StaticTexture implements ITexture {
         }
     }
 
-    public static class ImageBuilder implements ITextureBuilder {
-
-        public ImageBuilder(int width, int height) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public ImageBuilder(BufferedImage image) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public ImageBuilder setAnchorPoint(double x, double y) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public ImageBuilder setAnchorPoint(Vec2D anchorPoint) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public ImageBuilder loadImageData(BufferedImage image) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public ImageBuilder loadResourceData(String location) throws IOException {
-            throw new RuntimeException("Not implemented");
-        }
-
-        public ImageBuilder setPixelAt(int x, int y, Color c) {
-            throw new RuntimeException("Not implemented");
-        }
-
-        @Override
-        public StaticTexture build() {
-            throw new RuntimeException("Not implemented");
-        }
-    }
-
     private final int width, height;
     private final Vec2D anchorPoint;
     private final Color[] pixels;

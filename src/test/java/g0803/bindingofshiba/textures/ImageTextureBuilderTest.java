@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class ImageBuilderTest {
+public class ImageTextureBuilderTest {
 
     private BufferedImage getImage() {
         BufferedImage image = new BufferedImage(3, 2, BufferedImage.TYPE_INT_ARGB);
@@ -24,10 +24,10 @@ public class ImageBuilderTest {
 
     @Test
     public void setAnchorPoint() {
-        StaticTexture.ImageBuilder builder1 = new StaticTexture.ImageBuilder(0, 0);
+        ImageTextureBuilder builder1 = new ImageTextureBuilder(0, 0);
         StaticTexture texture1 = builder1.setAnchorPoint(1, 2).build();
 
-        StaticTexture.ImageBuilder builder2 = new StaticTexture.ImageBuilder(0, 0);
+        ImageTextureBuilder builder2 = new ImageTextureBuilder(0, 0);
         StaticTexture texture2 = builder2.setAnchorPoint(new Vec2D(1, 2)).build();
 
         Assertions.assertTrue(new Vec2D(1, 2).isSimilar(texture1.getAnchorPoint()));
@@ -38,7 +38,7 @@ public class ImageBuilderTest {
     public void copiesImage() {
         BufferedImage image = getImage();
 
-        StaticTexture.ImageBuilder builder = new StaticTexture.ImageBuilder(image);
+        ImageTextureBuilder builder = new ImageTextureBuilder(image);
         StaticTexture texture = builder.build();
 
         Assertions.assertEquals(image.getWidth(), texture.getWidth());
@@ -55,7 +55,7 @@ public class ImageBuilderTest {
     public void loadsImage() {
         BufferedImage image = getImage();
 
-        StaticTexture.ImageBuilder builder = new StaticTexture.ImageBuilder(image.getWidth(), image.getHeight());
+        ImageTextureBuilder builder = new ImageTextureBuilder(image.getWidth(), image.getHeight());
         StaticTexture texture = builder.loadImageData(image).build();
 
         Assertions.assertEquals(image.getWidth(), texture.getWidth());
@@ -70,7 +70,7 @@ public class ImageBuilderTest {
 
     @Test
     public void defaultAnchorPoint() {
-        StaticTexture.ImageBuilder builder = new StaticTexture.ImageBuilder(12, 4);
+        ImageTextureBuilder builder = new ImageTextureBuilder(12, 4);
         StaticTexture texture = builder.build();
 
         Assertions.assertTrue(new Vec2D(0, 0).isSimilar(texture.getAnchorPoint()));
@@ -80,7 +80,7 @@ public class ImageBuilderTest {
     public void setPixelAt() {
         BufferedImage image = getImage();
 
-        StaticTexture.ImageBuilder builder = new StaticTexture.ImageBuilder(image);
+        ImageTextureBuilder builder = new ImageTextureBuilder(image);
         StaticTexture texture = builder
                 .setPixelAt(0, 0, Color.blue)
                 .build();
@@ -100,7 +100,7 @@ public class ImageBuilderTest {
 
     @Test
     public void pixelModificationMustBeDoneInsideTheImageArea() {
-        StaticTexture.ImageBuilder builder = new StaticTexture.ImageBuilder(2, 3);
+        ImageTextureBuilder builder = new ImageTextureBuilder(2, 3);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> builder.setPixelAt(5, 2, Color.red));
         Assertions.assertThrows(IllegalArgumentException.class, () -> builder.setPixelAt(-1, 0, Color.blue));
@@ -110,7 +110,7 @@ public class ImageBuilderTest {
 
     @Test
     public void loadResourceData() throws IOException {
-        StaticTexture texture = new StaticTexture.ImageBuilder(2, 3)
+        StaticTexture texture = new ImageTextureBuilder(2, 3)
                 .loadResourceData("/texture.png")
                 .build();
 
@@ -124,7 +124,7 @@ public class ImageBuilderTest {
 
     @Test
     public void throwsIfResourceNotFound() {
-        StaticTexture.ImageBuilder builder = new StaticTexture.ImageBuilder(3, 4);
+        ImageTextureBuilder builder = new ImageTextureBuilder(3, 4);
         Assertions.assertThrows(IOException.class, () -> builder.loadResourceData("/404.png"));
     }
 
@@ -132,7 +132,7 @@ public class ImageBuilderTest {
     public void throwsIfDimensionsDontMatch() {
         BufferedImage image = getImage();
 
-        StaticTexture.ImageBuilder builder = new StaticTexture.ImageBuilder(3, 4);
+        ImageTextureBuilder builder = new ImageTextureBuilder(3, 4);
         Assertions.assertThrows(IllegalArgumentException.class, () -> builder.loadImageData(image));
     }
 }
