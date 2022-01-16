@@ -114,6 +114,16 @@ public class Vec2DTest {
     }
 
     @Test
+    void round() {
+        Vec2D vec = new Vec2D(1.8, 0.00009);
+
+        Vec2D expected = new Vec2D(2, 0);
+        Vec2D actual = vec.round();
+
+        Assertions.assertTrue(expected.isSimilar(actual));
+    }
+
+    @Test
     void isSimilar() {
         Vec2D vec1 = new Vec2D(1.0, 0.2);
         Vec2D vec2 = new Vec2D(0.999999999999997, 0.20000000000000004);
