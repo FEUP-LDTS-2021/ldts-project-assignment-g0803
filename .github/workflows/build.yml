@@ -34,7 +34,7 @@ jobs:
 
     - name: "Comment build scan URL"
       uses: actions/github-script@v3
-      if: github.event_name == 'pull_request' && failure() && steps.gradle.outputs.build-scan-url
+      if: github.event_name == 'pull_request' && !github.event.pull_request.title.contains('[DRAFT]') && failure() && steps.gradle.outputs.build-scan-url
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
