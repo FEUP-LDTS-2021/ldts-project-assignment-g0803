@@ -20,6 +20,6 @@ public class HashMapBundle<T> implements Bundle<T> {
 
     @Override
     public Set<String> keys() {
-        return null;
+        return bundle.keySet();
     }
 }
