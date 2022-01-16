@@ -1,10 +1,8 @@
 package g0803.bindingofshiba.textures;
 
-import g0803.bindingofshiba.collisions.BoundingBox;
+import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.math.Vec2D;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -1,6 +1,5 @@
-package g0803.bindingofshiba.collisions;
+package g0803.bindingofshiba.math;
 
-import g0803.bindingofshiba.math.Vec2D;
 import java.util.Objects;
 
 public class BoundingBox {

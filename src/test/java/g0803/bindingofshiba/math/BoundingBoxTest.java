@@ -1,5 +1,6 @@
-package g0803.bindingofshiba.collisions;
+package g0803.bindingofshiba.math;
 
+import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.math.Vec2D;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
