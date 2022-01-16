@@ -16,6 +16,9 @@ public class ObstacleView extends View<Obstacle> {
 
     @Override
     public void draw(App app, GUI gui, Vec2D offset) {
+        Bundle<ITexture> textures = app.getTextures();
+        Vec2D position = getModel().getPosition().add(offset).round();
 
+        gui.blit((int) position.getX(), (int) position.getY(), textures.get("rock"));
     }
 }
