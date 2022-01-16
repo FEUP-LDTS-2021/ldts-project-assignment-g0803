@@ -12,6 +12,7 @@ import g0803.bindingofshiba.Constants;
 import g0803.bindingofshiba.gui.fonts.Fonts;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.gui.keyboard.LanternaKeyboard;
+import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.textures.ITexture;
 import java.awt.*;
 import java.io.IOException;
@@ -66,12 +67,38 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void blit(int x, int y, ITexture texture) {
-        throw new RuntimeException("Not implemented");
+        TextGraphics textGraphics = this.screen.newTextGraphics();
+
+        Vec2D offset = texture.getAnchorOffset(x, y);
+        for (int i = 0; i < texture.getWidth(); i++) {
+            for (int j = 0; j < texture.getHeight(); j++) {
+                Color color = texture.getColorAt(i, j);
+                if (color == null || color.getAlpha() < 128) continue;
+
+                int red = color.getRed();
+                int green = color.getGreen();
+                int blue = color.getBlue();
+
+                Vec2D position = new Vec2D(i, j).add(offset);
+                int realX = (int) position.getX();
+                int realY = (int) position.getY();
+
+                textGraphics.setBackgroundColor(new TextColor.RGB(red, green, blue));
+                textGraphics.setCharacter(realX, realY, ' ');
+            }
+        }
     }
 
     @Override
     public void fill(Color color) {
-        throw new RuntimeException("Not implemented");
+        if (color == null || color.getAlpha() < 128)
+            return;
+
+        TextGraphics textGraphics = this.screen.newTextGraphics();
+
+        TextColor textColor = new TextColor.RGB(color.getRed(), color.getGreen(), color.getBlue());
+        textGraphics.setBackgroundColor(textColor);
+        textGraphics.fill(' ');
     }
 
     @Override
