@@ -1,9 +1,12 @@
 package g0803.bindingofshiba.collections;
 
+import g0803.bindingofshiba.bundles.HashMapBundle;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.util.collections.Sets;
 
 import java.awt.*;
+import java.util.Set;
 
 public class HashMapBundleTest {
 
@@ -31,5 +34,19 @@ public class HashMapBundleTest {
         Assertions.assertEquals(Color.red, colors.get("red"));
         Assertions.assertEquals(Color.blue, colors.get("blue"));
         Assertions.assertThrows(IllegalArgumentException.class, () -> colors.get("brown"));
+    }
+
+    @Test
+    public void keys() {
+        HashMapBundle<String> strings = new HashMapBundle<String>();
+
+        strings.register("first", "Hello World");
+        strings.register("second", "LDTS");
+        strings.register("third", "Oh no");
+
+        Set<String> expected = Sets.newSet("first", "second", "third");
+        Set<String> actual = strings.keys();
+
+        Assertions.assertEquals(expected, actual);
     }
 }
