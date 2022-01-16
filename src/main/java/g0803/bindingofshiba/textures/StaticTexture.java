@@ -10,7 +10,7 @@ public class StaticTexture implements ITexture {
 
     public static class TextBuilder implements ITextureBuilder {
 
-        public TextBuilder setFont(Font font) {
+        public TextBuilder(Font font) {
             throw new RuntimeException("Not implemented");
         }
 
@@ -18,12 +18,20 @@ public class StaticTexture implements ITexture {
             throw new RuntimeException("Not implemented");
         }
 
-        public TextBuilder setColor(String color) {
+        public TextBuilder setColor(Color color) {
+            throw new RuntimeException("Not implemented");
+        }
+
+        public TextBuilder setAnchorPoint(double x, double y) {
+            throw new RuntimeException("Not implemented");
+        }
+
+        public TextBuilder setAnchorPoint(Vec2D anchorPoint) {
             throw new RuntimeException("Not implemented");
         }
 
         @Override
-        public ITexture build() {
+        public StaticTexture build() {
             throw new RuntimeException("Not implemented");
         }
     }
