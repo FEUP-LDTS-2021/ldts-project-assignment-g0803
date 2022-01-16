@@ -54,6 +54,16 @@ public class Main implements App {
         return this.gui.getKeyboard();
     }
 
+    @Override
+    public Bundle<Font> getFonts() {
+        return fonts;
+    }
+
+    @Override
+    public Bundle<ITexture> getTextures() {
+        return textures;
+    }
+
     public void start() throws IOException {
         int frameTime = 1000 / Constants.FPS;
 

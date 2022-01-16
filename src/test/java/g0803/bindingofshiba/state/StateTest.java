@@ -28,7 +28,7 @@ public class StateTest {
 
         Mockito.verify(gui, Mockito.times(1)).clear();
         Mockito.verify(gui, Mockito.times(1)).refresh();
-        Mockito.verify(view, Mockito.times(1)).draw(gui);
+        Mockito.verify(view, Mockito.times(1)).draw(app, gui);
         Mockito.verify(controller, Mockito.times(1)).tick(app);
     }
 }

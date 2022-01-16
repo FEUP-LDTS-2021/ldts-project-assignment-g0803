@@ -38,7 +38,7 @@ public class State<T> {
         this.controller.tick(app);
 
         gui.clear();
-        this.view.draw(gui);
+        this.view.draw(app, gui);
         gui.refresh();
     }
 }
