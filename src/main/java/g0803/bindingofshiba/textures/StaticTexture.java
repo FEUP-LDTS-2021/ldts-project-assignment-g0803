@@ -74,13 +74,9 @@ public class StaticTexture implements ITexture {
 
         double angle = Math.PI / 2;
         Vec2D widthVector = new Vec2D(0, this.width - 1);
-        System.out.println(this.anchorPoint);
-        System.out.println(this.anchorPoint.rotate(angle));
-        System.out.println(widthVector);
         Vec2D newAnchorPoint = this.anchorPoint
                 .rotate(angle)
                 .add(widthVector);
-        System.out.println(newAnchorPoint);
 
         return new StaticTexture(this.height, this.width, newAnchorPoint, newPixels);
     }
