@@ -23,8 +23,10 @@ public class DefaultTexturesProvider implements BundleProvider<ITexture> {
         this.loadRockTexture();
         this.loadHudTexture();
         this.loadHeartTexture();
-        this.loadRoomHorizontalWallsTextures();
-        this.loadRoomVerticalWallsTextures();
+        this.loadOpenRoomHorizontalWallsTextures();
+        this.loadOpenRoomVerticalWallsTextures();
+        this.loadClosedRoomHorizontalWallsTextures();
+        this.loadClosedRoomVerticalWallsTextures();
         this.loadMonsterTextures();
         this.loadMonsterAuraTextures();
         this.loadKeyTexture();
@@ -124,28 +126,52 @@ public class DefaultTexturesProvider implements BundleProvider<ITexture> {
         bundle.register("monster.aura.attack", attackTexture);
     }
 
-    private void loadRoomHorizontalWallsTextures() throws IOException {
+    private void loadOpenRoomHorizontalWallsTextures() throws IOException {
         ImageTextureBuilder builder =
                 new ImageTextureBuilder(143, 3)
-                        .loadResourceData("/textures/room/walls/horizontal.png");
+                        .loadResourceData("/textures/room/walls/open/horizontal.png");
 
         StaticTexture topWallTexture = builder.setAnchorPoint(0, 0).build();
         StaticTexture bottomWallTexture = builder.setAnchorPoint(0, -63).build();
 
-        bundle.register("room.walls.top", topWallTexture);
-        bundle.register("room.walls.bottom", bottomWallTexture);
+        bundle.register("room.walls.open.top", topWallTexture);
+        bundle.register("room.walls.open.bottom", bottomWallTexture);
     }
 
-    private void loadRoomVerticalWallsTextures() throws IOException {
+    private void loadOpenRoomVerticalWallsTextures() throws IOException {
         ImageTextureBuilder builder =
                 new ImageTextureBuilder(3, 66)
-                        .loadResourceData("/textures/room/walls/vertical.png");
+                        .loadResourceData("/textures/room/walls/open/vertical.png");
 
         StaticTexture leftWallTexture = builder.setAnchorPoint(0, 0).build();
         StaticTexture rightWallTexture = builder.setAnchorPoint(-140, 0).build();
 
-        bundle.register("room.walls.left", leftWallTexture);
-        bundle.register("room.walls.right", rightWallTexture);
+        bundle.register("room.walls.open.left", leftWallTexture);
+        bundle.register("room.walls.open.right", rightWallTexture);
+    }
+
+    private void loadClosedRoomVerticalWallsTextures() throws IOException {
+        ImageTextureBuilder builder =
+                new ImageTextureBuilder(3, 66)
+                        .loadResourceData("/textures/room/walls/closed/vertical.png");
+
+        StaticTexture leftWallTexture = builder.setAnchorPoint(0, 0).build();
+        StaticTexture rightWallTexture = builder.setAnchorPoint(-140, 0).build();
+
+        bundle.register("room.walls.closed.left", leftWallTexture);
+        bundle.register("room.walls.closed.right", rightWallTexture);
+    }
+
+    private void loadClosedRoomHorizontalWallsTextures() throws IOException {
+        ImageTextureBuilder builder =
+                new ImageTextureBuilder(143, 3)
+                        .loadResourceData("/textures/room/walls/closed/horizontal.png");
+
+        StaticTexture topWallTexture = builder.setAnchorPoint(0, 0).build();
+        StaticTexture bottomWallTexture = builder.setAnchorPoint(0, -63).build();
+
+        bundle.register("room.walls.closed.top", topWallTexture);
+        bundle.register("room.walls.closed.bottom", bottomWallTexture);
     }
 
     private void loadHeartTexture() throws IOException {
