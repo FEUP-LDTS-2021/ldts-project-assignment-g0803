@@ -12,9 +12,22 @@ public class Room {
     private int width;
     private int height;
     private List<Monster> monsters;
+    private Map<DoorPosition, Door> doors = new HashMap<>();
+    private List<Obstacle> obstacles;
 
     public Room(int width, int height, List<Monster> monsters, List<Obstacle> obstacles) {
-        throw new RuntimeException("Not implemented");
+        this.width = width;
+        this.height = height;
+        this.monsters = new ArrayList<>();
+        this.obstacles = new ArrayList<>();
+
+        if (obstacles != null) {
+            this.obstacles.addAll(obstacles);
+        }
+
+        if (monsters != null) {
+            this.monsters.addAll(monsters);
+        }
     }
 
     public int getWidth() {
@@ -26,7 +39,7 @@ public class Room {
     }
 
     public List<Obstacle> getObstacles() {
-        throw new RuntimeException("Not implemented");
+        return this.obstacles;
     }
 
     public List<Monster> getMonsters() {
@@ -34,10 +47,19 @@ public class Room {
     }
 
     public Map<DoorPosition, Door> getDoors() {
-        throw new RuntimeException("Not implemented");
+        return this.doors;
     }
 
     public void addDoor(Door door) {
-        throw new RuntimeException("Not implemented");
+        if (this != door.getOriginRoom() && this != door.getDestinationRoom()) {
+            throw new IllegalArgumentException("Door does not belong to this room");
+        }
+
+        DoorPosition position = this == door.getOriginRoom() ? door.getOriginPosition() : door.getDestinationPosition();
+        if (doors.containsKey(position)) {
+            throw new IllegalStateException("There can't be two doors in the same position");
+        }
+
+        doors.put(position, door);
     }
 }
