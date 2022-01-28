@@ -6,17 +6,23 @@ public class Player extends MoveableElement {
 
     private int numberOfKeys;
     private int hp;
+    private final int maxHp;
     private int damage;
 
     public Player(Vec2D position, int numberOfKeys, int hp, int damage) {
         super(position);
         this.numberOfKeys = numberOfKeys;
         this.hp = hp;
+        this.maxHp = hp;
         this.damage = damage;
     }
 
     public int getHp() {
         return hp;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
     }
 
     public int getNumberOfKeys() {
