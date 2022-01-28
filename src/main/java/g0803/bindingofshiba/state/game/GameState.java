@@ -10,6 +10,9 @@ import g0803.bindingofshiba.view.game.PlayerView;
 public class GameState extends State<Game> {
 
     public GameState(Game game) {
-        super(game, new GameController(game), new GameView(game, PlayerView::new, MonsterView::new));
+        super(
+                game,
+                new GameController(game),
+                new GameView(game, PlayerView::new, MonsterView::new));
     }
 }

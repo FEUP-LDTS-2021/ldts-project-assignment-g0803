@@ -11,16 +11,15 @@ import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.textures.ITexture;
 import g0803.bindingofshiba.view.View;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.mockito.InOrder;
-import org.mockito.Mockito;
-
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Arrays;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
+import org.mockito.Mockito;
 
 public class GameViewTest {
 
@@ -63,7 +62,8 @@ public class GameViewTest {
         ViewFactory<Monster> monsterViewFactory = Mockito.mock(ViewFactory.class);
 
         Mockito.when(playerViewFactory.create(Mockito.any())).thenReturn(playerView);
-        Mockito.when(monsterViewFactory.create(Mockito.any())).thenReturn(monsterView1, monsterView2);
+        Mockito.when(monsterViewFactory.create(Mockito.any()))
+                .thenReturn(monsterView1, monsterView2);
 
         Player player = Mockito.mock(Player.class);
         Monster monster1 = Mockito.mock(Monster.class);

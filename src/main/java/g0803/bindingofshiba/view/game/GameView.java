@@ -11,22 +11,26 @@ import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.textures.ITexture;
 import g0803.bindingofshiba.textures.TextTextureBuilder;
 import g0803.bindingofshiba.view.View;
-
 import java.awt.*;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 public class GameView extends View<Game> {
 
     private final View<Player> playerView;
     private final List<? extends View<Monster>> monsterViews;
 
-    public GameView(Game model, ViewFactory<Player> playerViewFactory, ViewFactory<Monster> monsterViewFactory) {
+    public GameView(
+            Game model,
+            ViewFactory<Player> playerViewFactory,
+            ViewFactory<Monster> monsterViewFactory) {
         super(model);
 
         this.playerView = playerViewFactory.create(getModel().getPlayer());
-        this.monsterViews = getModel().getMonsters().stream().map(monsterViewFactory::create).collect(Collectors.toList());
+        this.monsterViews =
+                getModel().getMonsters().stream()
+                        .map(monsterViewFactory::create)
+                        .collect(Collectors.toList());
     }
 
     private void drawPlayer(App app, GUI gui, Vec2D offset) {
@@ -34,8 +38,7 @@ public class GameView extends View<Game> {
     }
 
     private void drawMonsters(App app, GUI gui, Vec2D offset) {
-        for (View<Monster> view : monsterViews)
-            view.draw(app, gui, offset);
+        for (View<Monster> view : monsterViews) view.draw(app, gui, offset);
     }
 
     private void drawHud(App app, GUI gui, Vec2D offset) {
@@ -70,10 +73,8 @@ public class GameView extends View<Game> {
         Font font = fonts.get("text");
 
         String keys = String.valueOf(getModel().getPlayer().getNumberOfKeys());
-        ITexture texture = new TextTextureBuilder(font)
-                .setText(keys)
-                .setColor(Color.lightGray)
-                .build();
+        ITexture texture =
+                new TextTextureBuilder(font).setText(keys).setColor(Color.lightGray).build();
 
         Vec2D position = new Vec2D(9, 6).add(offset).round();
 
