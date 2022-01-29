@@ -3,7 +3,9 @@ package g0803.bindingofshiba.controller.game;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.events.EventManager;
+import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
+import g0803.bindingofshiba.model.game.elements.Monster;
 
 public class MonsterController extends Controller<Game> {
 
@@ -11,8 +13,24 @@ public class MonsterController extends Controller<Game> {
         super(model, eventManager);
     }
 
+    private Vec2D getNextMonsterAcceleration(Monster monster) {
+        Vec2D playerPosition = getModel().getPlayer().getPosition();
+        Vec2D seekVector = playerPosition.subtract(monster.getPosition());
+        Vec2D direction = seekVector.normalize();
+
+        if (seekVector.getLengthSquared() < 225) direction = direction.scale(-1);
+
+        Vec2D force = direction.scale(4);
+        Vec2D drag = monster.getVelocity().scale(0.25);
+
+        return force.subtract(drag);
+    }
+
     @Override
     public void tick(App app, double dt) {
-        throw new RuntimeException("Not implemented");
+        for (Monster monster : getModel().getMonsters()) {
+            monster.move(dt);
+            monster.setAcceleration(getNextMonsterAcceleration(monster));
+        }
     }
 }
