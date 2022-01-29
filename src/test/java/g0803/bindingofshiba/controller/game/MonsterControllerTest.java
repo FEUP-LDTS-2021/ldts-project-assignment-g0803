@@ -50,6 +50,7 @@ public class MonsterControllerTest {
         MonsterController controller = new MonsterController(game, manager);
         controller.tick(app, 3);
 
+        Mockito.verify(monster).move(3);
         Mockito.verify(monster).setAcceleration(Mockito.argThat(vec -> vec.normalize().isSimilar(new Vec2D(4, 8).normalize())));
     }
 }
