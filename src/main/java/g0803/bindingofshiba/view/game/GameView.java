@@ -2,6 +2,7 @@ package g0803.bindingofshiba.view.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.bundles.Bundle;
+import g0803.bindingofshiba.model.game.elements.Element;
 import g0803.bindingofshiba.view.ViewFactory;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.math.Vec2D;
@@ -13,6 +14,7 @@ import g0803.bindingofshiba.textures.TextTextureBuilder;
 import g0803.bindingofshiba.view.View;
 import java.awt.*;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class GameView extends View<Game> {
@@ -37,8 +39,20 @@ public class GameView extends View<Game> {
         playerView.draw(app, gui, offset);
     }
 
-    private void drawMonsters(App app, GUI gui, Vec2D offset) {
-        for (View<Monster> view : monsterViews) view.draw(app, gui, offset);
+    private void drawElementsBelowPlayer(App app, GUI gui, Vec2D offset) {
+        drawElements(app, gui, offset, element -> element.getPosition().round().getY() >= getModel().getPlayer().getPosition().round().getY());
+    }
+
+    private void drawElementsOnTopOfPlayer(App app, GUI gui, Vec2D offset) {
+        drawElements(app, gui, offset, element -> element.getPosition().round().getY() < getModel().getPlayer().getPosition().round().getY());
+    }
+
+    private void drawElements(App app, GUI gui, Vec2D offset, Predicate<Element> shouldRender) {
+        for (View<Monster> view : monsterViews) {
+            if (shouldRender.test(view.getModel())) {
+                view.draw(app, gui, offset);
+            }
+        }
     }
 
     private void drawHud(App app, GUI gui, Vec2D offset) {
@@ -85,8 +99,9 @@ public class GameView extends View<Game> {
     public void draw(App app, GUI gui, Vec2D offset) {
         gui.fill(new Color(90, 72, 53));
 
-        drawMonsters(app, gui, offset.add(new Vec2D(0, 9)));
+        drawElementsOnTopOfPlayer(app, gui, offset.add(new Vec2D(0, 9)));
         drawPlayer(app, gui, offset.add(new Vec2D(0, 9)));
+        drawElementsBelowPlayer(app, gui, offset.add(new Vec2D(0, 9)));
         drawHud(app, gui, offset);
     }
 }
