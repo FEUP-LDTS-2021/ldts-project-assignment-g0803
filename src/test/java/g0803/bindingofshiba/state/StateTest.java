@@ -30,6 +30,6 @@ public class StateTest {
         Mockito.verify(gui, Mockito.times(1)).clear();
         Mockito.verify(gui, Mockito.times(1)).refresh();
         Mockito.verify(view, Mockito.times(1)).draw(app, gui, Vec2D.zero());
-        Mockito.verify(controller, Mockito.times(1)).tick(app);
+        Mockito.verify(controller, Mockito.times(1)).tick(Mockito.eq(app), Mockito.anyDouble());
     }
 }

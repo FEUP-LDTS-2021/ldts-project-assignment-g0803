@@ -15,7 +15,7 @@ public class HashMapBundle<T> implements Bundle<T> {
     @Override
     public T get(String name) {
         if (!bundle.containsKey(name))
-            throw new IllegalArgumentException("Key not found in bundle");
+            throw new IllegalArgumentException("Key " + name + " not found in bundle");
 
         return bundle.get(name);
     }

@@ -3,7 +3,7 @@ package g0803.bindingofshiba.view.game;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.bundles.Bundle;
 import g0803.bindingofshiba.bundles.DefaultFontsProvider;
-import g0803.bindingofshiba.factory.ViewFactory;
+import g0803.bindingofshiba.view.ViewFactory;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
@@ -34,7 +34,7 @@ public class GameViewTest {
     }
 
     @Test
-    public void draw() {
+    public void drawTopToBottom() {
         App app = Mockito.mock(App.class);
         GUI gui = Mockito.mock(GUI.class);
 
@@ -68,11 +68,18 @@ public class GameViewTest {
         Player player = Mockito.mock(Player.class);
         Monster monster1 = Mockito.mock(Monster.class);
         Monster monster2 = Mockito.mock(Monster.class);
+        Mockito.when(monster1.getPosition()).thenReturn(new Vec2D(15, -10));
+        Mockito.when(monster2.getPosition()).thenReturn(new Vec2D(-10, 30));
 
         Game game = Mockito.mock(Game.class);
         Mockito.when(game.getPlayer()).thenReturn(player);
         Mockito.when(player.getHp()).thenReturn(20);
         Mockito.when(player.getMaxHp()).thenReturn(40);
+        Mockito.when(player.getPosition()).thenReturn(new Vec2D(12, 0));
+
+        Mockito.when(playerView.getModel()).thenReturn(player);
+        Mockito.when(monsterView1.getModel()).thenReturn(monster1);
+        Mockito.when(monsterView2.getModel()).thenReturn(monster2);
 
         Mockito.when(game.getMonsters()).thenReturn(Arrays.asList(monster1, monster2));
 
@@ -88,8 +95,8 @@ public class GameViewTest {
 
         inOrder.verify(gui).fill(Mockito.any());
         inOrder.verify(monsterView1).draw(app, gui, offset.add(new Vec2D(0, 9)));
-        inOrder.verify(monsterView2).draw(app, gui, offset.add(new Vec2D(0, 9)));
         inOrder.verify(playerView).draw(app, gui, offset.add(new Vec2D(0, 9)));
+        inOrder.verify(monsterView2).draw(app, gui, offset.add(new Vec2D(0, 9)));
 
         inOrder.verify(gui).blit(6, 2, healthBarTexture);
         inOrder.verify(gui).blit(1, 2, overlayTexture);

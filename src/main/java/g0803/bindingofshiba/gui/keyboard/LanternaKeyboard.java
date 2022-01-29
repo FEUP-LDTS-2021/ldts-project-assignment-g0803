@@ -23,6 +23,11 @@ public class LanternaKeyboard implements Keyboard {
     }
 
     @Override
+    public Key getPressedKey() {
+        return lastKeyPressed;
+    }
+
+    @Override
     public long getKeyPressDuration() {
         return System.currentTimeMillis() - this.lastKeyPressStart;
     }

@@ -27,9 +27,17 @@ public class MoveableElement extends Element {
         this.acceleration = acceleration;
     }
 
+    public Vec2D getNextVelocity(double dt) {
+        return this.velocity.add(this.acceleration.scale(dt));
+    }
+
+    public Vec2D getNextPosition(double dt) {
+        return this.getPosition().add(getNextVelocity(dt).scale(dt));
+    }
+
     public void move(double dt) {
-        Vec2D nextVelocity = this.velocity.add(this.acceleration.scale(dt));
-        Vec2D nextPosition = this.getPosition().add(nextVelocity.scale(dt));
+        Vec2D nextVelocity = getNextVelocity(dt);
+        Vec2D nextPosition = getNextPosition(dt);
 
         this.setVelocity(nextVelocity);
         this.setPosition(nextPosition);
