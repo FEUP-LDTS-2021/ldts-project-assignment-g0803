@@ -54,7 +54,7 @@ public class GameView extends View<Game> {
         int currentHp = getModel().getPlayer().getHp();
         int maxHp = getModel().getPlayer().getMaxHp();
         double percentage = (double) currentHp / maxHp;
-        double x = -percentage * texture.getWidth() * 0.5;
+        double x = 0.5 * percentage * texture.getWidth();
 
         Vec2D position = new Vec2D(x, 0).add(offset).round();
         gui.blit((int) position.getX(), (int) position.getY(), texture);

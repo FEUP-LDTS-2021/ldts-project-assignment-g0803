@@ -67,13 +67,13 @@ public class DefaultTexturesProvider implements BundleProvider<ITexture> {
         StaticTexture idleTexture =
                 new ImageTextureBuilder(60, 3)
                         .loadResourceData("/textures/health/idle.png")
-                        .setAnchorPoint(-139, -3)
+                        .setAnchorPoint(-79, -3)
                         .build();
 
         StaticTexture changingTexture =
                 new ImageTextureBuilder(60, 3)
                         .loadResourceData("/textures/health/changing.png")
-                        .setAnchorPoint(-139, -3)
+                        .setAnchorPoint(-79, -3)
                         .build();
 
         bundle.register("health.idle", idleTexture);
