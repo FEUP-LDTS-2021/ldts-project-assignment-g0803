@@ -35,7 +35,7 @@ public class CollisionEventsController extends Controller<Game> {
                 BoundingBox monsterBox1 = monsterBox.translate(monster1.getNextPosition(dt));
                 BoundingBox monsterBox2 = monsterBox.translate(monster2.getNextPosition(dt));
                 if (monsterBox1.collides(monsterBox2))
-                    eventsToDispatch.add(new MonsterCollisionWithMonsterEvent(getModel(), monster1, monster2));
+                    eventsToDispatch.add(new MonsterCollisionWithMonsterEvent(dt, getModel(), monster1, monster2));
             }
         }
 
@@ -55,7 +55,7 @@ public class CollisionEventsController extends Controller<Game> {
             BoundingBox monsterBoundingBox = monsterBox.translate(monster.getNextPosition(dt));
 
             if (playerBoundingBox.collides(monsterBoundingBox))
-                eventsToDispatch.add(new PlayerCollisionWithMonsterEvent(getModel(), player, monster));
+                eventsToDispatch.add(new PlayerCollisionWithMonsterEvent(dt, getModel(), player, monster));
         }
 
         for (PlayerCollisionWithMonsterEvent event : eventsToDispatch)

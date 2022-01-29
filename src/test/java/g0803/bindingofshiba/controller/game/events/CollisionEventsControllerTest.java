@@ -30,20 +30,20 @@ public class CollisionEventsControllerTest {
         Player player = Mockito.mock(Player.class);
         Monster monster = Mockito.mock(Monster.class);
 
-        Mockito.when(player.getNextPosition(4)).thenReturn(new Vec2D(13, 1));
-        Mockito.when(monster.getNextPosition(4)).thenReturn(new Vec2D(14, 0));
+        Mockito.when(player.getNextPosition(3)).thenReturn(new Vec2D(13, 1));
+        Mockito.when(monster.getNextPosition(3)).thenReturn(new Vec2D(14, 0));
 
         EventManager manager = Mockito.mock(EventManager.class);
         Game game = new Game(player, List.of(monster));
         CollisionEventsController controller = new CollisionEventsController(game, manager);
 
-        controller.tick(app, 4);
+        controller.tick(app, 3);
 
         Mockito.verify(manager).dispatchEvent(Mockito.argThat(event -> {
             if (!(event instanceof PlayerCollisionWithMonsterEvent e))
                 return false;
 
-            return e.getPlayer() == player && e.getMonster() == monster;
+            return e.getPlayer() == player && e.getMonster() == monster  && e.getTickTime() == 3;
         }));
     }
 
@@ -100,8 +100,9 @@ public class CollisionEventsControllerTest {
             if (!(event instanceof MonsterCollisionWithMonsterEvent e))
                 return false;
 
-            return (e.getFirstMonster() == monster1 && e.getSecondMonster() == monster2)
-                    || (e.getFirstMonster() == monster2 && e.getSecondMonster() == monster1);
+            return ((e.getFirstMonster() == monster1 && e.getSecondMonster() == monster2)
+                    || (e.getFirstMonster() == monster2 && e.getSecondMonster() == monster1))
+                    && e.getTickTime() == 4;
         }));
     }
 

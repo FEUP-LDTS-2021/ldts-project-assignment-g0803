@@ -11,7 +11,8 @@ public class PlayerCollisionWithMonsterEvent extends Event {
     private final Player player;
     private final Monster monster;
 
-    public PlayerCollisionWithMonsterEvent(Game game, Player player, Monster monster) {
+    public PlayerCollisionWithMonsterEvent(double dt, Game game, Player player, Monster monster) {
+        super(dt);
         this.game = game;
         this.player = player;
         this.monster = monster;
