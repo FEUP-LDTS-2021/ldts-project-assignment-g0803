@@ -8,11 +8,13 @@ import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
+import g0803.bindingofshiba.model.game.elements.Player;
 
 public class PlayerController extends Controller<Game> implements Observer {
 
     public PlayerController(Game model, EventManager eventManager) {
         super(model, eventManager);
+        eventManager.addObserver(this);
     }
 
     private Vec2D getNextPlayerAcceleration(Keyboard keyboard, Vec2D currentVelocity) {
@@ -39,5 +41,8 @@ public class PlayerController extends Controller<Game> implements Observer {
 
     @Override
     public void onPlayerCollisionWithMonster(PlayerCollisionWithMonsterEvent event) {
+        Player player = event.getPlayer();
+        player.setAcceleration(Vec2D.zero());
+        player.setVelocity(Vec2D.zero());
     }
 }
