@@ -64,4 +64,24 @@ public class MoveableElementTest {
         Assertions.assertTrue(new Vec2D(-12, -13).isSimilar(element.getVelocity()));
         Assertions.assertTrue(new Vec2D(2, 19).isSimilar(element.getPosition()));
     }
+
+    @Test
+    public void getNextVelocity() {
+        MoveableElement element = new MoveableElement(new Vec2D(1, 3));
+
+        element.setAcceleration(new Vec2D(3, 4));
+        element.setVelocity(new Vec2D(-2, 3));
+
+        Assertions.assertTrue(new Vec2D(7, 15).isSimilar(element.getNextVelocity(3)));
+    }
+
+    @Test
+    public void getNextPosition() {
+        MoveableElement element = new MoveableElement(new Vec2D(1, 3));
+
+        element.setAcceleration(new Vec2D(3, 4));
+        element.setVelocity(new Vec2D(-2, 3));
+
+        Assertions.assertTrue(new Vec2D(22, 48).isSimilar(element.getNextPosition(3)));
+    }
 }
