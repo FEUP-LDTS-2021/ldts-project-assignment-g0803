@@ -91,7 +91,7 @@ public class GameViewTest {
         inOrder.verify(monsterView2).draw(app, gui, offset.add(new Vec2D(0, 9)));
         inOrder.verify(playerView).draw(app, gui, offset.add(new Vec2D(0, 9)));
 
-        inOrder.verify(gui).blit(-4, 2, healthBarTexture);
+        inOrder.verify(gui).blit(6, 2, healthBarTexture);
         inOrder.verify(gui).blit(1, 2, overlayTexture);
         inOrder.verify(gui).blit(Mockito.eq(10), Mockito.eq(8), Mockito.any());
     }
