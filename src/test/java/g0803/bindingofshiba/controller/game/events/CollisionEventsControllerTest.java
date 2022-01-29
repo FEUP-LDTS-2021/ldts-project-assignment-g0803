@@ -10,10 +10,9 @@ import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Player;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.List;
 
 public class CollisionEventsControllerTest {
 
@@ -39,12 +38,17 @@ public class CollisionEventsControllerTest {
 
         controller.tick(app, 3);
 
-        Mockito.verify(manager).dispatchEvent(Mockito.argThat(event -> {
-            if (!(event instanceof PlayerCollisionWithMonsterEvent e))
-                return false;
+        Mockito.verify(manager)
+                .dispatchEvent(
+                        Mockito.argThat(
+                                event -> {
+                                    if (!(event instanceof PlayerCollisionWithMonsterEvent e))
+                                        return false;
 
-            return e.getPlayer() == player && e.getMonster() == monster  && e.getTickTime() == 3;
-        }));
+                                    return e.getPlayer() == player
+                                            && e.getMonster() == monster
+                                            && e.getTickTime() == 3;
+                                }));
     }
 
     @Test
@@ -96,14 +100,19 @@ public class CollisionEventsControllerTest {
 
         controller.tick(app, 4);
 
-        Mockito.verify(manager).dispatchEvent(Mockito.argThat(event -> {
-            if (!(event instanceof MonsterCollisionWithMonsterEvent e))
-                return false;
+        Mockito.verify(manager)
+                .dispatchEvent(
+                        Mockito.argThat(
+                                event -> {
+                                    if (!(event instanceof MonsterCollisionWithMonsterEvent e))
+                                        return false;
 
-            return ((e.getFirstMonster() == monster1 && e.getSecondMonster() == monster2)
-                    || (e.getFirstMonster() == monster2 && e.getSecondMonster() == monster1))
-                    && e.getTickTime() == 4;
-        }));
+                                    return ((e.getFirstMonster() == monster1
+                                                            && e.getSecondMonster() == monster2)
+                                                    || (e.getFirstMonster() == monster2
+                                                            && e.getSecondMonster() == monster1))
+                                            && e.getTickTime() == 4;
+                                }));
     }
 
     @Test

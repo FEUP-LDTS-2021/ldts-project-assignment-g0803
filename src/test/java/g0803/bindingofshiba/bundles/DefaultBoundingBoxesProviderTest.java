@@ -1,10 +1,9 @@
 package g0803.bindingofshiba.bundles;
 
 import g0803.bindingofshiba.math.BoundingBox;
+import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Set;
 
 public class DefaultBoundingBoxesProviderTest {
 
@@ -13,13 +12,7 @@ public class DefaultBoundingBoxesProviderTest {
         Bundle<BoundingBox> bundle = new DefaultBoundingBoxesProvider().getBundle();
 
         Set<String> actual = bundle.keys();
-        Set<String> expected =
-                Set.of(
-                        "monster",
-                        "shiba",
-                        "room",
-                        "projectile",
-                        "rock");
+        Set<String> expected = Set.of("monster", "shiba", "room", "projectile", "rock");
 
         Assertions.assertEquals(expected, actual);
 

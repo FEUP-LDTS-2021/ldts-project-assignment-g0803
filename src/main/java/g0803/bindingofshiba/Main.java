@@ -34,7 +34,12 @@ public class Main implements App {
         this.gui = new LanternaGUI(fonts, Constants.WIDTH, Constants.HEIGHT);
     }
 
-    public Main(State<?> initialState, GUI gui, Bundle<Font> fonts, Bundle<ITexture> textures, Bundle<BoundingBox> boundingBoxes) {
+    public Main(
+            State<?> initialState,
+            GUI gui,
+            Bundle<Font> fonts,
+            Bundle<ITexture> textures,
+            Bundle<BoundingBox> boundingBoxes) {
         this.fonts = fonts;
         this.textures = textures;
         this.boundingBoxes = boundingBoxes;

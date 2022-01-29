@@ -36,7 +36,11 @@ public class PlayerController extends Controller<Game> implements Observer {
     @Override
     public void tick(App app, double dt) {
         getModel().getPlayer().move(dt);
-        getModel().getPlayer().setAcceleration(getNextPlayerAcceleration(app.getKeyboard(), getModel().getPlayer().getVelocity()));
+        getModel()
+                .getPlayer()
+                .setAcceleration(
+                        getNextPlayerAcceleration(
+                                app.getKeyboard(), getModel().getPlayer().getVelocity()));
     }
 
     @Override

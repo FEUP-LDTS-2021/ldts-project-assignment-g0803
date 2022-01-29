@@ -5,7 +5,10 @@ import java.util.Set;
 public interface IEventManager {
 
     Set<Observer> getObservers();
+
     void addObserver(Observer observer);
+
     void removeObserver(Observer observer);
+
     void dispatchEvent(Event event);
 }

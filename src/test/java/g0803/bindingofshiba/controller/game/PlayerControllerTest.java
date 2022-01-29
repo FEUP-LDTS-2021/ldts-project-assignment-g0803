@@ -8,10 +8,9 @@ import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Player;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.List;
 
 public class PlayerControllerTest {
 
@@ -34,7 +33,8 @@ public class PlayerControllerTest {
         playerController.tick(app, 2);
 
         Mockito.verify(player).move(2);
-        Mockito.verify(player).setAcceleration(Mockito.argThat(vec -> vec.normalize().isSimilar(Vec2D.up())));
+        Mockito.verify(player)
+                .setAcceleration(Mockito.argThat(vec -> vec.normalize().isSimilar(Vec2D.up())));
     }
 
     @Test
@@ -56,7 +56,8 @@ public class PlayerControllerTest {
         playerController.tick(app, 3);
 
         Mockito.verify(player).move(3);
-        Mockito.verify(player).setAcceleration(Mockito.argThat(vec -> vec.normalize().isSimilar(Vec2D.down())));
+        Mockito.verify(player)
+                .setAcceleration(Mockito.argThat(vec -> vec.normalize().isSimilar(Vec2D.down())));
     }
 
     @Test
@@ -78,7 +79,8 @@ public class PlayerControllerTest {
         playerController.tick(app, 2);
 
         Mockito.verify(player).move(2);
-        Mockito.verify(player).setAcceleration(Mockito.argThat(vec -> vec.normalize().isSimilar(Vec2D.left())));
+        Mockito.verify(player)
+                .setAcceleration(Mockito.argThat(vec -> vec.normalize().isSimilar(Vec2D.left())));
     }
 
     @Test
@@ -100,7 +102,8 @@ public class PlayerControllerTest {
         playerController.tick(app, 2);
 
         Mockito.verify(player).move(2);
-        Mockito.verify(player).setAcceleration(Mockito.argThat(vec -> vec.normalize().isSimilar(Vec2D.right())));
+        Mockito.verify(player)
+                .setAcceleration(Mockito.argThat(vec -> vec.normalize().isSimilar(Vec2D.right())));
     }
 
     @Test
@@ -136,7 +139,8 @@ public class PlayerControllerTest {
         PlayerController controller = new PlayerController(game, manager);
         Mockito.verify(manager).addObserver(controller);
 
-        PlayerCollisionWithMonsterEvent event = new PlayerCollisionWithMonsterEvent(2, game, player, monster);
+        PlayerCollisionWithMonsterEvent event =
+                new PlayerCollisionWithMonsterEvent(2, game, player, monster);
 
         Mockito.when(player.getNextPosition(2)).thenReturn(new Vec2D(1, 3));
         Mockito.when(player.getNextVelocity(2)).thenReturn(new Vec2D(45, 7));

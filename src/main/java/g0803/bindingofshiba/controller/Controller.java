@@ -3,8 +3,6 @@ package g0803.bindingofshiba.controller;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.events.EventManager;
 
-import java.io.IOException;
-
 public abstract class Controller<T> {
 
     private final T model;

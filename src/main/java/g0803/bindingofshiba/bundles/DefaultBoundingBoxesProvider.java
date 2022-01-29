@@ -15,7 +15,7 @@ public class DefaultBoundingBoxesProvider implements BundleProvider<BoundingBox>
         boundingBoxes.register("shiba", new BoundingBox(-3, -6, 7, 7));
         boundingBoxes.register("room", new BoundingBox(3, 3, 137, 60));
         boundingBoxes.register("projectile", new BoundingBox(-2, -2, 5, 5));
-        boundingBoxes.register("rock", new BoundingBox(-4, -10,9, 2));
+        boundingBoxes.register("rock", new BoundingBox(-4, -10, 9, 2));
     }
 
     @Override

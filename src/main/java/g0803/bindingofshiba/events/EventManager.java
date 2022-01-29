@@ -2,7 +2,6 @@ package g0803.bindingofshiba.events;
 
 import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;
 import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
-
 import java.util.*;
 
 public class EventManager implements IEventManager {

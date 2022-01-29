@@ -17,8 +17,10 @@ public class EventManagerTest {
         manager.addObserver(observer1);
         manager.addObserver(observer2);
 
-        MonsterCollisionWithMonsterEvent event1 = Mockito.mock(MonsterCollisionWithMonsterEvent.class);
-        PlayerCollisionWithMonsterEvent event2 = Mockito.mock(PlayerCollisionWithMonsterEvent.class);
+        MonsterCollisionWithMonsterEvent event1 =
+                Mockito.mock(MonsterCollisionWithMonsterEvent.class);
+        PlayerCollisionWithMonsterEvent event2 =
+                Mockito.mock(PlayerCollisionWithMonsterEvent.class);
 
         manager.dispatchEvent(event1);
         manager.dispatchEvent(event2);
@@ -38,8 +40,10 @@ public class EventManagerTest {
         manager.addObserver(observer);
         manager.removeObserver(observer);
 
-        MonsterCollisionWithMonsterEvent event1 = Mockito.mock(MonsterCollisionWithMonsterEvent.class);
-        PlayerCollisionWithMonsterEvent event2 = Mockito.mock(PlayerCollisionWithMonsterEvent.class);
+        MonsterCollisionWithMonsterEvent event1 =
+                Mockito.mock(MonsterCollisionWithMonsterEvent.class);
+        PlayerCollisionWithMonsterEvent event2 =
+                Mockito.mock(PlayerCollisionWithMonsterEvent.class);
 
         manager.dispatchEvent(event1);
         manager.dispatchEvent(event2);

@@ -2,16 +2,16 @@ package g0803.bindingofshiba.view.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.bundles.Bundle;
-import g0803.bindingofshiba.model.game.elements.Element;
-import g0803.bindingofshiba.view.ViewFactory;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
+import g0803.bindingofshiba.model.game.elements.Element;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.textures.ITexture;
 import g0803.bindingofshiba.textures.TextTextureBuilder;
 import g0803.bindingofshiba.view.View;
+import g0803.bindingofshiba.view.ViewFactory;
 import java.awt.*;
 import java.util.List;
 import java.util.function.Predicate;
@@ -40,11 +40,23 @@ public class GameView extends View<Game> {
     }
 
     private void drawElementsBelowPlayer(App app, GUI gui, Vec2D offset) {
-        drawElements(app, gui, offset, element -> element.getPosition().round().getY() >= getModel().getPlayer().getPosition().round().getY());
+        drawElements(
+                app,
+                gui,
+                offset,
+                element ->
+                        element.getPosition().round().getY()
+                                >= getModel().getPlayer().getPosition().round().getY());
     }
 
     private void drawElementsOnTopOfPlayer(App app, GUI gui, Vec2D offset) {
-        drawElements(app, gui, offset, element -> element.getPosition().round().getY() < getModel().getPlayer().getPosition().round().getY());
+        drawElements(
+                app,
+                gui,
+                offset,
+                element ->
+                        element.getPosition().round().getY()
+                                < getModel().getPlayer().getPosition().round().getY());
     }
 
     private void drawElements(App app, GUI gui, Vec2D offset, Predicate<Element> shouldRender) {
