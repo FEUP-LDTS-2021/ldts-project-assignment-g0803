@@ -2,9 +2,11 @@ package g0803.bindingofshiba.controller.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.events.EventManager;
+import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
+import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Player;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -121,5 +123,29 @@ public class PlayerControllerTest {
 
         Mockito.verify(player).move(2);
         Mockito.verify(player).setAcceleration(Mockito.argThat(vec -> vec.isSimilar(Vec2D.zero())));
+    }
+
+    @Test
+    public void collisionWithMonster() {
+        Monster monster = Mockito.mock(Monster.class);
+        Player player = Mockito.mock(Player.class);
+
+        Game game = Mockito.mock(Game.class);
+        EventManager manager = Mockito.mock(EventManager.class);
+
+        PlayerController controller = new PlayerController(game, manager);
+        Mockito.verify(manager).addObserver(controller);
+
+        PlayerCollisionWithMonsterEvent event = new PlayerCollisionWithMonsterEvent(2, game, player, monster);
+
+        Mockito.when(player.getNextPosition(2)).thenReturn(new Vec2D(1, 3));
+        Mockito.when(player.getNextVelocity(2)).thenReturn(new Vec2D(45, 7));
+
+        controller.onPlayerCollisionWithMonster(event);
+
+        Mockito.verify(player).setVelocity(Vec2D.zero());
+        Mockito.verify(player).setAcceleration(Vec2D.zero());
+
+        Mockito.verifyNoInteractions(monster);
     }
 }
