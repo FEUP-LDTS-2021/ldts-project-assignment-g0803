@@ -19,7 +19,7 @@ public class MainTest {
 
         State<?> mockState = Mockito.mock(State.class);
 
-        App main = new Main(mockState, gui, null, null);
+        App main = new Main(mockState, gui, null, null, null);
         Assertions.assertEquals(keyboard, main.getKeyboard());
     }
 }
