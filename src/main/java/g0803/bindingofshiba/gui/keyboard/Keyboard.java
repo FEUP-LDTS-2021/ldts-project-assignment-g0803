@@ -21,6 +21,8 @@ public interface Keyboard {
 
     boolean isKeyPressed(Key key);
 
+    Key getPressedKey();
+
     long getKeyPressDuration();
 
     boolean isClosed();
