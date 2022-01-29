@@ -27,6 +27,14 @@ public class MoveableElement extends Element {
         this.acceleration = acceleration;
     }
 
+    public Vec2D getNextVelocity(double dt) {
+        throw new RuntimeException("Not implemented");
+    }
+
+    public Vec2D getNextPosition(double dt) {
+        throw new RuntimeException("Not implemented");
+    }
+
     public void move(double dt) {
         Vec2D nextVelocity = this.velocity.add(this.acceleration.scale(dt));
         Vec2D nextPosition = this.getPosition().add(nextVelocity.scale(dt));
