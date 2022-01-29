@@ -1,26 +1,41 @@
 package g0803.bindingofshiba.events;
 
+import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;
+import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
+
 import java.util.*;
 
 public class EventManager implements IEventManager {
 
+    private final Set<Observer> observers = new HashSet<>();
+
     @Override
     public void addObserver(Observer observer) {
-        throw new RuntimeException("Not implemented");
+        observers.add(observer);
     }
 
     @Override
     public void removeObserver(Observer observer) {
-        throw new RuntimeException("Not implemented");
+        observers.remove(observer);
     }
 
     @Override
     public Set<Observer> getObservers() {
-        throw new RuntimeException("Not implemented");
+        return observers;
+    }
+
+    private void dispatchEvent(Event event, Observer listener) {
+        if (event instanceof PlayerCollisionWithMonsterEvent e) {
+            listener.onPlayerCollisionWithMonster(e);
+        } else if (event instanceof MonsterCollisionWithMonsterEvent e) {
+            listener.onMonsterCollisionWithMonster(e);
+        }
     }
 
     @Override
     public void dispatchEvent(Event event) {
-        throw new RuntimeException("Not implemented");
+        for (Observer observer : observers) {
+            dispatchEvent(event, observer);
+        }
     }
 }
