@@ -2,16 +2,37 @@ package g0803.bindingofshiba.controller.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
+import g0803.bindingofshiba.controller.game.events.CollisionEventsController;
 import g0803.bindingofshiba.events.EventManager;
 import g0803.bindingofshiba.model.game.Game;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class GameController extends Controller<Game> {
 
+    private final List<? extends Controller<?>> controllers;
+
     public GameController(Game model, EventManager eventManager) {
         super(model, eventManager);
+
+        this.controllers = Arrays.asList(
+                new CollisionEventsController(getModel(), getEventManager()),
+                new PlayerController(getModel(), getEventManager()),
+                new MonsterController(getModel(), getEventManager())
+        );
+    }
+
+    public GameController(Game model, EventManager eventManager, List<? extends Controller<?>> controllers) {
+        super(model, eventManager);
+
+        this.controllers = controllers;
     }
 
     @Override
-    public void tick(App app) throws IOException {}
+    public void tick(App app, double dt) {
+        for (Controller<?> controller : controllers)
+            controller.tick(app, dt);
+    }
 }

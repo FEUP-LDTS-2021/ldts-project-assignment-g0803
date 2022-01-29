@@ -1,6 +1,7 @@
 package g0803.bindingofshiba.state;
 
 import g0803.bindingofshiba.App;
+import g0803.bindingofshiba.Constants;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.math.Vec2D;
@@ -36,7 +37,7 @@ public class State<T> {
     }
 
     public void step(App app, GUI gui) throws IOException {
-        this.controller.tick(app);
+        this.controller.tick(app, 1D / Constants.FPS);
 
         gui.clear();
         this.view.draw(app, gui, Vec2D.zero());

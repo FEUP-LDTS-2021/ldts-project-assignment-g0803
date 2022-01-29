@@ -23,5 +23,5 @@ public abstract class Controller<T> {
         return eventManager;
     }
 
-    public abstract void tick(App app) throws IOException;
+    public abstract void tick(App app, double dt);
 }
