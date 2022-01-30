@@ -11,7 +11,6 @@ import g0803.bindingofshiba.model.game.room.Door;
 import g0803.bindingofshiba.model.game.room.LastRoom;
 import g0803.bindingofshiba.model.game.room.Room;
 import g0803.bindingofshiba.state.end.GameOverState;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,7 +50,6 @@ public class GameController extends Controller<Game> implements Observer {
         Door door = event.getDoor();
 
         Room destination = door.getOtherRoom(currentRoom);
-        if (destination instanceof LastRoom)
-            event.getApp().setState(new GameOverState(true));
+        if (destination instanceof LastRoom) event.getApp().setState(new GameOverState(true));
     }
 }
