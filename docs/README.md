@@ -154,7 +154,7 @@ We have an event class that is not used. The `PlayerDamagedByMonsterEvent` was s
 
 
 - Link to mutation testing report.
-  - [Click here!](https://limwa.github.io/ldts-intermediate-delivery/index.html)
+  - [Click here!](https://limwa.github.io/ldts-final-delivery/index.html)
 
 
 
