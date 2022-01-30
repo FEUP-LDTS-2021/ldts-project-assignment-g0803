@@ -98,6 +98,29 @@ public class BoundingBox {
         return !isOnTheBottom;
     }
 
+    public boolean contains(BoundingBox other) {
+        Vec2D topLeft = this.getTopLeftCorner();
+        Vec2D otherTopLeft = other.getTopLeftCorner();
+        Vec2D bottomRight = this.getBottomRightCorner();
+        Vec2D otherBottomRight = other.getBottomRightCorner();
+
+        boolean isTopLeftInside =
+                otherTopLeft.getX() >= topLeft.getX()
+                        && otherTopLeft.getY() >= topLeft.getY()
+                        && otherTopLeft.getX() <= bottomRight.getX()
+                        && otherTopLeft.getY() <= bottomRight.getY();
+
+        if (!isTopLeftInside) return false;
+
+        boolean isBottomRightInside =
+                otherBottomRight.getX() >= topLeft.getX()
+                        && otherBottomRight.getY() >= topLeft.getY()
+                        && otherBottomRight.getX() <= bottomRight.getX()
+                        && otherBottomRight.getY() <= bottomRight.getY();
+
+        return isBottomRightInside;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

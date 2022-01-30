@@ -151,4 +151,13 @@ public class BoundingBoxTest {
         Assertions.assertTrue(box1.collides(box2));
         Assertions.assertTrue(box2.collides(box1));
     }
+
+    @Test
+    public void contains() {
+        BoundingBox box1 = new BoundingBox(3, 2, 10, 7);
+        BoundingBox box2 = new BoundingBox(5, 6, 1, 2);
+
+        Assertions.assertTrue(box1.contains(box2));
+        Assertions.assertFalse(box2.contains(box1));
+    }
 }

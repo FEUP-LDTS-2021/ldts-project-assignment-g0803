@@ -1,19 +1,18 @@
 package g0803.bindingofshiba.events;
 
+import g0803.bindingofshiba.App;
+
 public class Event {
-    private boolean cancelled = false;
     private final double dt;
+    private final App app;
 
-    public Event(double dt) {
+    public Event(double dt, App app) {
         this.dt = dt;
+        this.app = app;
     }
 
-    public boolean isCancelled() {
-        return cancelled;
-    }
-
-    public void setCancelled(boolean cancelled) {
-        this.cancelled = cancelled;
+    public App getApp() {
+        return app;
     }
 
     public double getTickTime() {

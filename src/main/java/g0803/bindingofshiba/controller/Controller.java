@@ -2,13 +2,14 @@ package g0803.bindingofshiba.controller;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.events.EventManager;
+import g0803.bindingofshiba.events.IEventManager;
 
 public abstract class Controller<T> {
 
     private final T model;
-    private final EventManager eventManager;
+    private final IEventManager eventManager;
 
-    public Controller(T model, EventManager eventManager) {
+    public Controller(T model, IEventManager eventManager) {
         this.model = model;
         this.eventManager = eventManager;
     }
@@ -17,7 +18,7 @@ public abstract class Controller<T> {
         return model;
     }
 
-    public EventManager getEventManager() {
+    public IEventManager getEventManager() {
         return eventManager;
     }
 

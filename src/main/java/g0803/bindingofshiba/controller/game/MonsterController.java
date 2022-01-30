@@ -4,8 +4,11 @@ import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.Constants;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.events.EventManager;
+import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.events.Observer;
 import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;
+import g0803.bindingofshiba.events.game.MonsterCollisionWithObstacleEvent;
+import g0803.bindingofshiba.events.game.MonsterCollisionWithWallsEvent;
 import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
@@ -13,7 +16,7 @@ import g0803.bindingofshiba.model.game.elements.Monster;
 
 public class MonsterController extends Controller<Game> implements Observer {
 
-    public MonsterController(Game model, EventManager eventManager) {
+    public MonsterController(Game model, IEventManager eventManager) {
         super(model, eventManager);
         eventManager.addObserver(this);
     }
@@ -33,7 +36,7 @@ public class MonsterController extends Controller<Game> implements Observer {
 
     @Override
     public void tick(App app, double dt) {
-        for (Monster monster : getModel().getMonsters()) {
+        for (Monster monster : getModel().getCurrentRoom().getMonsters()) {
             monster.move(dt);
             monster.setAcceleration(getNextMonsterAcceleration(monster));
         }
@@ -69,6 +72,20 @@ public class MonsterController extends Controller<Game> implements Observer {
 
     @Override
     public void onPlayerCollisionWithMonster(PlayerCollisionWithMonsterEvent event) {
+        Monster monster = event.getMonster();
+        monster.setAcceleration(Vec2D.zero());
+        monster.setVelocity(Vec2D.zero());
+    }
+
+    @Override
+    public void onMonsterCollisionWithObstacle(MonsterCollisionWithObstacleEvent event) {
+        Monster monster = event.getMonster();
+        monster.setAcceleration(Vec2D.zero());
+        monster.setVelocity(Vec2D.zero());
+    }
+
+    @Override
+    public void onMonsterCollisionWithWalls(MonsterCollisionWithWallsEvent event) {
         Monster monster = event.getMonster();
         monster.setAcceleration(Vec2D.zero());
         monster.setVelocity(Vec2D.zero());

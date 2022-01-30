@@ -1,11 +1,22 @@
 package g0803.bindingofshiba.events;
 
-import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;
-import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
+import g0803.bindingofshiba.events.game.*;
 
 public interface Observer {
 
     default void onPlayerCollisionWithMonster(PlayerCollisionWithMonsterEvent event) {}
 
     default void onMonsterCollisionWithMonster(MonsterCollisionWithMonsterEvent event) {}
+
+    default void onPlayerCollisionWithObstacle(PlayerCollisionWithObstacleEvent event) {}
+
+    default void onMonsterCollisionWithObstacle(MonsterCollisionWithObstacleEvent event) {}
+
+    default void onPlayerCollisionWithWalls(PlayerCollisionWithWallsEvent event) {}
+
+    default void onMonsterCollisionWithWalls(MonsterCollisionWithWallsEvent event) {}
+
+    default void onPlayerEnterDoor(PlayerEnterDoorEvent event) {}
+
+    default void onPlayerUnlockDoor(PlayerUnlockDoorEvent event) {}
 }
