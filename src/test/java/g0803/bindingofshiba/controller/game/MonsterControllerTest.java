@@ -2,11 +2,16 @@ package g0803.bindingofshiba.controller.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.events.EventManager;
+import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;
+import g0803.bindingofshiba.events.game.MonsterCollisionWithObstacleEvent;
+import g0803.bindingofshiba.events.game.MonsterCollisionWithWallsEvent;
 import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
+import g0803.bindingofshiba.model.game.room.Room;
 import g0803.bindingofshiba.model.game.elements.Monster;
+import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Player;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -26,7 +31,10 @@ public class MonsterControllerTest {
         Mockito.when(monster.getPosition()).thenReturn(new Vec2D(500, 200));
         Mockito.when(monster.getVelocity()).thenReturn(Vec2D.zero());
 
-        Game game = new Game(player, List.of(monster));
+        Room room = Mockito.mock(Room.class);
+        Mockito.when(room.getMonsters()).thenReturn(List.of(monster));
+
+        Game game = new Game(player, room);
 
         MonsterController controller = new MonsterController(game, manager);
         controller.tick(app, 3);
@@ -51,7 +59,10 @@ public class MonsterControllerTest {
         Mockito.when(monster.getPosition()).thenReturn(new Vec2D(3, 10));
         Mockito.when(monster.getVelocity()).thenReturn(Vec2D.zero());
 
-        Game game = new Game(player, List.of(monster));
+        Room room = Mockito.mock(Room.class);
+        Mockito.when(room.getMonsters()).thenReturn(List.of(monster));
+
+        Game game = new Game(player, room);
 
         MonsterController controller = new MonsterController(game, manager);
         controller.tick(app, 3);
@@ -65,6 +76,7 @@ public class MonsterControllerTest {
 
     @Test
     public void collisionWithMonster() {
+        App app = Mockito.mock(App.class);
         Monster monster1 = Mockito.mock(Monster.class);
         Monster monster2 = Mockito.mock(Monster.class);
 
@@ -75,7 +87,7 @@ public class MonsterControllerTest {
         Mockito.verify(manager).addObserver(controller);
 
         MonsterCollisionWithMonsterEvent event =
-                new MonsterCollisionWithMonsterEvent(3, game, monster1, monster2);
+                new MonsterCollisionWithMonsterEvent(3, app, monster1, monster2);
 
         Mockito.when(monster1.getNextPosition(3)).thenReturn(new Vec2D(3, 4));
         Mockito.when(monster2.getNextPosition(3)).thenReturn(new Vec2D(6, 7));
@@ -92,6 +104,7 @@ public class MonsterControllerTest {
 
     @Test
     public void collisionWithPlayer() {
+        App app = Mockito.mock(App.class);
         Monster monster = Mockito.mock(Monster.class);
         Player player = Mockito.mock(Player.class);
 
@@ -102,10 +115,7 @@ public class MonsterControllerTest {
         Mockito.verify(manager).addObserver(controller);
 
         PlayerCollisionWithMonsterEvent event =
-                new PlayerCollisionWithMonsterEvent(2, game, player, monster);
-
-        Mockito.when(monster.getNextPosition(2)).thenReturn(new Vec2D(3, -2));
-        Mockito.when(monster.getNextVelocity(2)).thenReturn(new Vec2D(-1, 0));
+                new PlayerCollisionWithMonsterEvent(2, app, player, monster);
 
         controller.onPlayerCollisionWithMonster(event);
 
@@ -113,5 +123,46 @@ public class MonsterControllerTest {
         Mockito.verify(monster).setAcceleration(Vec2D.zero());
 
         Mockito.verifyNoInteractions(player);
+    }
+
+    @Test
+    public void collisionWithWall() {
+        App app = Mockito.mock(App.class);
+        Monster monster = Mockito.mock(Monster.class);
+
+        Game game = Mockito.mock(Game.class);
+        IEventManager manager = Mockito.mock(IEventManager.class);
+
+        MonsterController controller = new MonsterController(game, manager);
+        Mockito.verify(manager).addObserver(controller);
+
+        MonsterCollisionWithWallsEvent event =
+                new MonsterCollisionWithWallsEvent(2, app, monster);
+
+        controller.onMonsterCollisionWithWalls(event);
+
+        Mockito.verify(monster).setVelocity(Vec2D.zero());
+        Mockito.verify(monster).setAcceleration(Vec2D.zero());
+    }
+
+    @Test
+    public void collisionWithObstacle() {
+        App app = Mockito.mock(App.class);
+        Monster monster = Mockito.mock(Monster.class);
+        Obstacle obstacle = Mockito.mock(Obstacle.class);
+
+        Game game = Mockito.mock(Game.class);
+        EventManager manager = Mockito.mock(EventManager.class);
+
+        MonsterController controller = new MonsterController(game, manager);
+        Mockito.verify(manager).addObserver(controller);
+
+        MonsterCollisionWithObstacleEvent event =
+                new MonsterCollisionWithObstacleEvent(3, app, monster, obstacle);
+
+        controller.onMonsterCollisionWithObstacle(event);
+
+        Mockito.verify(monster).setVelocity(Vec2D.zero());
+        Mockito.verify(monster).setAcceleration(Vec2D.zero());
     }
 }
