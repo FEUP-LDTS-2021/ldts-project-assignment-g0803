@@ -66,7 +66,7 @@ public class LanternaGUI implements GUI {
     public void blit(int x, int y, ITexture texture) {
         TextGraphics textGraphics = this.screen.newTextGraphics();
 
-        Vec2D offset = texture.getAnchorOffset(x, y);
+        Vec2D offset = texture.getAnchorOffset(x, y).round();
         for (int i = 0; i < texture.getWidth(); i++) {
             for (int j = 0; j < texture.getHeight(); j++) {
                 Color color = texture.getColorAt(i, j);
