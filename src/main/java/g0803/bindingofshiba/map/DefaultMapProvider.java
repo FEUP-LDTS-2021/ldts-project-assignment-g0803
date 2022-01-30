@@ -6,6 +6,7 @@ import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.room.Door;
 import g0803.bindingofshiba.model.game.room.DoorPosition;
+import g0803.bindingofshiba.model.game.room.LastRoom;
 import g0803.bindingofshiba.model.game.room.Room;
 import java.util.List;
 
@@ -74,6 +75,12 @@ public class DefaultMapProvider implements MapProvider {
                 new Door(allMonsters, DoorPosition.TOP, fightRoom, DoorPosition.RIGHT);
         allMonsters.addDoor(allMonstersToFight);
         fightRoom.addDoor(allMonstersToFight);
+
+        LastRoom lastRoom = new LastRoom(Constants.ROOM_WIDTH, Constants.ROOM_HEIGHT);
+
+        Door toEnd = new Door(allMonsters, DoorPosition.RIGHT, lastRoom, DoorPosition.LEFT);
+        allMonsters.addDoor(toEnd);
+        lastRoom.addDoor(toEnd);
 
         return fightRoom;
     }
