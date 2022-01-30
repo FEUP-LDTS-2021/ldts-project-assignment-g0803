@@ -54,6 +54,8 @@ public class EventManager implements IEventManager {
             listener.onPlayerEnterDoor(e);
         } else if (event instanceof PlayerUnlockDoorEvent e) {
             listener.onPlayerUnlockDoor(e);
+        } else if (event instanceof ProjectileCollisionWithMonsterEvent e) {
+            listener.onProjectileCollisionWithMonster(e);
         }
     }
 
