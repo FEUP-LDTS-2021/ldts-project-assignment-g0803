@@ -5,7 +5,6 @@ import g0803.bindingofshiba.bundles.Bundle;
 import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.events.Observer;
 import g0803.bindingofshiba.events.game.MonsterDamagedEvent;
-import g0803.bindingofshiba.events.game.ProjectileCollisionWithMonsterEvent;
 import g0803.bindingofshiba.events.game.ProjectileDestroyedEvent;
 import g0803.bindingofshiba.events.game.ProjectileSpawnedEvent;
 import g0803.bindingofshiba.gui.GUI;
@@ -19,7 +18,6 @@ import g0803.bindingofshiba.model.game.room.Room;
 import g0803.bindingofshiba.textures.ITexture;
 import g0803.bindingofshiba.view.View;
 import g0803.bindingofshiba.view.ViewFactory;
-
 import java.util.*;
 
 public class RoomView extends View<Room> implements Observer {
@@ -146,8 +144,7 @@ public class RoomView extends View<Room> implements Observer {
 
     @Override
     public void onMonsterDamaged(MonsterDamagedEvent event) {
-        if (event.getRoom() != getModel() || event.getMonster().isAlive())
-            return;
+        if (event.getRoom() != getModel() || event.getMonster().isAlive()) return;
 
         monsterViews.removeIf(view -> view.getModel() == event.getMonster());
     }

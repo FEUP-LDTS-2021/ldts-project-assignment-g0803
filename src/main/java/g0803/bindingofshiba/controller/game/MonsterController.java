@@ -96,7 +96,13 @@ public class MonsterController extends Controller<Game> implements Observer {
         double endingHp = monster.getHp();
 
         if (startingHp != endingHp) {
-            MonsterDamagedEvent newEvent = new MonsterDamagedEvent(event.getTickTime(), event.getApp(), monster, getModel().getCurrentRoom(),startingHp - endingHp);
+            MonsterDamagedEvent newEvent =
+                    new MonsterDamagedEvent(
+                            event.getTickTime(),
+                            event.getApp(),
+                            monster,
+                            getModel().getCurrentRoom(),
+                            startingHp - endingHp);
             getEventManager().dispatchEvent(newEvent);
         }
     }

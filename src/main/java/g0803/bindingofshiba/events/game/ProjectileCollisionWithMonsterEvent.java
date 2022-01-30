@@ -10,7 +10,8 @@ public class ProjectileCollisionWithMonsterEvent extends Event {
     private final Projectile projectile;
     private final Monster monster;
 
-    public ProjectileCollisionWithMonsterEvent(double dt, App app, Projectile projectile, Monster monster) {
+    public ProjectileCollisionWithMonsterEvent(
+            double dt, App app, Projectile projectile, Monster monster) {
         super(dt, app);
 
         this.projectile = projectile;

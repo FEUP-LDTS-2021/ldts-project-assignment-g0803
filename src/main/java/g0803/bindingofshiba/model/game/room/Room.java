@@ -3,7 +3,6 @@ package g0803.bindingofshiba.model.game.room;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Projectile;
-
 import java.util.*;
 
 public class Room {

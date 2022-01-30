@@ -8,10 +8,9 @@ import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.model.game.elements.Projectile;
 import g0803.bindingofshiba.model.game.room.Room;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.Set;
 
 public class ProjectileControllerTest {
 
@@ -35,7 +34,14 @@ public class ProjectileControllerTest {
 
         projectileController.tick(app, 2);
 
-        Mockito.verify(room).addProjectile(Mockito.argThat(projectile -> projectile.getVelocity().normalize().isSimilar(Vec2D.up())));
+        Mockito.verify(room)
+                .addProjectile(
+                        Mockito.argThat(
+                                projectile ->
+                                        projectile
+                                                .getVelocity()
+                                                .normalize()
+                                                .isSimilar(Vec2D.up())));
     }
 
     @Test
@@ -59,5 +65,4 @@ public class ProjectileControllerTest {
 
         Mockito.verify(projectile).move(3);
     }
-
 }

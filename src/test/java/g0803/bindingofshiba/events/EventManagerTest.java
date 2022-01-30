@@ -69,7 +69,8 @@ public class EventManagerTest {
         PlayerCollisionWithWallsEvent event6 = Mockito.mock(PlayerCollisionWithWallsEvent.class);
         PlayerEnterDoorEvent event7 = Mockito.mock(PlayerEnterDoorEvent.class);
         PlayerUnlockDoorEvent event8 = Mockito.mock(PlayerUnlockDoorEvent.class);
-        ProjectileCollisionWithMonsterEvent event9 = Mockito.mock(ProjectileCollisionWithMonsterEvent.class);
+        ProjectileCollisionWithMonsterEvent event9 =
+                Mockito.mock(ProjectileCollisionWithMonsterEvent.class);
         ProjectileDestroyedEvent event10 = Mockito.mock(ProjectileDestroyedEvent.class);
         ProjectileSpawnedEvent event11 = Mockito.mock(ProjectileSpawnedEvent.class);
         MonsterDamagedEvent event12 = Mockito.mock(MonsterDamagedEvent.class);

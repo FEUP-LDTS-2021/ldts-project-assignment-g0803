@@ -76,7 +76,13 @@ public class RoomViewTest {
         Mockito.when(obstacleViewFactory.create(Mockito.any(), Mockito.eq(eventManager)))
                 .thenReturn(obstacleView1, obstacleView2);
 
-        RoomView roomView = new RoomView(r1, eventManager, monsterViewFactory, obstacleViewFactory, projectileViewFactory);
+        RoomView roomView =
+                new RoomView(
+                        r1,
+                        eventManager,
+                        monsterViewFactory,
+                        obstacleViewFactory,
+                        projectileViewFactory);
 
         Vec2D offset = new Vec2D(0, 9);
         roomView.draw(app, gui, offset);
@@ -125,7 +131,13 @@ public class RoomViewTest {
         Mockito.when(monsterViewFactory.create(Mockito.any(), Mockito.eq(eventManager)))
                 .thenReturn(monsterView1, monsterView2);
 
-        RoomView roomView = new RoomView(r1, eventManager, monsterViewFactory, obstacleViewFactory, projectileViewFactory);
+        RoomView roomView =
+                new RoomView(
+                        r1,
+                        eventManager,
+                        monsterViewFactory,
+                        obstacleViewFactory,
+                        projectileViewFactory);
 
         Vec2D offset = new Vec2D(0, 9);
         roomView.draw(app, gui, offset);

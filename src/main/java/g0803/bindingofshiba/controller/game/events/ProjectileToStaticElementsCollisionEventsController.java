@@ -9,14 +9,14 @@ import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Projectile;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class ProjectileToStaticElementsCollisionEventsController extends Controller<Game> {
 
-    public ProjectileToStaticElementsCollisionEventsController(Game model, IEventManager eventManager) {
+    public ProjectileToStaticElementsCollisionEventsController(
+            Game model, IEventManager eventManager) {
         super(model, eventManager);
     }
 
@@ -29,10 +29,13 @@ public class ProjectileToStaticElementsCollisionEventsController extends Control
         BoundingBox roomBox = boundingBoxes.get("room");
 
         for (Projectile projectile : projectiles) {
-            BoundingBox projectileBoundingBox = projectileBox.translate(projectile.getNextPosition(dt));
+            BoundingBox projectileBoundingBox =
+                    projectileBox.translate(projectile.getNextPosition(dt));
 
             if (!roomBox.contains(projectileBoundingBox))
-                eventsToDispatch.add(new ProjectileDestroyedEvent(dt, app, projectile, getModel().getCurrentRoom()));
+                eventsToDispatch.add(
+                        new ProjectileDestroyedEvent(
+                                dt, app, projectile, getModel().getCurrentRoom()));
         }
 
         for (ProjectileDestroyedEvent event : eventsToDispatch)
@@ -51,13 +54,16 @@ public class ProjectileToStaticElementsCollisionEventsController extends Control
         BoundingBox obstacleBox = boundingBoxes.get("rock");
 
         for (Projectile projectile : projectiles) {
-            BoundingBox projectileBoundingBox = projectileBox.translate(projectile.getNextPosition(dt));
+            BoundingBox projectileBoundingBox =
+                    projectileBox.translate(projectile.getNextPosition(dt));
 
             for (Obstacle obstacle : obstacles) {
                 BoundingBox obstacleBoundingBox = obstacleBox.translate(obstacle.getPosition());
 
                 if (obstacleBoundingBox.collides(projectileBoundingBox))
-                    eventsToDispatch.add(new ProjectileDestroyedEvent(dt, app, projectile, getModel().getCurrentRoom()));
+                    eventsToDispatch.add(
+                            new ProjectileDestroyedEvent(
+                                    dt, app, projectile, getModel().getCurrentRoom()));
             }
         }
 

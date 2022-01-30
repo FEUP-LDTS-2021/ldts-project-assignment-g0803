@@ -109,7 +109,6 @@ public class PlayerController extends Controller<Game> implements Observer {
 
     @Override
     public void onMonsterDamaged(MonsterDamagedEvent event) {
-        if (!event.getMonster().isAlive())
-            getModel().getPlayer().pickKey();
+        if (!event.getMonster().isAlive()) getModel().getPlayer().pickKey();
     }
 }

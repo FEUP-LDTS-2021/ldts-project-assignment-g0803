@@ -26,17 +26,21 @@ public class ProjectileController extends Controller<Game> implements Observer {
 
         Keyboard keyboard = app.getKeyboard();
 
-        Vec2D direction = switch (keyboard.getPressedKey()) {
-            case ARROW_UP -> Vec2D.up();
-            case ARROW_DOWN -> Vec2D.down();
-            case ARROW_LEFT -> Vec2D.left();
-            case ARROW_RIGHT -> Vec2D.right();
-            default -> null;
-        };
+        Vec2D direction =
+                switch (keyboard.getPressedKey()) {
+                    case ARROW_UP -> Vec2D.up();
+                    case ARROW_DOWN -> Vec2D.down();
+                    case ARROW_LEFT -> Vec2D.left();
+                    case ARROW_RIGHT -> Vec2D.right();
+                    default -> null;
+                };
 
         if (direction == null) return;
 
-        Projectile projectile = new Projectile(getModel().getPlayer().getPosition().add(new Vec2D(0, -2)), getModel().getPlayer().getDamage());
+        Projectile projectile =
+                new Projectile(
+                        getModel().getPlayer().getPosition().add(new Vec2D(0, -2)),
+                        getModel().getPlayer().getDamage());
         Vec2D playerVelocity = getModel().getPlayer().getVelocity();
 
         if (playerVelocity.getLengthSquared() < 16) {
@@ -48,7 +52,8 @@ public class ProjectileController extends Controller<Game> implements Observer {
         projectile.setVelocity(playerVelocity.add(direction.scale(4)).normalize().scale(20));
         getModel().getCurrentRoom().addProjectile(projectile);
 
-        ProjectileSpawnedEvent event = new ProjectileSpawnedEvent(dt, app, projectile, getModel().getCurrentRoom());
+        ProjectileSpawnedEvent event =
+                new ProjectileSpawnedEvent(dt, app, projectile, getModel().getCurrentRoom());
         getEventManager().dispatchEvent(event);
 
         projectileCooldown = 0.8;

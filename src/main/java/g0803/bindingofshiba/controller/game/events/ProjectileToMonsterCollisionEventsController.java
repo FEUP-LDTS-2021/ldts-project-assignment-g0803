@@ -11,7 +11,6 @@ import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Projectile;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -34,19 +33,22 @@ public class ProjectileToMonsterCollisionEventsController extends Controller<Gam
         BoundingBox projectileBox = boundingBoxes.get("heart");
 
         for (Projectile projectile : projectiles) {
-            BoundingBox projectileBoundingBox = projectileBox.translate(projectile.getNextPosition(dt));
+            BoundingBox projectileBoundingBox =
+                    projectileBox.translate(projectile.getNextPosition(dt));
 
             for (Monster monster : monsters) {
                 BoundingBox monsterBoundingBox = monsterBox.translate(monster.getNextPosition(dt));
 
                 if (monsterBoundingBox.collides(projectileBoundingBox)) {
-                    eventsToDispatch.add(new ProjectileCollisionWithMonsterEvent(dt, app, projectile, monster));
-                    eventsToDispatch.add(new ProjectileDestroyedEvent(dt, app, projectile, getModel().getCurrentRoom()));
+                    eventsToDispatch.add(
+                            new ProjectileCollisionWithMonsterEvent(dt, app, projectile, monster));
+                    eventsToDispatch.add(
+                            new ProjectileDestroyedEvent(
+                                    dt, app, projectile, getModel().getCurrentRoom()));
                 }
             }
         }
 
-        for (Event event : eventsToDispatch)
-            getEventManager().dispatchEvent(event);
+        for (Event event : eventsToDispatch) getEventManager().dispatchEvent(event);
     }
 }
