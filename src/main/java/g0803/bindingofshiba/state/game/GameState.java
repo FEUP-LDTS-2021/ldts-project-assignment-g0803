@@ -5,15 +5,14 @@ import g0803.bindingofshiba.events.EventManager;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.state.State;
 import g0803.bindingofshiba.view.game.GameView;
-import g0803.bindingofshiba.view.game.MonsterView;
-import g0803.bindingofshiba.view.game.PlayerView;
 
 public class GameState extends State<Game> {
 
     public GameState(Game game) {
-        super(
-                game,
-                new GameController(game, new EventManager()),
-                new GameView(game, PlayerView::new, MonsterView::new));
+        this(game, new EventManager());
+    }
+
+    public GameState(Game game, EventManager eventManager) {
+        super(game, new GameController(game, eventManager), new GameView(game, eventManager));
     }
 }
