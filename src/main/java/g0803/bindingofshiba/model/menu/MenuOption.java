@@ -1,7 +1,6 @@
 package g0803.bindingofshiba.model.menu;
 
 import g0803.bindingofshiba.App;
-
 import java.util.function.Consumer;
 
 public class MenuOption {

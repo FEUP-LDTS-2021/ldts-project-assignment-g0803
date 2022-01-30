@@ -9,10 +9,8 @@ import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.menu.Menu;
 import g0803.bindingofshiba.model.menu.MenuOption;
 import g0803.bindingofshiba.textures.ITexture;
-import g0803.bindingofshiba.textures.ITextureBuilder;
 import g0803.bindingofshiba.textures.TextTextureBuilder;
 import g0803.bindingofshiba.view.View;
-
 import java.awt.*;
 
 public class MenuView extends View<Menu> {
@@ -28,21 +26,25 @@ public class MenuView extends View<Menu> {
 
         gui.fill(Color.darkGray);
 
-        ITexture title = new TextTextureBuilder(fonts.get("text"))
-                .setText(getModel().getTitle())
-                .setColor(Color.lightGray)
-                .build();
+        ITexture title =
+                new TextTextureBuilder(fonts.get("text"))
+                        .setText(getModel().getTitle())
+                        .setColor(Color.lightGray)
+                        .build();
 
-        gui.blit(Constants.SCREEN_WIDTH / 2 - title.getWidth() / 2, Constants.SCREEN_HEIGHT / 2 - 15, title);
+        gui.blit(
+                Constants.SCREEN_WIDTH / 2 - title.getWidth() / 2,
+                Constants.SCREEN_HEIGHT / 2 - 15,
+                title);
 
         int startY = Constants.SCREEN_HEIGHT / 2 + 5;
         for (MenuOption option : getModel().getOptions()) {
-            TextTextureBuilder text = new TextTextureBuilder(fonts.get("text"))
-                    .setText(option.getText())
-                    .setColor(Color.lightGray);
+            TextTextureBuilder text =
+                    new TextTextureBuilder(fonts.get("text"))
+                            .setText(option.getText())
+                            .setColor(Color.lightGray);
 
-            if (option == getModel().getSelectedOption())
-                text.setColor(Color.white);
+            if (option == getModel().getSelectedOption()) text.setColor(Color.white);
 
             ITexture texture = text.build();
 

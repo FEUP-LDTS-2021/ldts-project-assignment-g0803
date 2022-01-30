@@ -9,7 +9,6 @@ public class MainMenu extends Menu {
         super(
                 "Binding of Shiba",
                 new MenuOption("Play", app -> app.setState(new GameState(new Game()))),
-                new MenuOption("Exit", app -> app.setState(null))
-        );
+                new MenuOption("Exit", app -> app.setState(null)));
     }
 }

@@ -20,7 +20,8 @@ public class MenuController extends Controller<Menu> {
             getModel().previousOption();
         } else if (keyboard.isKeyPressed(Keyboard.Key.ARROW_DOWN)) {
             getModel().nextOption();
-        } else if (keyboard.isKeyPressed(Keyboard.Key.SPACE) || keyboard.isKeyPressed(Keyboard.Key.ENTER)) {
+        } else if (keyboard.isKeyPressed(Keyboard.Key.SPACE)
+                || keyboard.isKeyPressed(Keyboard.Key.ENTER)) {
             getModel().getSelectedOption().execute(app);
         }
     }
