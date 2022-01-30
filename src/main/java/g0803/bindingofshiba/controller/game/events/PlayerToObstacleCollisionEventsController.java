@@ -9,7 +9,6 @@ import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,8 @@ public class PlayerToObstacleCollisionEventsController extends Controller<Game> 
             BoundingBox obstacleBoundingBox = obstacleBox.translate(obstacle.getPosition());
 
             if (playerBoundingBox.collides(obstacleBoundingBox))
-                eventsToDispatch.add(new PlayerCollisionWithObstacleEvent(dt, app, player, obstacle));
+                eventsToDispatch.add(
+                        new PlayerCollisionWithObstacleEvent(dt, app, player, obstacle));
         }
 
         for (PlayerCollisionWithObstacleEvent event : eventsToDispatch)

@@ -12,11 +12,10 @@ import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.model.game.room.Door;
 import g0803.bindingofshiba.model.game.room.DoorPosition;
 import g0803.bindingofshiba.model.game.room.Room;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.List;
 
 public class RoomControllerTest {
 
@@ -27,7 +26,8 @@ public class RoomControllerTest {
 
         Bundle<BoundingBox> boundingBoxes = Mockito.mock(Bundle.class);
         Mockito.when(boundingBoxes.get("shiba")).thenReturn(new BoundingBox(-3, -5, 6, 10));
-        Mockito.when(boundingBoxes.get("door.open.bottom")).thenReturn(new BoundingBox(-2, -1, 3, 5));
+        Mockito.when(boundingBoxes.get("door.open.bottom"))
+                .thenReturn(new BoundingBox(-2, -1, 3, 5));
         Mockito.when(app.getBoundingBoxes()).thenReturn(boundingBoxes);
 
         Player player = Mockito.mock(Player.class);
@@ -49,12 +49,15 @@ public class RoomControllerTest {
 
         controller.tick(app, 3);
 
-        Mockito.verify(manager).dispatchEvent(Mockito.argThat(event -> event instanceof PlayerEnterDoorEvent e
-                && e.getTickTime() == 3
-                && e.getApp() == app
-                && e.getPlayer() == player
-                && e.getDoor() == door
-        ));
+        Mockito.verify(manager)
+                .dispatchEvent(
+                        Mockito.argThat(
+                                event ->
+                                        event instanceof PlayerEnterDoorEvent e
+                                                && e.getTickTime() == 3
+                                                && e.getApp() == app
+                                                && e.getPlayer() == player
+                                                && e.getDoor() == door));
 
         Mockito.verify(game).setCurrentRoom(room2);
     }
@@ -66,7 +69,8 @@ public class RoomControllerTest {
 
         Bundle<BoundingBox> boundingBoxes = Mockito.mock(Bundle.class);
         Mockito.when(boundingBoxes.get("shiba")).thenReturn(new BoundingBox(-3, -5, 6, 10));
-        Mockito.when(boundingBoxes.get("door.closed.bottom")).thenReturn(new BoundingBox(-2, -1, 3, 5));
+        Mockito.when(boundingBoxes.get("door.closed.bottom"))
+                .thenReturn(new BoundingBox(-2, -1, 3, 5));
         Mockito.when(app.getBoundingBoxes()).thenReturn(boundingBoxes);
 
         Player player = Mockito.mock(Player.class);
@@ -87,12 +91,15 @@ public class RoomControllerTest {
 
         controller.tick(app, 3);
 
-        Mockito.verify(manager).dispatchEvent(Mockito.argThat(event -> event instanceof PlayerUnlockDoorEvent e
-                && e.getTickTime() == 3
-                && e.getApp() == app
-                && e.getPlayer() == player
-                && e.getDoor() == door
-        ));
+        Mockito.verify(manager)
+                .dispatchEvent(
+                        Mockito.argThat(
+                                event ->
+                                        event instanceof PlayerUnlockDoorEvent e
+                                                && e.getTickTime() == 3
+                                                && e.getApp() == app
+                                                && e.getPlayer() == player
+                                                && e.getDoor() == door));
 
         Assertions.assertTrue(door.getUnlocked());
     }

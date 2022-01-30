@@ -7,8 +7,8 @@ import g0803.bindingofshiba.events.game.PlayerCollisionWithWallsEvent;
 import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
-import g0803.bindingofshiba.model.game.room.Room;
 import g0803.bindingofshiba.model.game.elements.Player;
+import g0803.bindingofshiba.model.game.room.Room;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -32,7 +32,8 @@ public class PlayerToWallCollisionEventsControllerTest {
 
         EventManager manager = Mockito.mock(EventManager.class);
         Game game = new Game(player, room);
-        PlayerToWallsCollisionEventsController controller = new PlayerToWallsCollisionEventsController(game, manager);
+        PlayerToWallsCollisionEventsController controller =
+                new PlayerToWallsCollisionEventsController(game, manager);
 
         controller.tick(app, 3);
 
@@ -43,8 +44,7 @@ public class PlayerToWallCollisionEventsControllerTest {
                                     if (!(event instanceof PlayerCollisionWithWallsEvent e))
                                         return false;
 
-                                    return e.getPlayer() == player
-                                            && e.getTickTime() == 3;
+                                    return e.getPlayer() == player && e.getTickTime() == 3;
                                 }));
     }
 
@@ -66,7 +66,8 @@ public class PlayerToWallCollisionEventsControllerTest {
 
         EventManager manager = Mockito.mock(EventManager.class);
         Game game = new Game(player, room);
-        PlayerToWallsCollisionEventsController controller = new PlayerToWallsCollisionEventsController(game, manager);
+        PlayerToWallsCollisionEventsController controller =
+                new PlayerToWallsCollisionEventsController(game, manager);
 
         controller.tick(app, 4);
 

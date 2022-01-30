@@ -12,9 +12,21 @@ public class DefaultBoundingBoxesProviderTest {
         Bundle<BoundingBox> bundle = new DefaultBoundingBoxesProvider().getBundle();
 
         Set<String> actual = bundle.keys();
-        Set<String> expected = Set.of("monster", "shiba", "room", "projectile", "rock",
-                "door.open.bottom", "door.open.left", "door.open.top", "door.open.right", "door.closed.bottom", "door.closed.left",
-                "door.closed.top", "door.closed.right");
+        Set<String> expected =
+                Set.of(
+                        "monster",
+                        "shiba",
+                        "room",
+                        "projectile",
+                        "rock",
+                        "door.open.bottom",
+                        "door.open.left",
+                        "door.open.top",
+                        "door.open.right",
+                        "door.closed.bottom",
+                        "door.closed.left",
+                        "door.closed.top",
+                        "door.closed.right");
 
         Assertions.assertEquals(expected, actual);
 

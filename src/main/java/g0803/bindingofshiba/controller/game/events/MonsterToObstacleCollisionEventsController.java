@@ -9,7 +9,6 @@ import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +35,7 @@ public class MonsterToObstacleCollisionEventsController extends Controller<Game>
 
                 if (monsterBoundingBox.collides(obstacleBoundingBox))
                     eventsToDispatch.add(
-                            new MonsterCollisionWithObstacleEvent(
-                                    dt, app, monster, obstacle));
+                            new MonsterCollisionWithObstacleEvent(dt, app, monster, obstacle));
             }
         }
 

@@ -7,14 +7,13 @@ import g0803.bindingofshiba.events.game.MonsterCollisionWithObstacleEvent;
 import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
-import g0803.bindingofshiba.model.game.room.Room;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Player;
+import g0803.bindingofshiba.model.game.room.Room;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.List;
 
 public class MonsterToObstacleCollisionEventsControllerTest {
 
@@ -40,7 +39,8 @@ public class MonsterToObstacleCollisionEventsControllerTest {
 
         EventManager manager = Mockito.mock(EventManager.class);
         Game game = new Game(Mockito.mock(Player.class), room);
-        MonsterToObstacleCollisionEventsController controller = new MonsterToObstacleCollisionEventsController(game, manager);
+        MonsterToObstacleCollisionEventsController controller =
+                new MonsterToObstacleCollisionEventsController(game, manager);
 
         controller.tick(app, 3);
 
@@ -79,7 +79,8 @@ public class MonsterToObstacleCollisionEventsControllerTest {
 
         EventManager manager = Mockito.mock(EventManager.class);
         Game game = new Game(Mockito.mock(Player.class), room);
-        MonsterToObstacleCollisionEventsController controller = new MonsterToObstacleCollisionEventsController(game, manager);
+        MonsterToObstacleCollisionEventsController controller =
+                new MonsterToObstacleCollisionEventsController(game, manager);
 
         controller.tick(app, 4);
 

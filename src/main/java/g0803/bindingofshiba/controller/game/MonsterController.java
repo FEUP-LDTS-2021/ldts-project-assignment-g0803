@@ -3,7 +3,6 @@ package g0803.bindingofshiba.controller.game;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.Constants;
 import g0803.bindingofshiba.controller.Controller;
-import g0803.bindingofshiba.events.EventManager;
 import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.events.Observer;
 import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;

@@ -9,10 +9,10 @@ import g0803.bindingofshiba.events.game.MonsterCollisionWithWallsEvent;
 import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
-import g0803.bindingofshiba.model.game.room.Room;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Player;
+import g0803.bindingofshiba.model.game.room.Room;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -136,8 +136,7 @@ public class MonsterControllerTest {
         MonsterController controller = new MonsterController(game, manager);
         Mockito.verify(manager).addObserver(controller);
 
-        MonsterCollisionWithWallsEvent event =
-                new MonsterCollisionWithWallsEvent(2, app, monster);
+        MonsterCollisionWithWallsEvent event = new MonsterCollisionWithWallsEvent(2, app, monster);
 
         controller.onMonsterCollisionWithWalls(event);
 

@@ -17,19 +17,22 @@ public class Door {
 
         DoorPosition position = getDoorPosition(room);
         return switch (position) {
-            case TOP -> new Vec2D(room.getWidth()/2, 1);
-            case BOTTOM -> new Vec2D(room.getWidth()/2, room.getHeight() - 2);
-            case RIGHT -> new Vec2D(room.getWidth() - 2, room.getHeight()/2);
-            case LEFT -> new Vec2D(1, room.getHeight()/2);
+            case TOP -> new Vec2D(room.getWidth() / 2, 1);
+            case BOTTOM -> new Vec2D(room.getWidth() / 2, room.getHeight() - 2);
+            case RIGHT -> new Vec2D(room.getWidth() - 2, room.getHeight() / 2);
+            case LEFT -> new Vec2D(1, room.getHeight() / 2);
         };
     }
 
-    public Door(Room origin, DoorPosition originPosition, Room destination, DoorPosition destinationPosition) {
+    public Door(
+            Room origin,
+            DoorPosition originPosition,
+            Room destination,
+            DoorPosition destinationPosition) {
         this.originRoom = origin;
         this.originPosition = originPosition;
         this.destinationRoom = destination;
         this.destinationPosition = destinationPosition;
-
     }
 
     public Room getOriginRoom() {
@@ -37,7 +40,7 @@ public class Door {
     }
 
     public DoorPosition getOriginPosition() {
-            return this.originPosition;
+        return this.originPosition;
     }
 
     public Room getDestinationRoom() {

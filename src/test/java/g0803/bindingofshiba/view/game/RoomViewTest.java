@@ -13,13 +13,11 @@ import g0803.bindingofshiba.model.game.room.Room;
 import g0803.bindingofshiba.textures.ITexture;
 import g0803.bindingofshiba.view.View;
 import g0803.bindingofshiba.view.ViewFactory;
-import org.junit.jupiter.api.Test;
-import org.mockito.InOrder;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
+import org.mockito.Mockito;
 
 public class RoomViewTest {
 
@@ -73,7 +71,8 @@ public class RoomViewTest {
 
         View<Obstacle> obstacleView1 = Mockito.mock(View.class);
         View<Obstacle> obstacleView2 = Mockito.mock(View.class);
-        Mockito.when(obstacleViewFactory.create(Mockito.any(), Mockito.eq(eventManager))).thenReturn(obstacleView1, obstacleView2);
+        Mockito.when(obstacleViewFactory.create(Mockito.any(), Mockito.eq(eventManager)))
+                .thenReturn(obstacleView1, obstacleView2);
 
         RoomView roomView = new RoomView(r1, eventManager, monsterViewFactory, obstacleViewFactory);
 
@@ -92,7 +91,10 @@ public class RoomViewTest {
 
     @Test
     public void blitsMonsters() {
-        List<Monster> monsters = Arrays.asList(new Monster(new Vec2D(70, 55), 95, 50), new Monster(new Vec2D(69, 20), 60, 50));
+        List<Monster> monsters =
+                Arrays.asList(
+                        new Monster(new Vec2D(70, 55), 95, 50),
+                        new Monster(new Vec2D(69, 20), 60, 50));
         Room r1 = new Room(143, 75, monsters, null);
 
         App app = Mockito.mock(App.class);
@@ -117,7 +119,8 @@ public class RoomViewTest {
 
         View<Monster> monsterView1 = Mockito.mock(View.class);
         View<Monster> monsterView2 = Mockito.mock(View.class);
-        Mockito.when(monsterViewFactory.create(Mockito.any(), Mockito.eq(eventManager))).thenReturn(monsterView1, monsterView2);
+        Mockito.when(monsterViewFactory.create(Mockito.any(), Mockito.eq(eventManager)))
+                .thenReturn(monsterView1, monsterView2);
 
         RoomView roomView = new RoomView(r1, eventManager, monsterViewFactory, obstacleViewFactory);
 

@@ -2,8 +2,8 @@ package g0803.bindingofshiba.events.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.events.Event;
-import g0803.bindingofshiba.model.game.room.Door;
 import g0803.bindingofshiba.model.game.elements.Player;
+import g0803.bindingofshiba.model.game.room.Door;
 
 public class PlayerEnterDoorEvent extends Event {
 

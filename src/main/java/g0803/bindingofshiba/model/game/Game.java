@@ -8,7 +8,6 @@ import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.model.game.room.Door;
 import g0803.bindingofshiba.model.game.room.DoorPosition;
 import g0803.bindingofshiba.model.game.room.Room;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,14 +18,19 @@ public class Game {
 
     public Game() {
         this.player = new Player(new Vec2D(10, 20), 1, 30, 5);
-        this.currentRoom = new Room(Constants.ROOM_WIDTH, Constants.ROOM_HEIGHT, Arrays.asList(
-                new Monster(new Vec2D(15, 40), 3, 1), new Monster(new Vec2D(10, 50), 5, 2)), List.of(new Obstacle(30, 15)));
+        this.currentRoom =
+                new Room(
+                        Constants.ROOM_WIDTH,
+                        Constants.ROOM_HEIGHT,
+                        Arrays.asList(
+                                new Monster(new Vec2D(15, 40), 3, 1),
+                                new Monster(new Vec2D(10, 50), 5, 2)),
+                        List.of(new Obstacle(30, 15)));
 
         Room room2 = new Room(Constants.ROOM_WIDTH, Constants.ROOM_HEIGHT, List.of(), List.of());
         Door door = new Door(currentRoom, DoorPosition.TOP, room2, DoorPosition.BOTTOM);
         currentRoom.addDoor(door);
         room2.addDoor(door);
-
     }
 
     public Game(Player player, Room room) {

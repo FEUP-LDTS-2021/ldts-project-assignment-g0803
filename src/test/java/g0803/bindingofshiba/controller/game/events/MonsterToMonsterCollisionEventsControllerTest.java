@@ -7,13 +7,12 @@ import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;
 import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
-import g0803.bindingofshiba.model.game.room.Room;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Player;
+import g0803.bindingofshiba.model.game.room.Room;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.List;
 
 public class MonsterToMonsterCollisionEventsControllerTest {
 
@@ -40,7 +39,8 @@ public class MonsterToMonsterCollisionEventsControllerTest {
 
         EventManager manager = Mockito.mock(EventManager.class);
         Game game = new Game(player, room);
-        MonsterToMonsterCollisionEventsController controller = new MonsterToMonsterCollisionEventsController(game, manager);
+        MonsterToMonsterCollisionEventsController controller =
+                new MonsterToMonsterCollisionEventsController(game, manager);
 
         controller.tick(app, 4);
 
@@ -52,9 +52,9 @@ public class MonsterToMonsterCollisionEventsControllerTest {
                                         return false;
 
                                     return ((e.getFirstMonster() == monster1
-                                            && e.getSecondMonster() == monster2)
-                                            || (e.getFirstMonster() == monster2
-                                            && e.getSecondMonster() == monster1))
+                                                            && e.getSecondMonster() == monster2)
+                                                    || (e.getFirstMonster() == monster2
+                                                            && e.getSecondMonster() == monster1))
                                             && e.getTickTime() == 4;
                                 }));
     }
@@ -82,7 +82,8 @@ public class MonsterToMonsterCollisionEventsControllerTest {
 
         EventManager manager = Mockito.mock(EventManager.class);
         Game game = new Game(player, room);
-        MonsterToMonsterCollisionEventsController controller = new MonsterToMonsterCollisionEventsController(game, manager);
+        MonsterToMonsterCollisionEventsController controller =
+                new MonsterToMonsterCollisionEventsController(game, manager);
 
         controller.tick(app, 2);
 

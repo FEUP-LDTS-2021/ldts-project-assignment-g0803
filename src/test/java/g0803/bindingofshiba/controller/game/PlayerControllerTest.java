@@ -8,11 +8,11 @@ import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
-import g0803.bindingofshiba.model.game.room.Door;
-import g0803.bindingofshiba.model.game.room.Room;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Player;
+import g0803.bindingofshiba.model.game.room.Door;
+import g0803.bindingofshiba.model.game.room.Room;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -170,8 +170,7 @@ public class PlayerControllerTest {
         PlayerController controller = new PlayerController(game, manager);
         Mockito.verify(manager).addObserver(controller);
 
-        PlayerCollisionWithWallsEvent event =
-                new PlayerCollisionWithWallsEvent(3, app, player);
+        PlayerCollisionWithWallsEvent event = new PlayerCollisionWithWallsEvent(3, app, player);
 
         controller.onPlayerCollisionWithWalls(event);
 
@@ -235,12 +234,21 @@ public class PlayerControllerTest {
         controller.onPlayerEnterDoor(event);
 
         Mockito.verify(player).setVelocity(Vec2D.zero());
-        Mockito.verify(player).setPosition(Mockito.argThat(vec -> {
-            double distanceToDoor = vec.subtract(new Vec2D(14, 2)).getLengthSquared();
-            double distanceFromDoorToRoomCenter = new Vec2D(14, 2).subtract(new Vec2D(100, 50)).getLengthSquared();
-            double distanceToRoomCenter = vec.subtract(new Vec2D(100, 50)).getLengthSquared();
-            return distanceToRoomCenter < distanceFromDoorToRoomCenter && distanceToDoor < 225;
-        }));
+        Mockito.verify(player)
+                .setPosition(
+                        Mockito.argThat(
+                                vec -> {
+                                    double distanceToDoor =
+                                            vec.subtract(new Vec2D(14, 2)).getLengthSquared();
+                                    double distanceFromDoorToRoomCenter =
+                                            new Vec2D(14, 2)
+                                                    .subtract(new Vec2D(100, 50))
+                                                    .getLengthSquared();
+                                    double distanceToRoomCenter =
+                                            vec.subtract(new Vec2D(100, 50)).getLengthSquared();
+                                    return distanceToRoomCenter < distanceFromDoorToRoomCenter
+                                            && distanceToDoor < 225;
+                                }));
     }
 
     @Test

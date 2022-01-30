@@ -7,11 +7,11 @@ import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.events.game.PlayerEnterDoorEvent;
 import g0803.bindingofshiba.events.game.PlayerUnlockDoorEvent;
 import g0803.bindingofshiba.math.BoundingBox;
+import g0803.bindingofshiba.model.game.Game;
+import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.model.game.room.Door;
 import g0803.bindingofshiba.model.game.room.DoorPosition;
-import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.room.Room;
-import g0803.bindingofshiba.model.game.elements.Player;
 
 public class RoomController extends Controller<Game> {
 
@@ -28,13 +28,14 @@ public class RoomController extends Controller<Game> {
         if (door == null) return;
 
         BoundingBox playerBox = boundingBoxes.get("shiba");
-        BoundingBox doorBox = boundingBoxes.get(door.getUnlocked() ? position.getOpenKey() : position.getClosedKey());
+        BoundingBox doorBox =
+                boundingBoxes.get(
+                        door.getUnlocked() ? position.getOpenKey() : position.getClosedKey());
 
         BoundingBox playerBoundingBox = playerBox.translate(player.getNextPosition(dt));
         BoundingBox doorBoundingBox = doorBox.translate(door.getPositionByWall(room));
 
-        if (!playerBoundingBox.collides(doorBoundingBox))
-            return;
+        if (!playerBoundingBox.collides(doorBoundingBox)) return;
 
         if (door.getUnlocked()) {
             PlayerEnterDoorEvent event = new PlayerEnterDoorEvent(dt, app, player, door);
@@ -45,8 +46,7 @@ public class RoomController extends Controller<Game> {
             PlayerUnlockDoorEvent event = new PlayerUnlockDoorEvent(dt, app, player, door);
             getEventManager().dispatchEvent(event);
 
-            if (event.isCancelled())
-                return;
+            if (event.isCancelled()) return;
 
             door.unlock();
         }

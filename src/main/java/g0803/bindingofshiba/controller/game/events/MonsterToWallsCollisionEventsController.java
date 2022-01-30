@@ -8,7 +8,6 @@ import g0803.bindingofshiba.events.game.MonsterCollisionWithWallsEvent;
 import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -9,7 +9,6 @@ import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,8 +33,7 @@ public class PlayerToMonsterCollisionEventsController extends Controller<Game> {
             BoundingBox monsterBoundingBox = monsterBox.translate(monster.getNextPosition(dt));
 
             if (playerBoundingBox.collides(monsterBoundingBox))
-                eventsToDispatch.add(
-                        new PlayerCollisionWithMonsterEvent(dt, app, player, monster));
+                eventsToDispatch.add(new PlayerCollisionWithMonsterEvent(dt, app, player, monster));
         }
 
         for (PlayerCollisionWithMonsterEvent event : eventsToDispatch)

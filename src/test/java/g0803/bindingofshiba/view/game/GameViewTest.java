@@ -8,10 +8,10 @@ import g0803.bindingofshiba.events.game.PlayerEnterDoorEvent;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
+import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.model.game.room.Door;
 import g0803.bindingofshiba.model.game.room.DoorPosition;
 import g0803.bindingofshiba.model.game.room.Room;
-import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.textures.ITexture;
 import g0803.bindingofshiba.view.View;
 import g0803.bindingofshiba.view.ViewFactory;
@@ -19,13 +19,10 @@ import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
-
-import static g0803.bindingofshiba.model.game.room.DoorPosition.TOP;
 
 public class GameViewTest {
 
@@ -68,7 +65,8 @@ public class GameViewTest {
 
         IEventManager eventManager = Mockito.mock(IEventManager.class);
 
-        Mockito.when(playerViewFactory.create(Mockito.any(), Mockito.eq(eventManager))).thenReturn(playerView);
+        Mockito.when(playerViewFactory.create(Mockito.any(), Mockito.eq(eventManager)))
+                .thenReturn(playerView);
         Mockito.when(roomViewFactory.create(Mockito.any(), Mockito.eq(eventManager)))
                 .thenReturn(roomView);
 
@@ -135,7 +133,8 @@ public class GameViewTest {
         View<Room> roomView2 = Mockito.mock(View.class);
         ViewFactory<Room> roomViewFactory = Mockito.mock(ViewFactory.class);
 
-        Mockito.when(roomViewFactory.create(Mockito.any(), Mockito.eq(manager))).thenReturn(roomView1, roomView2);
+        Mockito.when(roomViewFactory.create(Mockito.any(), Mockito.eq(manager)))
+                .thenReturn(roomView1, roomView2);
 
         View<Player> playerView = Mockito.mock(View.class);
         ViewFactory<Player> playerViewFactory = Mockito.mock(ViewFactory.class);

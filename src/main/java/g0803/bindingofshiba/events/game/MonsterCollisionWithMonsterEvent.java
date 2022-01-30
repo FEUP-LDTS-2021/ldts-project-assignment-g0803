@@ -2,7 +2,6 @@ package g0803.bindingofshiba.events.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.events.Event;
-import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
 
 public class MonsterCollisionWithMonsterEvent extends Event {

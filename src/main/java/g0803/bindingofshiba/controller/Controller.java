@@ -1,7 +1,6 @@
 package g0803.bindingofshiba.controller;
 
 import g0803.bindingofshiba.App;
-import g0803.bindingofshiba.events.EventManager;
 import g0803.bindingofshiba.events.IEventManager;
 
 public abstract class Controller<T> {

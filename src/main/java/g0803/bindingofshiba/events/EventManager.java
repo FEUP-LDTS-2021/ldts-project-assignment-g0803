@@ -1,7 +1,6 @@
 package g0803.bindingofshiba.events;
 
 import g0803.bindingofshiba.events.game.*;
-
 import java.lang.ref.WeakReference;
 import java.util.*;
 

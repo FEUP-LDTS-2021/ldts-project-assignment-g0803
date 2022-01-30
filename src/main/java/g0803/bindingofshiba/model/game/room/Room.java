@@ -2,7 +2,6 @@ package g0803.bindingofshiba.model.game.room;
 
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,7 +54,10 @@ public class Room {
             throw new IllegalArgumentException("Door does not belong to this room");
         }
 
-        DoorPosition position = this == door.getOriginRoom() ? door.getOriginPosition() : door.getDestinationPosition();
+        DoorPosition position =
+                this == door.getOriginRoom()
+                        ? door.getOriginPosition()
+                        : door.getDestinationPosition();
         if (doors.containsKey(position)) {
             throw new IllegalStateException("There can't be two doors in the same position");
         }
