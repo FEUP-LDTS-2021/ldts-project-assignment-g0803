@@ -3,15 +3,13 @@ package g0803.bindingofshiba.controller.game;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.events.EventManager;
 import g0803.bindingofshiba.events.IEventManager;
-import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;
-import g0803.bindingofshiba.events.game.MonsterCollisionWithObstacleEvent;
-import g0803.bindingofshiba.events.game.MonsterCollisionWithWallsEvent;
-import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
+import g0803.bindingofshiba.events.game.*;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Player;
+import g0803.bindingofshiba.model.game.elements.Projectile;
 import g0803.bindingofshiba.model.game.room.Room;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -163,5 +161,34 @@ public class MonsterControllerTest {
 
         Mockito.verify(monster).setVelocity(Vec2D.zero());
         Mockito.verify(monster).setAcceleration(Vec2D.zero());
+    }
+
+    @Test
+    public void onProjectileCollisionWithMonster() {
+        App app = Mockito.mock(App.class);
+
+        IEventManager eventManager = Mockito.mock(IEventManager.class);
+        Projectile projectile = Mockito.mock(Projectile.class);
+        Monster monster = Mockito.mock(Monster.class);
+        ProjectileCollisionWithMonsterEvent event = Mockito.mock(ProjectileCollisionWithMonsterEvent.class);
+
+        Mockito.when(event.getApp()).thenReturn(app);
+        Mockito.when(event.getTickTime()).thenReturn(3D);
+        Mockito.when(event.getProjectile()).thenReturn(projectile);
+        Mockito.when(event.getMonster()).thenReturn(monster);
+
+        Mockito.when(projectile.getDamage()).thenReturn(3F);
+
+        Mockito.when(monster.getHp()).thenReturn(20F, 13F);
+
+        Room room = Mockito.mock(Room.class);
+        Game game = Mockito.mock(Game.class);
+        Mockito.when(game.getCurrentRoom()).thenReturn(room);
+
+        MonsterController controller = new MonsterController(game, eventManager);
+        controller.onProjectileCollisionWithMonster(event);
+
+        Mockito.verify(monster).decreaseHpByAmount(3F);
+        Mockito.verify(eventManager).dispatchEvent(Mockito.argThat(arg -> arg instanceof MonsterDamagedEvent e && e.getTickTime() == 3 && e.getMonster() == monster && e.getDamage() == 7D && e.getRoom() == room));
     }
 }
