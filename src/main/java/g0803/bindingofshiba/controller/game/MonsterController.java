@@ -103,6 +103,7 @@ public class MonsterController extends Controller<Game> implements Observer {
                             monster,
                             getModel().getCurrentRoom(),
                             startingHp - endingHp);
+
             getEventManager().dispatchEvent(newEvent);
         }
     }
