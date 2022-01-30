@@ -8,10 +8,12 @@ import g0803.bindingofshiba.events.game.*;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.math.Vec2D;
+import g0803.bindingofshiba.model.end.GameOver;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.model.game.room.Door;
 import g0803.bindingofshiba.model.game.room.Room;
+import g0803.bindingofshiba.state.end.GameOverState;
 
 public class PlayerController extends Controller<Game> implements Observer {
 
@@ -51,6 +53,11 @@ public class PlayerController extends Controller<Game> implements Observer {
         Player player = event.getPlayer();
         player.setAcceleration(Vec2D.zero());
         player.setVelocity(Vec2D.zero());
+
+        player.decreaseHpByAmount(5);
+        if (!player.isAlive()) {
+            event.getApp().setState(new GameOverState(false));
+        }
     }
 
     @Override
