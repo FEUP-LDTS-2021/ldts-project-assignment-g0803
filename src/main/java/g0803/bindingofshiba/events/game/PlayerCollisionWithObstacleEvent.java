@@ -3,25 +3,25 @@ package g0803.bindingofshiba.events.game;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.events.Event;
 import g0803.bindingofshiba.model.game.Game;
-import g0803.bindingofshiba.model.game.elements.Monster;
+import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Player;
 
-public class PlayerCollisionWithMonsterEvent extends Event {
+public class PlayerCollisionWithObstacleEvent extends Event {
 
     private final Player player;
-    private final Monster monster;
+    private final Obstacle obstacle;
 
-    public PlayerCollisionWithMonsterEvent(double dt, App app, Player player, Monster monster) {
+    public PlayerCollisionWithObstacleEvent(double dt, App app, Player player, Obstacle obstacle) {
         super(dt, app);
         this.player = player;
-        this.monster = monster;
+        this.obstacle = obstacle;
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    public Monster getMonster() {
-        return monster;
+    public Obstacle getObstacle() {
+        return obstacle;
     }
 }
