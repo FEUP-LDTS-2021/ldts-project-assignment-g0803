@@ -31,7 +31,7 @@ public class Main implements App {
         this.boundingBoxes = new DefaultBoundingBoxesProvider().getBundle();
 
         this.state = new GameState(new Game());
-        this.gui = new LanternaGUI(fonts, Constants.WIDTH, Constants.HEIGHT);
+        this.gui = new LanternaGUI(fonts, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
     }
 
     public Main(
