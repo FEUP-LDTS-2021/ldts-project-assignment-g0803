@@ -4,18 +4,15 @@ import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.bundles.Bundle;
 import g0803.bindingofshiba.events.EventManager;
 import g0803.bindingofshiba.events.game.MonsterCollisionWithWallsEvent;
-import g0803.bindingofshiba.events.game.PlayerCollisionWithWallsEvent;
 import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.model.game.room.Room;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-
 import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 public class MonsterToWallCollisionEventsControllerTest {
 
@@ -39,7 +36,8 @@ public class MonsterToWallCollisionEventsControllerTest {
 
         EventManager manager = Mockito.mock(EventManager.class);
         Game game = new Game(Mockito.mock(Player.class), room);
-        MonsterToWallsCollisionEventsController controller = new MonsterToWallsCollisionEventsController(game, manager);
+        MonsterToWallsCollisionEventsController controller =
+                new MonsterToWallsCollisionEventsController(game, manager);
 
         controller.tick(app, 3);
 
@@ -50,8 +48,7 @@ public class MonsterToWallCollisionEventsControllerTest {
                                     if (!(event instanceof MonsterCollisionWithWallsEvent e))
                                         return false;
 
-                                    return e.getMonster() == monster
-                                            && e.getTickTime() == 3;
+                                    return e.getMonster() == monster && e.getTickTime() == 3;
                                 }));
     }
 
@@ -75,11 +72,11 @@ public class MonsterToWallCollisionEventsControllerTest {
 
         EventManager manager = Mockito.mock(EventManager.class);
         Game game = new Game(Mockito.mock(Player.class), room);
-        MonsterToWallsCollisionEventsController controller = new MonsterToWallsCollisionEventsController(game, manager);
+        MonsterToWallsCollisionEventsController controller =
+                new MonsterToWallsCollisionEventsController(game, manager);
 
         controller.tick(app, 4);
 
         Mockito.verifyNoInteractions(manager);
     }
-
 }

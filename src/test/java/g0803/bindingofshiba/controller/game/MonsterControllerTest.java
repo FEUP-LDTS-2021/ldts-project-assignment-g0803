@@ -170,7 +170,8 @@ public class MonsterControllerTest {
         IEventManager eventManager = Mockito.mock(IEventManager.class);
         Projectile projectile = Mockito.mock(Projectile.class);
         Monster monster = Mockito.mock(Monster.class);
-        ProjectileCollisionWithMonsterEvent event = Mockito.mock(ProjectileCollisionWithMonsterEvent.class);
+        ProjectileCollisionWithMonsterEvent event =
+                Mockito.mock(ProjectileCollisionWithMonsterEvent.class);
 
         Mockito.when(event.getApp()).thenReturn(app);
         Mockito.when(event.getTickTime()).thenReturn(3D);
@@ -189,6 +190,14 @@ public class MonsterControllerTest {
         controller.onProjectileCollisionWithMonster(event);
 
         Mockito.verify(monster).decreaseHpByAmount(3F);
-        Mockito.verify(eventManager).dispatchEvent(Mockito.argThat(arg -> arg instanceof MonsterDamagedEvent e && e.getTickTime() == 3 && e.getMonster() == monster && e.getDamage() == 7D && e.getRoom() == room));
+        Mockito.verify(eventManager)
+                .dispatchEvent(
+                        Mockito.argThat(
+                                arg ->
+                                        arg instanceof MonsterDamagedEvent e
+                                                && e.getTickTime() == 3
+                                                && e.getMonster() == monster
+                                                && e.getDamage() == 7D
+                                                && e.getRoom() == room));
     }
 }

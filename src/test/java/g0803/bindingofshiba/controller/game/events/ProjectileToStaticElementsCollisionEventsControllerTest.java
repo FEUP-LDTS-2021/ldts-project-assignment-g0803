@@ -3,8 +3,6 @@ package g0803.bindingofshiba.controller.game.events;
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.bundles.Bundle;
 import g0803.bindingofshiba.events.EventManager;
-import g0803.bindingofshiba.events.game.ProjectileCollisionWithMonsterEvent;
-import g0803.bindingofshiba.controller.game.events.ProjectileToStaticElementsCollisionEventsController;
 import g0803.bindingofshiba.events.game.ProjectileDestroyedEvent;
 import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.math.Vec2D;
@@ -13,11 +11,10 @@ import g0803.bindingofshiba.model.game.elements.Obstacle;
 import g0803.bindingofshiba.model.game.elements.Player;
 import g0803.bindingofshiba.model.game.elements.Projectile;
 import g0803.bindingofshiba.model.game.room.Room;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
 import java.util.List;
 import java.util.Set;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 public class ProjectileToStaticElementsCollisionEventsControllerTest {
 
@@ -56,8 +53,7 @@ public class ProjectileToStaticElementsCollisionEventsControllerTest {
                                     if (!(event instanceof ProjectileDestroyedEvent e))
                                         return false;
 
-                                    return e.getProjectile() == projectile
-                                            && e.getTickTime() == 3;
+                                    return e.getProjectile() == projectile && e.getTickTime() == 3;
                                 }));
     }
 
@@ -123,8 +119,7 @@ public class ProjectileToStaticElementsCollisionEventsControllerTest {
                                     if (!(event instanceof ProjectileDestroyedEvent e))
                                         return false;
 
-                                    return e.getProjectile() == projectile
-                                            && e.getTickTime() == 3;
+                                    return e.getProjectile() == projectile && e.getTickTime() == 3;
                                 }));
     }
 
