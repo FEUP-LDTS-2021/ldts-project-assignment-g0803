@@ -2,10 +2,9 @@ package g0803.bindingofshiba.model.game.room;
 
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import g0803.bindingofshiba.model.game.elements.Projectile;
+
+import java.util.*;
 
 public class Room {
     private final int width;
@@ -13,6 +12,7 @@ public class Room {
     private final List<Monster> monsters;
     private final Map<DoorPosition, Door> doors = new HashMap<>();
     private final List<Obstacle> obstacles;
+    private final Set<Projectile> projectiles = new HashSet<>();
 
     public Room(int width, int height, List<Monster> monsters, List<Obstacle> obstacles) {
         this.width = width;
@@ -43,6 +43,10 @@ public class Room {
 
     public List<Monster> getMonsters() {
         return this.monsters;
+    }
+
+    public Set<Projectile> getProjectiles() {
+        return projectiles;
     }
 
     public Map<DoorPosition, Door> getDoors() {
