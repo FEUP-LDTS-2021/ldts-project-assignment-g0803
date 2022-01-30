@@ -9,8 +9,10 @@ import g0803.bindingofshiba.gui.LanternaGUI;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
 import g0803.bindingofshiba.math.BoundingBox;
 import g0803.bindingofshiba.model.game.Game;
+import g0803.bindingofshiba.model.menu.MainMenu;
 import g0803.bindingofshiba.state.State;
 import g0803.bindingofshiba.state.game.GameState;
+import g0803.bindingofshiba.state.menu.MenuState;
 import g0803.bindingofshiba.textures.ITexture;
 import java.awt.*;
 import java.io.IOException;
@@ -30,7 +32,7 @@ public class Main implements App {
         this.textures = new DefaultTexturesProvider().getBundle();
         this.boundingBoxes = new DefaultBoundingBoxesProvider().getBundle();
 
-        this.state = new GameState(new Game());
+        this.state = new MenuState(new MainMenu());
         this.gui = new LanternaGUI(fonts, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
     }
 
