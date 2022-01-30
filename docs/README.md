@@ -6,57 +6,38 @@ This project was developed by *André Lima* (up202008169@edu.fe.up.pt), *Guilher
 
 ### IMPLEMENTED FEATURES
 
-- Although we don't have any features implemented yet, we are very close to get a structure we are satisfied with and that will enable us to quickly introduce new features.
+- The player can move using WASD and shoot using the arrow keys.
 
-### PLANNED FEATURES
+<p align="center" justify="center">
+    <img src="images/planned/projectiles-and-enemies.png" />
+</p>
 
-- **The player can move**. By pressing W, A, S or D, the player can move across the map. 
+- Both player and monsters move with a certain speed and acceleration, making it challenging to aim. 
+
+- Certain paths may be blocked by obstacles. 
+
+<p align="center" justify="center">
+    <img src="images/planned/keys.png" />
+</p>
+
+- Player's current health is displayed in the HUD.
 
 <p align="center" justify="center">
     <img src="images/planned/shiba.png">
 </p>
 
-- **You can explore different rooms**. Pick up keys and wander around different rooms.
+- The enemies can attack by touching the player.
+- Upon death, the number of keys will increase, used to open doors and access new areas in the map.
 
 <p align="center" justify="center">
-    <img src="images/planned/keys.png" />
+    <img src="images/planned/keys_dropping.png" />
 </p>
-<br>
-  
-- **Shoot hearts at enemies**. Shiba should be able to shoot heart-shaped projectiles against enemies by using the arrow keys.
 
-<p align="center" justify="center">
-    <img src="images/planned/projectiles-and-enemies.png" />
-</p>
-<br>
-
-- **See your health bar**. You will be able to see how much HP you have left.
-
-<p align="center" justify="center">
-    <img src="images/planned/shiba.png" />
-</p>
-<br>
-
-- **Enemies flash when attacked**. To let you know when you hit an enemy, they will flash red.
-
-<p align="center" justify="center">
-    <img src="images/planned/monsters-taking-damage.png" />
-</p>
-<br>
-
-- **Enemies can attack you in an aura**. They will first try to get close to you and then they will flash a damaging aura that hurts Shiba.
-
-<p align="center" justify="center">
-    <img src="images/planned/monster-attacking.png" />
-</p>
-<br>
-
-- **The player can use a menu to play or exit the game**. If they select play, the game will start. If they select exit, the game will exit. At any time, the player can press ESC to bring up the pause menu.
+- You can use a menu at the end and start of your gameplay
 
 <p align="center" justify="center">
     <img src="images/planned/menu.png" />
 </p>
-<br>
 
 
 ### DESIGN
@@ -108,7 +89,7 @@ This project was developed by *André Lima* (up202008169@edu.fe.up.pt), *Guilher
 - **Implementation**. In our Main class, we have our application state, which will be either a menu state or a game state (currently, it can only be a game state). When the user starts the game on the menu, the state of the application changes and the game starts. When the game ends, the state changes again and the window closes.
 
 <p align="center" justify="center">
-    <img src="images/uml/state.png" />
+    <img src="images/uml/state.jpg" />
 </p>
 <p align="center">
     <strong>Fig 3.</strong> State pattern
@@ -118,15 +99,42 @@ This project was developed by *André Lima* (up202008169@edu.fe.up.pt), *Guilher
 
 <br>
 
-#### Monster AI (Planned)
+#### Texture Builders
 
-- **Problem in Context**. Monsters are medium-ranged attackers. As such, they first need to get close to the player and then attack it. The *Strategy pattern* comes to mind as the monsters will have two different strategies to choose from: the approach strategy and the attack strategy.
+- **Problem in Context**. To implement our game's designs, such as the Shiba, all the enemies and the health bar, we needed an effective method to print the draw art on to the screen. The same happened for text. To solve this, we implemented the Builder pattern, to both render text and images.
 
-- **The Pattern**. The Strategy algorightm allows our monster controller to select a strategy to modify the model and to attack the player based on the environment it is on, by analizing its surroundings in every frame and, mainly, it's distance to the player.
+- **The Pattern**. The Builder pattern comes of use when an object can have multiple configurations and is made up of a bunch of other objects, while hiding all the building process from the main client.
 
-- **Implementation**. TBD
-  
-- **Consequences**. This pattern will allow us to make the monster AI more complex more easily, if we choose to do so. Since every strategy is interchangeable, code changes will be minimal with this design pattern, when adding new strategies. Furthermore, the code is simplified since every behaviour gets split into its own class.
+- **Implementation**. With this pattern, we created full rendered images by reading all the pixels and colors from the original image and locating them according to the image's rotation. They are created and stored in a Bundle of textures, for later use. For text, the builder will transform text into drawable elements, using a chosen, 4x5 pixel font.
+
+<p align="center" justify="center">
+    <img src="images/uml/builder.png" />
+</p>
+<p align="center">
+    <strong>Fig 4.</strong> Builder pattern
+</p>
+
+- **Consequences**. This pattern will allow us to have more control over the building methods, as they are separated from the caller function, and we don't need to change/possibly corrupt as much code as we would if we did not implement this. It also makes code more readable for other developers.
+
+
+<br>
+
+#### Event Manager
+
+- **Problem in Context**. When an element collides with another, they both should be notified of this occurrence, hence the Observer pattern coming to mind.  
+
+- **The Pattern**. The Observer pattern allows us to notify the interested parties of important events, such as, in our case, collisions and attacks. The notified classes will then know what to do upon receiving an update.
+
+- **Implementation**. Our receiver (subscriber) classes will be the controllers of monsters, projectiles and our main character, Shiba. Upon hitting or being hit by another element, they will be notified and do the correspondent action, depending on what it collided with. Some views also subscribe to certain events, in order to know when to create/destroy other views.
+
+<p align="center" justify="center">
+    <img src="images/uml/observer.png" />
+</p>
+<p align="center">
+    <strong>Fig 5.</strong> Observer pattern
+</p>
+
+- **Consequences**. This pattern will allow the objects in our program to act more independently in different situations. It will also be easier to change the actions we want them to have, as the code is less scattered around. With this pattern, for instance, we can keep all the code related to the player's behaviour on its controller, no matter how complex some interactions may get.
 
 <br />
 
@@ -134,9 +142,7 @@ This project was developed by *André Lima* (up202008169@edu.fe.up.pt), *Guilher
 
 #### Speculative Generality
 
-Some of our classes, such as [Position](../src/main/java/g0803/bindingofshiba/model/game/Position.java), have methods that aren't used anywhere else (such as `Position#getNeighbors`). This was done because, initially, it was discussed that all elements would only move one place at a time, but, with recent discussions, that idea was thrown out and now the method is mostly useless.
-
-A way to improve the code would be to remove said method.
+We have an event class that is not used. The `PlayerDamagedByMonsterEvent` was supposed to be a way for us to do graphical updates upon player damage. We chose an easier route, for the time we had.
 
 ### TESTING
 
