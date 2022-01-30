@@ -68,4 +68,12 @@ public class Room {
 
         doors.put(position, door);
     }
+
+    public void addProjectile(Projectile projectile) {
+        this.projectiles.add(projectile);
+    }
+
+    public void removeProjectile(Projectile projectile) {
+        this.projectiles.remove(projectile);
+    }
 }
