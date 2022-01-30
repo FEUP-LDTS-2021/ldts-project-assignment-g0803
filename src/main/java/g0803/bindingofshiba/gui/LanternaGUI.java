@@ -27,6 +27,7 @@ public class LanternaGUI implements GUI {
         this.screen = new TerminalScreen(terminal);
         this.screen.startScreen();
         this.screen.doResizeIfNecessary();
+        this.screen.setCursorPosition(null);
 
         this.keyboard = new LanternaKeyboard(this.screen);
     }
@@ -40,10 +41,12 @@ public class LanternaGUI implements GUI {
         TerminalSize screenSize = new TerminalSize(width, height);
         SwingTerminalFontConfiguration fontConfig =
                 SwingTerminalFontConfiguration.newInstance(font);
+
         return new DefaultTerminalFactory()
                 .setInitialTerminalSize(screenSize)
                 .setPreferTerminalEmulator(true)
                 .setTerminalEmulatorFontConfiguration(fontConfig)
+                .setTerminalEmulatorTitle("Binding of Shiba")
                 .createTerminal();
     }
 
