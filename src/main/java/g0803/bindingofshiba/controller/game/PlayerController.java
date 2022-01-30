@@ -2,7 +2,7 @@ package g0803.bindingofshiba.controller.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
-import g0803.bindingofshiba.events.EventManager;
+import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.events.Observer;
 import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
 import g0803.bindingofshiba.gui.keyboard.Keyboard;
@@ -12,7 +12,7 @@ import g0803.bindingofshiba.model.game.elements.Player;
 
 public class PlayerController extends Controller<Game> implements Observer {
 
-    public PlayerController(Game model, EventManager eventManager) {
+    public PlayerController(Game model, IEventManager eventManager) {
         super(model, eventManager);
         eventManager.addObserver(this);
     }

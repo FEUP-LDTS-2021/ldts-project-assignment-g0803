@@ -4,6 +4,7 @@ import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.Constants;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.events.EventManager;
+import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.events.Observer;
 import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;
 import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
@@ -13,7 +14,7 @@ import g0803.bindingofshiba.model.game.elements.Monster;
 
 public class MonsterController extends Controller<Game> implements Observer {
 
-    public MonsterController(Game model, EventManager eventManager) {
+    public MonsterController(Game model, IEventManager eventManager) {
         super(model, eventManager);
         eventManager.addObserver(this);
     }

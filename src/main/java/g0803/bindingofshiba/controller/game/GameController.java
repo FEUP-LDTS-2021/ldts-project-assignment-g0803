@@ -4,6 +4,7 @@ import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.controller.game.events.CollisionEventsController;
 import g0803.bindingofshiba.events.EventManager;
+import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.model.game.Game;
 import java.util.Arrays;
 import java.util.List;
@@ -12,18 +13,19 @@ public class GameController extends Controller<Game> {
 
     private final List<? extends Controller<?>> controllers;
 
-    public GameController(Game model, EventManager eventManager) {
+    public GameController(Game model, IEventManager eventManager) {
         super(model, eventManager);
 
         this.controllers =
                 Arrays.asList(
                         new CollisionEventsController(getModel(), getEventManager()),
                         new PlayerController(getModel(), getEventManager()),
-                        new MonsterController(getModel(), getEventManager()));
+                        new MonsterController(getModel(), getEventManager()),
+                        new RoomController(getModel(), getEventManager()));
     }
 
     public GameController(
-            Game model, EventManager eventManager, List<? extends Controller<?>> controllers) {
+            Game model, IEventManager eventManager, List<? extends Controller<?>> controllers) {
         super(model, eventManager);
 
         this.controllers = controllers;
