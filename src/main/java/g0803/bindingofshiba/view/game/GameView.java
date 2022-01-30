@@ -34,17 +34,15 @@ public class GameView extends View<Game> implements Observer {
             ViewFactory<Room> roomViewFactory) {
         super(model, eventManager);
 
-        throw new RuntimeException("Not implemented");
+        this.roomViewFactory = roomViewFactory;
+        this.playerView = playerViewFactory.create(getModel().getPlayer(), getEventManager());
+
+        createViews(getModel().getCurrentRoom());
+        getEventManager().addObserver(this);
     }
 
-    private void drawElementsBelowPlayer(App app, GUI gui, Vec2D offset) {
-        drawElements(
-                app,
-                gui,
-                offset,
-                element ->
-                        element.getPosition().round().getY()
-                                >= getModel().getPlayer().getPosition().round().getY());
+    private void createViews(Room room) {
+        this.roomView = roomViewFactory.create(room, getEventManager());
     }
 
     private void drawPlayer(App app, GUI gui, Vec2D offset) {
@@ -106,6 +104,7 @@ public class GameView extends View<Game> implements Observer {
 
     @Override
     public void onPlayerEnterDoor(PlayerEnterDoorEvent event) {
-         throw new RuntimeException("Not implemented");
+        Room room = event.getDoor().getOtherRoom(getModel().getCurrentRoom());
+        createViews(room);
     }
 }
