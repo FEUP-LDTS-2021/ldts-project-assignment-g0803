@@ -98,6 +98,10 @@ public class BoundingBox {
         return !isOnTheBottom;
     }
 
+    public boolean contains(BoundingBox other) {
+         throw new RuntimeException("Not implemented");
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
