@@ -60,7 +60,7 @@ public class EventManager implements IEventManager {
             listener.onProjectileDestroyed(e);
         } else if (event instanceof ProjectileSpawnedEvent e) {
             listener.onProjectileSpawned(e);
-        } else if (event instanceof MonsterDeathEvent e) {
+        } else if (event instanceof MonsterDamagedEvent e) {
             listener.onMonsterDeath(e);
         }
     }

@@ -26,5 +26,5 @@ public interface Observer {
 
     default void onProjectileSpawned(ProjectileSpawnedEvent event) {}
 
-    default void onMonsterDeath(MonsterDeathEvent event) {}
+    default void onMonsterDamaged(MonsterDamagedEvent event) {}
 }

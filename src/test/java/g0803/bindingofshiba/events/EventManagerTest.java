@@ -72,7 +72,7 @@ public class EventManagerTest {
         ProjectileCollisionWithMonsterEvent event9 = Mockito.mock(ProjectileCollisionWithMonsterEvent.class);
         ProjectileDestroyedEvent event10 = Mockito.mock(ProjectileDestroyedEvent.class);
         ProjectileSpawnedEvent event11 = Mockito.mock(ProjectileSpawnedEvent.class);
-        MonsterDeathEvent event12 = Mockito.mock(MonsterDeathEvent.class);
+        MonsterDamagedEvent event12 = Mockito.mock(MonsterDamagedEvent.class);
 
         manager.dispatchEvent(event1);
         manager.dispatchEvent(event2);
