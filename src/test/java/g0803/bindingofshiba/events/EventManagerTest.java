@@ -69,6 +69,7 @@ public class EventManagerTest {
         PlayerCollisionWithWallsEvent event6 = Mockito.mock(PlayerCollisionWithWallsEvent.class);
         PlayerEnterDoorEvent event7 = Mockito.mock(PlayerEnterDoorEvent.class);
         PlayerUnlockDoorEvent event8 = Mockito.mock(PlayerUnlockDoorEvent.class);
+        ProjectileCollisionWithMonsterEvent event9 = Mockito.mock(ProjectileCollisionWithMonsterEvent.class);
 
         manager.dispatchEvent(event1);
         manager.dispatchEvent(event2);
@@ -78,6 +79,7 @@ public class EventManagerTest {
         manager.dispatchEvent(event6);
         manager.dispatchEvent(event7);
         manager.dispatchEvent(event8);
+        manager.dispatchEvent(event9);
 
         Mockito.verify(observer).onMonsterCollisionWithMonster(event1);
         Mockito.verify(observer).onMonsterCollisionWithObstacle(event2);
@@ -87,5 +89,6 @@ public class EventManagerTest {
         Mockito.verify(observer).onPlayerCollisionWithWalls(event6);
         Mockito.verify(observer).onPlayerEnterDoor(event7);
         Mockito.verify(observer).onPlayerUnlockDoor(event8);
+        Mockito.verify(observer).onProjectileCollisionWithMonster(event9);
     }
 }
