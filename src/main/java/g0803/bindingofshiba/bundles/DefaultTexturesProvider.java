@@ -61,8 +61,10 @@ public class DefaultTexturesProvider implements BundleProvider<ITexture> {
 
         StaticTexture verticalTexture = horizontalTexture.rotateRight();
 
-        bundle.register("door.closed.horizontal", horizontalTexture);
-        bundle.register("door.closed.vertical", verticalTexture);
+        bundle.register("door.closed.bottom", horizontalTexture);
+        bundle.register("door.closed.left", verticalTexture);
+        bundle.register("door.closed.top", horizontalTexture);
+        bundle.register("door.closed.right", verticalTexture);
     }
 
     private void loadHealthTextures() throws IOException {
