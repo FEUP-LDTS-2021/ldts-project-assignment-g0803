@@ -4,6 +4,8 @@ import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.model.end.GameOver;
+import g0803.bindingofshiba.model.menu.MainMenu;
+import g0803.bindingofshiba.state.menu.MenuState;
 
 public class GameOverController extends Controller<GameOver> {
 
@@ -18,7 +20,7 @@ public class GameOverController extends Controller<GameOver> {
         timeToSwitch -= dt;
 
         if (timeToSwitch <= 0) {
-            app.setState(null);
+            app.setState(new MenuState(new MainMenu()));
         }
     }
 }
