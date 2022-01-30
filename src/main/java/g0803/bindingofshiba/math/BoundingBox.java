@@ -99,7 +99,26 @@ public class BoundingBox {
     }
 
     public boolean contains(BoundingBox other) {
-         throw new RuntimeException("Not implemented");
+        Vec2D topLeft = this.getTopLeftCorner();
+        Vec2D otherTopLeft = other.getTopLeftCorner();
+        Vec2D bottomRight = this.getBottomRightCorner();
+        Vec2D otherBottomRight = other.getBottomRightCorner();
+
+        boolean isTopLeftInside =
+                otherTopLeft.getX() >= topLeft.getX()
+                        && otherTopLeft.getY() >= topLeft.getY()
+                        && otherTopLeft.getX() <= bottomRight.getX()
+                        && otherTopLeft.getY() <= bottomRight.getY();
+
+        if (!isTopLeftInside) return false;
+
+        boolean isBottomRightInside =
+                otherBottomRight.getX() >= topLeft.getX()
+                        && otherBottomRight.getY() >= topLeft.getY()
+                        && otherBottomRight.getX() <= bottomRight.getX()
+                        && otherBottomRight.getY() <= bottomRight.getY();
+
+        return isBottomRightInside;
     }
 
     @Override
