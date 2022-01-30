@@ -7,6 +7,7 @@ import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.elements.Monster;
 import g0803.bindingofshiba.model.game.elements.Obstacle;
+import g0803.bindingofshiba.model.game.elements.Projectile;
 import g0803.bindingofshiba.model.game.room.Door;
 import g0803.bindingofshiba.model.game.room.DoorPosition;
 import g0803.bindingofshiba.model.game.room.Room;
@@ -68,13 +69,14 @@ public class RoomViewTest {
 
         ViewFactory<Monster> monsterViewFactory = Mockito.mock(ViewFactory.class);
         ViewFactory<Obstacle> obstacleViewFactory = Mockito.mock(ViewFactory.class);
+        ViewFactory<Projectile> projectileViewFactory = Mockito.mock(ViewFactory.class);
 
         View<Obstacle> obstacleView1 = Mockito.mock(View.class);
         View<Obstacle> obstacleView2 = Mockito.mock(View.class);
         Mockito.when(obstacleViewFactory.create(Mockito.any(), Mockito.eq(eventManager)))
                 .thenReturn(obstacleView1, obstacleView2);
 
-        RoomView roomView = new RoomView(r1, eventManager, monsterViewFactory, obstacleViewFactory);
+        RoomView roomView = new RoomView(r1, eventManager, monsterViewFactory, obstacleViewFactory, projectileViewFactory);
 
         Vec2D offset = new Vec2D(0, 9);
         roomView.draw(app, gui, offset);
@@ -116,13 +118,14 @@ public class RoomViewTest {
 
         ViewFactory<Monster> monsterViewFactory = Mockito.mock(ViewFactory.class);
         ViewFactory<Obstacle> obstacleViewFactory = Mockito.mock(ViewFactory.class);
+        ViewFactory<Projectile> projectileViewFactory = Mockito.mock(ViewFactory.class);
 
         View<Monster> monsterView1 = Mockito.mock(View.class);
         View<Monster> monsterView2 = Mockito.mock(View.class);
         Mockito.when(monsterViewFactory.create(Mockito.any(), Mockito.eq(eventManager)))
                 .thenReturn(monsterView1, monsterView2);
 
-        RoomView roomView = new RoomView(r1, eventManager, monsterViewFactory, obstacleViewFactory);
+        RoomView roomView = new RoomView(r1, eventManager, monsterViewFactory, obstacleViewFactory, projectileViewFactory);
 
         Vec2D offset = new Vec2D(0, 9);
         roomView.draw(app, gui, offset);

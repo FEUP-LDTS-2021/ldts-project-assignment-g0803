@@ -106,4 +106,10 @@ public class PlayerController extends Controller<Game> implements Observer {
 
         player.dropKey();
     }
+
+    @Override
+    public void onMonsterDamaged(MonsterDamagedEvent event) {
+        if (!event.getMonster().isAlive())
+            getModel().getPlayer().pickKey();
+    }
 }

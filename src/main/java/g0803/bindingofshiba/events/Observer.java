@@ -19,4 +19,12 @@ public interface Observer {
     default void onPlayerEnterDoor(PlayerEnterDoorEvent event) {}
 
     default void onPlayerUnlockDoor(PlayerUnlockDoorEvent event) {}
+
+    default void onProjectileCollisionWithMonster(ProjectileCollisionWithMonsterEvent event) {}
+
+    default void onProjectileDestroyed(ProjectileDestroyedEvent event) {}
+
+    default void onProjectileSpawned(ProjectileSpawnedEvent event) {}
+
+    default void onMonsterDamaged(MonsterDamagedEvent event) {}
 }

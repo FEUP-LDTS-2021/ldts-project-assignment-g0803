@@ -5,6 +5,8 @@ import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.controller.game.events.CollisionEventsController;
 import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.model.game.Game;
+import g0803.bindingofshiba.model.game.elements.Projectile;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class GameController extends Controller<Game> {
                         new CollisionEventsController(getModel(), getEventManager()),
                         new PlayerController(getModel(), getEventManager()),
                         new MonsterController(getModel(), getEventManager()),
+                        new ProjectileController(getModel(), getEventManager()),
                         new RoomController(getModel(), getEventManager()));
     }
 
