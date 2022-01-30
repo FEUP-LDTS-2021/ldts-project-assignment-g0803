@@ -2,6 +2,7 @@ package g0803.bindingofshiba.view.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.bundles.Bundle;
+import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.elements.Player;
@@ -23,7 +24,7 @@ public class PlayerViewTest {
         Mockito.when(textures.get("shiba")).thenReturn(texture);
 
         Player player = new Player(new Vec2D(7, 3), 1, 20, 2);
-        PlayerView view = new PlayerView(player);
+        PlayerView view = new PlayerView(player, Mockito.mock(IEventManager.class));
 
         view.draw(app, gui, new Vec2D(4, -2));
 

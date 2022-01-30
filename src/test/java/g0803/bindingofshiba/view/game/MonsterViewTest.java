@@ -2,6 +2,7 @@ package g0803.bindingofshiba.view.game;
 
 import g0803.bindingofshiba.App;
 import g0803.bindingofshiba.bundles.Bundle;
+import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.gui.GUI;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.elements.Monster;
@@ -23,7 +24,7 @@ public class MonsterViewTest {
         Mockito.when(textures.get("monster.normal")).thenReturn(texture);
 
         Monster monster = new Monster(new Vec2D(10, 4), 20, 4);
-        MonsterView view = new MonsterView(monster);
+        MonsterView view = new MonsterView(monster, Mockito.mock(IEventManager.class));
 
         view.draw(app, gui, new Vec2D(-1, 2));
 
