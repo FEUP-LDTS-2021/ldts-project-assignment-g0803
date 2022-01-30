@@ -17,7 +17,7 @@ public class DefaultBoundingBoxesProviderTest {
                         "monster",
                         "shiba",
                         "room",
-                        "projectile",
+                        "heart",
                         "rock",
                         "door.open.bottom",
                         "door.open.left",

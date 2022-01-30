@@ -98,6 +98,6 @@ public class EventManagerTest {
         Mockito.verify(observer).onProjectileCollisionWithMonster(event9);
         Mockito.verify(observer).onProjectileDestroyed(event10);
         Mockito.verify(observer).onProjectileSpawned(event11);
-        Mockito.verify(observer).onMonsterDeath(event12);
+        Mockito.verify(observer).onMonsterDamaged(event12);
     }
 }
