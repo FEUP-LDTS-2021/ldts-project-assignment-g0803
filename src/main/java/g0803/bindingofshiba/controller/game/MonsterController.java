@@ -5,10 +5,7 @@ import g0803.bindingofshiba.Constants;
 import g0803.bindingofshiba.controller.Controller;
 import g0803.bindingofshiba.events.IEventManager;
 import g0803.bindingofshiba.events.Observer;
-import g0803.bindingofshiba.events.game.MonsterCollisionWithMonsterEvent;
-import g0803.bindingofshiba.events.game.MonsterCollisionWithObstacleEvent;
-import g0803.bindingofshiba.events.game.MonsterCollisionWithWallsEvent;
-import g0803.bindingofshiba.events.game.PlayerCollisionWithMonsterEvent;
+import g0803.bindingofshiba.events.game.*;
 import g0803.bindingofshiba.math.Vec2D;
 import g0803.bindingofshiba.model.game.Game;
 import g0803.bindingofshiba.model.game.elements.Monster;
@@ -88,5 +85,19 @@ public class MonsterController extends Controller<Game> implements Observer {
         Monster monster = event.getMonster();
         monster.setAcceleration(Vec2D.zero());
         monster.setVelocity(Vec2D.zero());
+    }
+
+    @Override
+    public void onProjectileCollisionWithMonster(ProjectileCollisionWithMonsterEvent event) {
+        Monster monster = event.getMonster();
+
+        double startingHp = monster.getHp();
+        monster.decreaseHpByAmount(event.getProjectile().getDamage());
+        double endingHp = monster.getHp();
+
+        if (startingHp != endingHp) {
+            MonsterDamagedEvent newEvent = new MonsterDamagedEvent(event.getTickTime(), event.getApp(), monster, getModel().getCurrentRoom(),startingHp - endingHp);
+            getEventManager().dispatchEvent(newEvent);
+        }
     }
 }

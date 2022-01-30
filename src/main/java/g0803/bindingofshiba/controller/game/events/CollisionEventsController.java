@@ -22,7 +22,9 @@ public class CollisionEventsController extends Controller<Game> {
                         new MonsterToWallsCollisionEventsController(model, eventManager),
                         new PlayerToWallsCollisionEventsController(model, eventManager),
                         new MonsterToObstacleCollisionEventsController(model, eventManager),
-                        new PlayerToObstacleCollisionEventsController(model, eventManager));
+                        new PlayerToObstacleCollisionEventsController(model, eventManager),
+                        new ProjectileToMonsterCollisionEventsController(model, eventManager),
+                        new ProjectileToStaticElementsCollisionEventsController(model, eventManager));
     }
 
     public CollisionEventsController(
