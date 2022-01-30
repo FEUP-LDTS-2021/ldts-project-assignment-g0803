@@ -23,4 +23,6 @@ public interface Observer {
     default void onProjectileCollisionWithMonster(ProjectileCollisionWithMonsterEvent event) {}
 
     default void onProjectileDestroyed(ProjectileDestroyedEvent event) {}
+
+    default void onProjectileSpawned(ProjectileSpawnedEvent event) {}
 }
